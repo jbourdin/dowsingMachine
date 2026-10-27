@@ -13,7 +13,7 @@ Fetch open bug issues from GitHub, present them to the user, and triage each one
 
 Run:
 ```bash
-gh issue list --repo jbourdin/expandedDecks --label bug --state open --json number,title,body,createdAt,labels,milestone,assignees --jq '.'
+gh issue list --repo jbourdin/dowsingMachine --label bug --state open --json number,title,body,createdAt,labels,milestone,assignees --jq '.'
 ```
 
 If no open bugs exist, tell the user: "No open bug issues found." and stop.
@@ -61,7 +61,7 @@ For each bug, based on the user's choice:
 **Handle now:**
 1. Add to the project board if not already there:
    ```bash
-   gh project item-add 1 --owner jbourdin --url https://github.com/jbourdin/expandedDecks/issues/<number>
+   gh project item-add 1 --owner jbourdin --url https://github.com/jbourdin/dowsingMachine/issues/<number>
    ```
 2. Move to "In Progress":
    ```bash

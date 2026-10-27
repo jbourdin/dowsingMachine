@@ -20,7 +20,7 @@ namespace App\Enum;
  * `HomepageLayout.blocks`. When absent or unrecognised, callers should
  * fall back to {@see self::Slideshow}.
  *
- * @see https://github.com/jbourdin/expandedDecks/issues/553
+ * @see https://github.com/jbourdin/dowsingMachine/issues/553
  */
 enum HomepageCarouselVariant: string
 {

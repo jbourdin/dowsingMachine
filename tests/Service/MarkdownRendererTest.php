@@ -17,7 +17,7 @@ use App\Service\MarkdownRenderer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @see https://github.com/jbourdin/expandedDecks/issues/537
+ * @see https://github.com/jbourdin/dowsingMachine/issues/537
  */
 class MarkdownRendererTest extends TestCase
 {

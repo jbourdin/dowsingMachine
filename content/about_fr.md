@@ -6,7 +6,7 @@ Expanded Decks est une application web pensée pour les joueurs et organisateurs
 
 L'idée de départ est simple : se constituer une collection compétitive en Expanded, ça coûte cher et ça prend du temps. Beaucoup de joueurs aimeraient découvrir le format, rejouer d'anciens archétypes ou tout simplement essayer autre chose le temps d'une journée — mais ils n'ont pas les cartes. En parallèle, des collectionneurs expérimentés ont souvent des decks qui dorment dans un placard entre deux événements. Expanded Decks fait le lien en offrant aux communautés un moyen clair et organisé de partager leurs collections.
 
-Le projet est entièrement open-source et disponible sur GitHub : [github.com/jbourdin/expandedDecks](https://github.com/jbourdin/expandedDecks)
+Le projet est entièrement open-source et disponible sur GitHub : [github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine)
 
 ## Pour les joueurs
 

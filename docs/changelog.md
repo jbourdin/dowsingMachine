@@ -16,6 +16,25 @@ Items marked *(partial)* have scaffolding or basic functionality but are not yet
 
 ---
 
+## [1.15.1] — 2026-10-27
+
+Patch release: a security dependency sweep (Composer and npm, including tiptap), a fix for editor popovers that scrolled the page to the top, and the move of the repository to `jbourdin/dowsingMachine` with a README refocused on dowsingmachine.com.
+
+### Bug Fixes
+
+- **Editor insert popovers scrolled to the top** — Opening the « insert card reference » or « insert card image » popover in the markdown editor jumped the page to its top. React's `autoFocus` focused the input before floating-ui had positioned the dropdown; the inputs now use Mantine's `data-autofocus`, which the popover focus trap applies with `preventScroll`. ([#810](https://github.com/jbourdin/dowsingMachine/pull/810))
+
+### Infrastructure
+
+- **Security dependency sweep** — Cleared all open advisories (6 Composer, 46 npm). Composer: `league/commonmark` → 2.10.4 (GFM table DoS, DisallowedRawHtml bypass), `league/flysystem` → 3.36.0 (path check bypass), `symfony/expression-language`, `http-foundation` and `yaml` → 8.1.9 (CVE-2026-109449, CVE-2026-108082, CVE-2026-109413); `guzzlehttp/guzzle` moves to 8.x transitively through `aws-sdk-php`. npm: `npm audit fix` (undici, vite, zod, svgo, source-map-js, serialize-javascript…) and every `@tiptap/*` package bumped to 3.32.0 in lockstep (`mergeAttributes` prototype issue, Markdown attribute ReDoS). Both audits now report zero advisories. ([#810](https://github.com/jbourdin/dowsingMachine/pull/810))
+- **Repository renamed** — Links now point to `jbourdin/dowsingMachine`. ([#808](https://github.com/jbourdin/dowsingMachine/pull/808))
+
+### Documentation
+
+- **README refocus** — The README now presents dowsingmachine.com; the deck-lending documentation moves to `legacy.md`. ([#809](https://github.com/jbourdin/dowsingMachine/pull/809))
+
+---
+
 ## [1.15.0] — 2026-08-20
 
 Minor release: the site becomes a **multilingual content platform**. A full translation workflow (epic [#612](https://github.com/jbourdin/expandedDecks/issues/612)) lets assigned translators localize CMS pages, archetypes, variant notes, menu categories, and banned/staple card texts through a moderated draft → review → publish pipeline, with revision history, staleness tracking, reader-facing notices, and notifications. Channels manage their locales entirely from the admin — including draft locales invisible to the public and brand-new languages added without a deploy.

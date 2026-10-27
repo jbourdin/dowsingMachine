@@ -1,4 +1,4 @@
-# Expanded Decks
+# Dowsing Machine
 
 [![CI](https://github.com/jbourdin/dowsingMachine/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/jbourdin/dowsingMachine/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/jbourdin/dowsingMachine/graph/badge.svg)](https://codecov.io/gh/jbourdin/dowsingMachine)
@@ -6,56 +6,47 @@
 [![Symfony 8.0](https://img.shields.io/badge/Symfony-8.0-000000?logo=symfony&logoColor=white)](https://symfony.com/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-> **Audience:** Developer, Player, Organizer · **Scope:** Overview
+> **Audience:** Developer, Player · **Scope:** Overview
 
-A web application for managing a shared library of physical Pokemon TCG decks in the **Expanded format**. It enables a community of players to register their decks, declare upcoming events, request to borrow decks, and track the full lending lifecycle — from request to return.
+The application behind [dowsingmachine.com](https://dowsingmachine.com), a content site about the Pokemon TCG **Expanded format**: archetype pages and their variants, sample deck lists, the banned list and the format's staple cards, plus editorial pages. Content is written by a small team of editors and translated through a built-in review workflow.
 
-Deck lists are imported via **copy-paste of standard PTCG text format**, parsed and validated against **TCGdex**. Physical deck boxes are identified via **Zebra-printed labels** with scannable codes for fast check-in/check-out.
+Deck lists are imported by pasting the standard PTCG text format, then parsed and validated against **TCGdex**.
 
-## Philosophy
-
-The Expanded format offers incredible deck diversity and deep strategy, but its large card pool can be a barrier for newcomers — out-of-print cards, unfamiliar combos, and significant upfront cost. **Expanded Decks** exists to lower that barrier by making it easy for experienced players to **lend their decks** to others at organized events. Try a real competitive deck, enjoy the format, and decide if you want to build your own.
-
-This project is an **independent community tool**. It does not replace or compete with official Pokemon Organized Play services, and all users are expected to comply with official tournament rules and policies. It has no affiliation with The Pokemon Company.
-
-Read the full **[Project Philosophy](docs/philosophy.md)**.
+The project started as **Expanded Decks**, a tool to lend physical decks at events. That workflow was retired (see [#790](https://github.com/jbourdin/dowsingMachine/issues/790)), and its description now lives in [docs/legacy.md](docs/legacy.md). This is an independent community project, with no affiliation with The Pokemon Company.
 
 ## Stack
 
 - **Backend:** PHP 8.5, Symfony 8.0, Doctrine ORM
 - **Frontend:** React.js (via Symfony UX / Webpack Encore)
 - **Database:** MySQL 8
-- **Infrastructure:** Docker, Docker Compose
-- **External APIs:** TCGdex (card data, images), PrintNode (cloud printing)
-- **Hardware:** Zebra label printer (ZPL via PrintNode)
+- **Local development:** Docker, Docker Compose
+- **External APIs:** TCGdex (card data, images)
 
 ## Features
 
 | Domain | Summary |
 |--------|---------|
-| **F1 — User Management** | Registration with email verification, screen name, player ID. Global roles: player, organizer, admin. Per-event staff. MFA and Pokemon SSO planned. |
-| **F2 — Deck Library** | Register physical decks, import lists via copy-paste (PTCG text format), browse catalog, track availability. |
-| **F3 — Event Management** | Declare events, list upcoming/past events, register participation, assign event staff. |
-| **F4 — Borrow Workflow** | Request, approve, hand-off, return — full lending lifecycle with staff-delegated lending, custody tracking, history, and overdue tracking. |
-| **F5 — Zebra Label Printing** | Generate ZPL labels, push to Zebra printer via PrintNode, scan barcodes for deck identification. |
-| **F6 — Card Data & Validation** | Parse PTCG text (`ptcgo-parser`), validate via TCGdex, Expanded format rules, card image display. |
-| **F7 — Administration** | Dashboard, user management, audit log. |
-| **F11 — CMS Content Pages** | Admin-managed content pages with Markdown, translatable fields (title, slug, content, SEO), menu categories, English fallback. |
-| **F14 — Deployment & Infrastructure** | Per-transport Messenger DSN, configurable sessions, health check endpoints, production Dockerfile, Sentry error tracking. |
+| **Archetypes** | Archetype pages with variants, sample lists, mosaics and editorial content, managed by archetype editors. |
+| **F2 — Deck lists** | Paste a list in PTCG text format, view it as a list or a card mosaic, export it (PTCGL text, Cardmarket wishlist). |
+| **F6 — Card Data & Validation** | PTCG text parsing, validation via TCGdex, Expanded format rules, card images, banned list and staple cards pages, incremental TCGdex sync. |
+| **F9 — Localization & Translation** | Translated interface, admin-managed channel locales, translation queue and review workflow for pages, archetypes and card lists. |
+| **F11 / F17 — CMS** | Markdown content pages with a rich text editor, card and archetype reference tags, image upload, menu categories. |
+| **F18 / F19 / F21 — SEO & Syndication** | Sitemap, canonical and hreflang tags, JSON-LD, Open Graph images, authorship, RSS feeds per category and for archetype variants. |
+| **F14 — Deployment & Infrastructure** | Per-transport Messenger DSN, health check endpoints, Sentry error tracking. |
 
-See the **[full feature list](docs/features.md)** for detailed descriptions and priorities.
+See the **[full feature list](docs/features.md)** for detailed descriptions and priorities. It still lists the retired lending features.
 
 ---
 
 ## Documentation
 
-| Document                                      | Description                              |
-|-----------------------------------------------|------------------------------------------|
-| [docs/philosophy.md](docs/philosophy.md)      | Project philosophy and values              |
-| [CLAUDE.md](CLAUDE.md)                        | AI context: coding standards & workflow   |
-| [docs/docs.md](docs/docs.md)                  | Technical documentation entry point       |
-| [docs/features.md](docs/features.md)          | Full feature list with priorities         |
-| [docs/roadmap.md](docs/roadmap.md)            | Implementation roadmap (12 phases)        |
+| Document                                      | Description                                |
+|-----------------------------------------------|--------------------------------------------|
+| [CLAUDE.md](CLAUDE.md)                        | AI context: coding standards & workflow    |
+| [docs/docs.md](docs/docs.md)                  | Technical documentation entry point        |
+| [docs/features.md](docs/features.md)          | Full feature list with priorities          |
+| [docs/roadmap.md](docs/roadmap.md)            | Implementation roadmap                     |
+| [docs/legacy.md](docs/legacy.md)              | The retired deck lending tool              |
 
 ## License
 
@@ -68,4 +59,3 @@ This project is licensed under the [Apache License 2.0](LICENSE).
 - [Symfony Best Practices](https://symfony.com/doc/current/best_practices.html)
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
-- [Zebra ZPL Programming Guide](https://www.zebra.com/us/en/support-downloads/knowledge-articles/ait/zpl-command-information-and-cross-reference.html)

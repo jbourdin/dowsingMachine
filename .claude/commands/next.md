@@ -22,7 +22,7 @@ Before recommending features, clean up stale board state:
 2. **Identify stale items**: find all items where `content.type == "Issue"` and `status` is NOT `"Done"` (i.e. in Next, In Progress, Awaiting Validation, Testing, or Ready for Release). For each, check whether the GitHub issue is actually closed:
 
    ```bash
-   gh issue view <NUMBER> --repo jbourdin/expandedDecks --json state --jq '.state'
+   gh issue view <NUMBER> --repo jbourdin/dowsingMachine --json state --jq '.state'
    ```
 
    Batch the checks to avoid excessive API calls (e.g. loop over all suspect issue numbers in one script).
@@ -52,7 +52,7 @@ For each in-flight issue, evaluate its current state:
 1. **Check for an open or merged PR** referencing the issue:
 
    ```bash
-   gh pr list --repo jbourdin/expandedDecks --search "<ISSUE_NUMBER>" --state all --json number,title,state,mergedAt --limit 5
+   gh pr list --repo jbourdin/dowsingMachine --search "<ISSUE_NUMBER>" --state all --json number,title,state,mergedAt --limit 5
    ```
 
 2. **Check for code references** (feature ID mentions like `F18.23`):

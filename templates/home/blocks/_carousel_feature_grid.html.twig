@@ -14,7 +14,7 @@
  # if scheduling drops the count below 3 it routes to the slideshow
  # partial instead. The defensive check below is belt-and-suspenders.
  #
- # @see https://github.com/jbourdin/expandedDecks/issues/553
+ # @see https://github.com/jbourdin/dowsingMachine/issues/553
  #}
 {% set items = entry.resolvedData.items|default([]) %}
 {% if items|length >= 3 %}

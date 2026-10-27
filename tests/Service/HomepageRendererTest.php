@@ -436,7 +436,7 @@ class HomepageRendererTest extends TestCase
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/553
+     * @see https://github.com/jbourdin/dowsingMachine/issues/553
      */
     public function testCarouselDefaultsToSlideshowVariantWhenVariantAbsent(): void
     {
@@ -460,7 +460,7 @@ class HomepageRendererTest extends TestCase
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/553
+     * @see https://github.com/jbourdin/dowsingMachine/issues/553
      */
     public function testCarouselUnknownVariantFallsBackToSlideshow(): void
     {
@@ -485,7 +485,7 @@ class HomepageRendererTest extends TestCase
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/553
+     * @see https://github.com/jbourdin/dowsingMachine/issues/553
      */
     public function testCarouselFeatureGridVariantPreservedWhenThreeItemsVisible(): void
     {
@@ -513,7 +513,7 @@ class HomepageRendererTest extends TestCase
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/555
+     * @see https://github.com/jbourdin/dowsingMachine/issues/555
      */
     public function testCarouselItemWithoutCaptionGetsNoCaptionStyleNormalisation(): void
     {
@@ -541,7 +541,7 @@ class HomepageRendererTest extends TestCase
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/555
+     * @see https://github.com/jbourdin/dowsingMachine/issues/555
      */
     public function testCarouselItemWithCaptionAndUnknownStyleNormalisesToDefault(): void
     {
@@ -565,7 +565,7 @@ class HomepageRendererTest extends TestCase
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/555
+     * @see https://github.com/jbourdin/dowsingMachine/issues/555
      */
     public function testCarouselItemWithCaptionAndKnownStylePreserved(): void
     {
@@ -589,7 +589,7 @@ class HomepageRendererTest extends TestCase
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/555
+     * @see https://github.com/jbourdin/dowsingMachine/issues/555
      */
     public function testCarouselItemWithCaptionAndMissingStyleNormalisesToDefault(): void
     {
@@ -699,7 +699,7 @@ class HomepageRendererTest extends TestCase
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/553
+     * @see https://github.com/jbourdin/dowsingMachine/issues/553
      */
     public function testCarouselFeatureGridFallsBackToSlideshowWhenSchedulingDropsBelowThree(): void
     {

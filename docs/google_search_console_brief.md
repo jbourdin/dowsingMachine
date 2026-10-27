@@ -2,7 +2,7 @@
 
 > **Audience:** CTO · **Scope:** Decision brief
 
-← Back to [Documentation](docs.md) | [SEO/GSO Audit](seo_gso_audit.md) | [Issue #296 (F19.3)](https://github.com/jbourdin/expandedDecks/issues/296)
+← Back to [Documentation](docs.md) | [SEO/GSO Audit](seo_gso_audit.md) | [Issue #296 (F19.3)](https://github.com/jbourdin/dowsingMachine/issues/296)
 
 > **Related:** [seo_gso_audit.md](seo_gso_audit.md) (C1, H1) · **Date:** 2026-06-20
 

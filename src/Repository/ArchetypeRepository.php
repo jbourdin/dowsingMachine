@@ -88,7 +88,7 @@ class ArchetypeRepository extends ServiceEntityRepository
      * treated as `'and'`.
      *
      * @see docs/features.md F2.16 — Archetype catalog
-     * @see https://github.com/jbourdin/expandedDecks/issues/548
+     * @see https://github.com/jbourdin/dowsingMachine/issues/548
      *
      * @param list<string> $tags     playstyle tags to filter by
      * @param string       $tagsMode 'and' (default — matches every selected tag) or 'or' (matches any)

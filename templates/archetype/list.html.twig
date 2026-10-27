@@ -53,7 +53,7 @@
      # Build the tagsMode query-string fragment once and reuse it on every
      # path() that needs to preserve the user's combinator choice. AND is the
      # default, so we omit it from the URL — only OR is materialised.
-     # @see https://github.com/jbourdin/expandedDecks/issues/548
+     # @see https://github.com/jbourdin/dowsingMachine/issues/548
      #}
     {% set tagsModeParam = currentTagsMode == 'or' ? {tagsMode: 'or'} : {} %}
 

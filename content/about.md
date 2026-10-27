@@ -6,7 +6,7 @@ Expanded Decks is a web application built for Pokemon TCG players and organizers
 
 The philosophy behind the project is straightforward: building a competitive Expanded collection is expensive and time-consuming. Many players want to try the format, revisit classic archetypes, or simply play something different for a day — but they don't have the cards. Meanwhile, experienced collectors often have decks sitting in a box between events. Expanded Decks bridges that gap by giving communities a transparent, organized way to share their collections.
 
-The project is fully open-source and available on GitHub: [github.com/jbourdin/expandedDecks](https://github.com/jbourdin/expandedDecks)
+The project is fully open-source and available on GitHub: [github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine)
 
 ## For players
 

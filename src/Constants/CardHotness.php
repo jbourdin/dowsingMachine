@@ -24,8 +24,8 @@ namespace App\Constants;
  * `CardIdentity` (or a join table for multi-channel ratings); the constant
  * moves with the scale, every call site stays correct.
  *
- * @see https://github.com/jbourdin/expandedDecks/issues/532 — F6.15 staple cards
- * @see https://github.com/jbourdin/expandedDecks/issues/437 — expanded card watchlist
+ * @see https://github.com/jbourdin/dowsingMachine/issues/532 — F6.15 staple cards
+ * @see https://github.com/jbourdin/dowsingMachine/issues/437 — expanded card watchlist
  */
 final class CardHotness
 {

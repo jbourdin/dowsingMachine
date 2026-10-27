@@ -106,7 +106,7 @@ class ArchetypeCatalogControllerTest extends AbstractFunctionalTest
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/548
+     * @see https://github.com/jbourdin/dowsingMachine/issues/548
      */
     public function testFilterByMultipleTagsUsesAndLogicByDefault(): void
     {
@@ -118,7 +118,7 @@ class ArchetypeCatalogControllerTest extends AbstractFunctionalTest
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/548
+     * @see https://github.com/jbourdin/dowsingMachine/issues/548
      */
     public function testFilterByMultipleTagsWithOrModeMatchesAny(): void
     {
@@ -130,7 +130,7 @@ class ArchetypeCatalogControllerTest extends AbstractFunctionalTest
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/548
+     * @see https://github.com/jbourdin/dowsingMachine/issues/548
      */
     public function testInvalidTagsModeFallsBackToAnd(): void
     {
@@ -141,7 +141,7 @@ class ArchetypeCatalogControllerTest extends AbstractFunctionalTest
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/548
+     * @see https://github.com/jbourdin/dowsingMachine/issues/548
      */
     public function testTagsModeToggleHiddenWhenFewerThanTwoTagsSelected(): void
     {
@@ -152,7 +152,7 @@ class ArchetypeCatalogControllerTest extends AbstractFunctionalTest
     }
 
     /**
-     * @see https://github.com/jbourdin/expandedDecks/issues/548
+     * @see https://github.com/jbourdin/dowsingMachine/issues/548
      */
     public function testTagsModeToggleVisibleWithTwoOrMoreTagsSelected(): void
     {

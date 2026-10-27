@@ -12,7 +12,7 @@ The incremental sync replaces the monolithic `app:tcgdex:import` (which clones t
 
 Since F6.17 the sync is **multi-locale**: TCGdex publishes a set in English first and adds French (and other) translations over the following days, so the sync fetches the locale-independent data plus every configured locale, filling translation gaps as they become available.
 
-**Feature IDs:** F6.13 (incremental sync) · F6.17 (multi-locale gap-fill + force update) · **Parent issue:** [#411](https://github.com/jbourdin/expandedDecks/issues/411)
+**Feature IDs:** F6.13 (incremental sync) · F6.17 (multi-locale gap-fill + force update) · **Parent issue:** [#411](https://github.com/jbourdin/dowsingMachine/issues/411)
 
 ---
 

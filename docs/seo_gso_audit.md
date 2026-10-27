@@ -2,7 +2,7 @@
 
 > **Audience:** Developer, CTO · **Scope:** Audit / Point-in-time
 
-← Back to [Documentation](docs.md) | [Issue #296 (F19.3)](https://github.com/jbourdin/expandedDecks/issues/296)
+← Back to [Documentation](docs.md) | [Issue #296 (F19.3)](https://github.com/jbourdin/dowsingMachine/issues/296)
 
 > **Versions:** v1 2026-06-20 (initial) · v2 2026-06-20 (deep pass — C1 fixed, live re-probe post-fix)
 > **Companion briefs:** [bunny_cdn_host_cache_brief.md](bunny_cdn_host_cache_brief.md) · [google_search_console_brief.md](google_search_console_brief.md)
@@ -102,7 +102,7 @@ indexing of archetype/news URLs that were crawl-blocked while the bug was live �
 
 #### H1 — English-only content advertised as bilingual (sitemap ~50 % duplicate URLs)
 
-> ✅ **RESOLVED** in v1.14.5 (F19.4 — issue [#695](https://github.com/jbourdin/expandedDecks/issues/695), PR [#706](https://github.com/jbourdin/expandedDecks/pull/706)): the sitemap,
+> ✅ **RESOLVED** in v1.14.5 (F19.4 — issue [#695](https://github.com/jbourdin/dowsingMachine/issues/695), PR [#706](https://github.com/jbourdin/dowsingMachine/pull/706)): the sitemap,
 > `og:locale:alternate`, and robots.txt locale rules now derive from `Channel::getLocales()`. The content
 > channel is English-only, so the `/fr/` duplicates are gone; adding `fr` later reactivates the French signals
 > with no code change. The finding below is retained for context.
@@ -167,7 +167,7 @@ summary. `noindex` pages (search) are exempt.
 
 #### M1 — Author / E-E-A-T authority invisible to machines (key GSO gap)
 
-> ✅ **RESOLVED** by F19.8 ([#699](https://github.com/jbourdin/expandedDecks/issues/699)): content now
+> ✅ **RESOLVED** by F19.8 ([#699](https://github.com/jbourdin/dowsingMachine/issues/699)): content now
 > carries an `author` (and per-locale `translator`); `Article`/`WebPage` JSON-LD emit a `Person` author
 > with `url`/`sameAs`/credential plus an `Organization` publisher with `logo`+`sameAs`, the RSS
 > `dc:creator` is dynamic, and a visible byline renders on archetype/news pages — all via a projection

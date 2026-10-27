@@ -2084,7 +2084,7 @@ MD);
 
         Expanded Decks is maintained by a small group of passionate Pokémon TCG players who love the Expanded format.
 
-        Want to contribute? Check out our [GitHub repository](https://github.com/jbourdin/expandedDecks).
+        Want to contribute? Check out our [GitHub repository](https://github.com/jbourdin/dowsingMachine).
         MD);
         $teamPage->addTranslation($teamEn);
         $manager->persist($teamEn);
@@ -2098,7 +2098,7 @@ MD);
 
         Expanded Decks est maintenu par un petit groupe de joueurs passionnés du JCC Pokémon qui adorent le format Expanded.
 
-        Envie de contribuer ? Consultez notre [dépôt GitHub](https://github.com/jbourdin/expandedDecks).
+        Envie de contribuer ? Consultez notre [dépôt GitHub](https://github.com/jbourdin/dowsingMachine).
         MD);
         $teamPage->addTranslation($teamFr);
         $manager->persist($teamFr);
@@ -2141,7 +2141,7 @@ MD);
 
         This website is operated by [Julien Bourdin](https://github.com/jbourdin) as a non-commercial, open-source project.
 
-        - **Source code:** [github.com/jbourdin/expandedDecks](https://github.com/jbourdin/expandedDecks)
+        - **Source code:** [github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine)
 
         ## Hosting
 
@@ -2150,7 +2150,7 @@ MD);
 
         ## Contact
 
-        For any question or request regarding this website, please [open an issue](https://github.com/jbourdin/expandedDecks/issues) on the GitHub project.
+        For any question or request regarding this website, please [open an issue](https://github.com/jbourdin/dowsingMachine/issues) on the GitHub project.
 
         ## Intellectual Property
 
@@ -2176,7 +2176,7 @@ MD);
 
         Ce site est édité par [Julien Bourdin](https://github.com/jbourdin) dans le cadre d'un projet open-source à but non lucratif.
 
-        - **Code source :** [github.com/jbourdin/expandedDecks](https://github.com/jbourdin/expandedDecks)
+        - **Code source :** [github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine)
 
         ## Hébergement
 
@@ -2185,7 +2185,7 @@ MD);
 
         ## Contact
 
-        Pour toute question ou demande concernant ce site, veuillez [ouvrir une issue](https://github.com/jbourdin/expandedDecks/issues) sur le projet GitHub.
+        Pour toute question ou demande concernant ce site, veuillez [ouvrir une issue](https://github.com/jbourdin/dowsingMachine/issues) sur le projet GitHub.
 
         ## Propriété intellectuelle
 
@@ -2605,7 +2605,7 @@ PTCG;
             ->setParameters([
                 'brand_name' => 'Expanded Talks',
                 'org_logo' => '/build/images/themes/expandedtalks/apple_touch_icon.png',
-                'org_same_as' => "https://bsky.app/profile/example.bsky.social\nhttps://discord.gg/example\nhttps://github.com/jbourdin/expandedDecks",
+                'org_same_as' => "https://bsky.app/profile/example.bsky.social\nhttps://discord.gg/example\nhttps://github.com/jbourdin/dowsingMachine",
                 'meta_description' => 'Pokémon TCG Expanded strategy: deck archetypes, the banned list, staple cards, and competitive deck lists.',
             ]);
 

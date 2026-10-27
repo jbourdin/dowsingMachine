@@ -115,7 +115,7 @@ export default function InsertCardImageButton({ editor, icon, label }: InsertCar
                         }}
                         onKeyDown={handleKeyDown}
                         error={error}
-                        autoFocus
+                        data-autofocus
                         style={{ width: 160 }}
                         disabled={loading}
                     />

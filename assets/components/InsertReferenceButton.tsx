@@ -102,7 +102,7 @@ export default function InsertReferenceButton({
                         }}
                         onKeyDown={handleKeyDown}
                         error={error}
-                        autoFocus
+                        data-autofocus
                         style={{ width: 160 }}
                     />
                     <ActionIcon size="sm" variant="filled" onClick={handleSubmit} aria-label="Insert">

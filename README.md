@@ -1,7 +1,7 @@
 # Expanded Decks
 
-[![CI](https://github.com/jbourdin/expandedDecks/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/jbourdin/expandedDecks/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/jbourdin/expandedDecks/graph/badge.svg)](https://codecov.io/gh/jbourdin/expandedDecks)
+[![CI](https://github.com/jbourdin/dowsingMachine/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/jbourdin/dowsingMachine/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/jbourdin/dowsingMachine/graph/badge.svg)](https://codecov.io/gh/jbourdin/dowsingMachine)
 [![PHP 8.5+](https://img.shields.io/badge/PHP-≥8.5-777BB4?logo=php&logoColor=white)](https://www.php.net/)
 [![Symfony 8.0](https://img.shields.io/badge/Symfony-8.0-000000?logo=symfony&logoColor=white)](https://symfony.com/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)

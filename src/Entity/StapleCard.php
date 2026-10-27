@@ -32,7 +32,7 @@ use Doctrine\ORM\Mapping as ORM;
  * the canonical parent once enrichment runs.
  *
  * @see docs/features.md F6.15 — Staple cards
- * @see https://github.com/jbourdin/expandedDecks/issues/532
+ * @see https://github.com/jbourdin/dowsingMachine/issues/532
  */
 #[ORM\Entity(repositoryClass: StapleCardRepository::class)]
 #[ORM\Table(name: 'staple_card')]

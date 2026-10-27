@@ -31,7 +31,7 @@ namespace App\Constants;
  * Display order in the UI (admin tabs and public sections) is given by
  * {@see self::ORDER}: regular cards first, Ace Spec last as the specialty section.
  *
- * @see https://github.com/jbourdin/expandedDecks/issues/532 — F6.15 staple cards
+ * @see https://github.com/jbourdin/dowsingMachine/issues/532 — F6.15 staple cards
  */
 final class StapleCardBucket
 {

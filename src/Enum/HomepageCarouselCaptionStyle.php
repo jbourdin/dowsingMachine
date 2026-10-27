@@ -21,7 +21,7 @@ namespace App\Enum;
  * fall back to {@see self::WhiteOnBlack} (the most readable default on
  * arbitrary photographic backgrounds).
  *
- * @see https://github.com/jbourdin/expandedDecks/issues/555
+ * @see https://github.com/jbourdin/dowsingMachine/issues/555
  */
 enum HomepageCarouselCaptionStyle: string
 {

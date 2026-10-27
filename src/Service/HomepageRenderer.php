@@ -304,7 +304,7 @@ class HomepageRenderer
      * gracefully degrade to {@see HomepageCarouselVariant::Slideshow} when
      * scheduling leaves too few visible items at render time.
      *
-     * @see https://github.com/jbourdin/expandedDecks/issues/553
+     * @see https://github.com/jbourdin/dowsingMachine/issues/553
      *
      * @param array<string, mixed> $block
      *
@@ -329,7 +329,7 @@ class HomepageRenderer
                 // Normalise captionStyle so the partial can trust whatever it
                 // receives. Unknown / missing values land on the default
                 // preset rather than rendering an undefined CSS class.
-                // @see https://github.com/jbourdin/expandedDecks/issues/555
+                // @see https://github.com/jbourdin/dowsingMachine/issues/555
                 $caption = $item['caption'] ?? null;
                 if (\is_string($caption) && '' !== $caption) {
                     $rawStyle = $item['captionStyle'] ?? null;

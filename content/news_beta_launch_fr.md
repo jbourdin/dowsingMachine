@@ -52,6 +52,6 @@ La bêta couvre les flux essentiels, mais la feuille de route prévoit encore be
 
 C'est un projet vivant. Des fonctionnalités sont ajoutées, les existantes sont affinées, et nous testons activement en conditions réelles. Si vous rencontrez un bug, avez une suggestion ou souhaitez contribuer, le projet est open-source sur GitHub :
 
-[github.com/jbourdin/expandedDecks](https://github.com/jbourdin/expandedDecks)
+[github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine)
 
 Vos retours pendant cette phase bêta sont précieux — ils orientent les priorités et l'évolution de l'outil. Merci de faire partie de l'aventure.

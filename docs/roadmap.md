@@ -23,7 +23,7 @@ The Kanban board organizes work into seven columns:
 **Views:**
 
 - [Full board](https://github.com/users/jbourdin/projects/1) — Kanban with all columns
-- [All open issues](https://github.com/jbourdin/expandedDecks/issues) — filterable by label
+- [All open issues](https://github.com/jbourdin/dowsingMachine/issues) — filterable by label
 
 ## Feature Catalogue
 

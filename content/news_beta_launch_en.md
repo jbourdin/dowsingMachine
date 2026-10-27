@@ -52,6 +52,6 @@ The beta covers the essential workflows, but there's more on the roadmap. Here's
 
 This is a living project. Features are being added, existing ones are being refined, and we're actively testing in real conditions. If you encounter a bug, have a suggestion, or want to contribute, the project is open-source on GitHub:
 
-[github.com/jbourdin/expandedDecks](https://github.com/jbourdin/expandedDecks)
+[github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine)
 
 Your feedback during this beta phase is invaluable — it shapes what gets prioritized and how the tool evolves. Thanks for being part of this.

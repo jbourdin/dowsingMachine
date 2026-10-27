@@ -10,6 +10,7 @@
 
 - [Philosophy](philosophy.md) — Mission, values, and relationship to official services
 - [Production Installation](installation.md) — Docker image, environment variables, workers, health checks
+- [Legacy](legacy.md) — The retired deck lending tool (Expanded Decks)
 
 ## Features
 

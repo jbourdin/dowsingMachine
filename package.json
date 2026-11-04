@@ -67,6 +67,9 @@
         "tiptap-markdown": "^0.9.0"
     },
     "overrides": {
-        "serialize-javascript": "^7.0.5"
+        "serialize-javascript": "^7.0.5",
+        "@typescript-eslint/typescript-estree": {
+            "minimatch": "^11.0.4"
+        }
     }
 }

@@ -507,6 +507,31 @@ footer {
     }
 }
 
+// --- Rich text image zoom ---
+// @see docs/features.md F17.9 — Zoom on large rich text images
+.cms-content img.zoomable {
+    cursor: zoom-in;
+}
+
+.image-zoom-dialog {
+    max-width: none;
+    max-height: none;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-out;
+
+    &::backdrop {
+        background: rgb(0 0 0 / 85%);
+    }
+
+    img {
+        display: block;
+        max-width: 95vw;
+        max-height: 95dvh;
+    }
+}
+
 // --- Rich text editor image alignment ---
 // Float and alignment classes for images inside the Tiptap editor.
 // Uses Bootstrap-compatible class names so public rendering works without

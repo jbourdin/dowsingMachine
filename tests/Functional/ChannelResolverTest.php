@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,7 +23,7 @@ class ChannelResolverTest extends AbstractFunctionalTest
 {
     public function testAppChannelResolvesFromHostHeader(): void
     {
-        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'expandeddecks.wip']);
+        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'dowsingmachine.wip']);
 
         self::assertResponseIsSuccessful();
 
@@ -56,7 +56,7 @@ class ChannelResolverTest extends AbstractFunctionalTest
 
     public function testAppChannelHasDecksEnabled(): void
     {
-        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'expandeddecks.wip']);
+        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'dowsingmachine.wip']);
 
         self::assertResponseIsSuccessful();
 

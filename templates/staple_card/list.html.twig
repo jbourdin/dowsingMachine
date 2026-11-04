@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -11,7 +11,7 @@
 {# Intro-page description when set, else a list-purpose default (F19.7). #}
 {% set metaDescription = metaDescription|default(null) ?: 'app.staple_card.meta_description'|trans %}
 
-{% block title %}{{ 'app.staple_card.public.title'|trans }} — {{ channel_param('brand_name', 'Expanded Decks') }}{% endblock %}
+{% block title %}{{ 'app.staple_card.public.title'|trans }} — {{ channel_param('brand_name', 'Dowsing Machine') }}{% endblock %}
 
 {% block canonical %}
     <link rel="canonical" href="{{ canonical_url('staple-cards', 'app_staple_card_list') }}">
@@ -25,7 +25,7 @@
 {% endblock %}
 
 {% block opengraph %}
-    {% set og_title = 'app.staple_card.public.title'|trans ~ ' — ' ~ channel_param('brand_name', 'Expanded Decks') %}
+    {% set og_title = 'app.staple_card.public.title'|trans ~ ' — ' ~ channel_param('brand_name', 'Dowsing Machine') %}
     {% set og_url = canonical_url('staple-cards', 'app_staple_card_list') %}
     {% set og_image = ogImage %}
     {% set og_description = ogDescription %}

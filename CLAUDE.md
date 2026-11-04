@@ -4,7 +4,9 @@
 
 ## Project Overview
 
-**Expanded Decks** is a Symfony application for managing a shared library of physical Pokemon TCG decks (Expanded format). It tracks deck ownership, event-based borrowing, and deck lists (imported via copy-paste of PTCG text format, validated against TCGdex). It includes Zebra label printing for physical deck box identification and scanning.
+**Dowsing Machine** is the Symfony application behind [dowsingmachine.com](https://dowsingmachine.com), a content site about the Pokemon TCG Expanded format: archetype pages and variants, deck lists (PTCG text format, enriched from TCGdex), the banned list, staple cards and CMS pages, with a built-in translation review workflow.
+
+The project started as **Expanded Decks** (expandeddecks.app, closed 2026-10-26), a physical deck-lending tool. The lending code (borrows, events, labels, PrintNode) is still in the repo pending removal in #790; see [docs/legacy.md](docs/legacy.md). Keep historical mentions of "Expanded Decks" (changelog, legacy docs, migrations) as-is.
 
 **Stack:** PHP 8.5 | Symfony 8.0 | React.js | MySQL 8 | Docker | PrintNode | TCGdex | ptcgo-parser
 
@@ -47,9 +49,9 @@ Every source file **MUST** include a copyright and license header as the first c
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -59,9 +61,9 @@ declare(strict_types=1);
 **TypeScript / JavaScript files**:
 ```typescript
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -71,9 +73,9 @@ declare(strict_types=1);
 **Twig templates** (optional but recommended for non-trivial templates):
 ```twig
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.

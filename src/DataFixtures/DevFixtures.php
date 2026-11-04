@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -1637,11 +1637,11 @@ MARKDOWN);
         $welcomeEn = new PageTranslation();
         $welcomeEn->setPage($welcomePage);
         $welcomeEn->setLocale('en');
-        $welcomeEn->setTitle('Welcome to Expanded Decks');
+        $welcomeEn->setTitle('Welcome to Dowsing Machine');
         $welcomeEn->setContent(<<<'MD'
 ## Your shared deck library
 
-Expanded Decks makes it easy to **manage a shared library of physical Pokemon TCG decks** for your local community. Register your decks, lend them for events, and keep track of who has what.
+Dowsing Machine makes it easy to **manage a shared library of physical Pokemon TCG decks** for your local community. Register your decks, lend them for events, and keep track of who has what.
 
 ### How it works
 
@@ -1657,11 +1657,11 @@ MD);
         $welcomeFr = new PageTranslation();
         $welcomeFr->setPage($welcomePage);
         $welcomeFr->setLocale('fr');
-        $welcomeFr->setTitle('Bienvenue sur Expanded Decks');
+        $welcomeFr->setTitle('Bienvenue sur Dowsing Machine');
         $welcomeFr->setContent(<<<'MD'
 ## Votre bibliothèque de decks partagée
 
-Expanded Decks facilite la **gestion d'une bibliothèque partagée de decks physiques Pokemon TCG** pour votre communauté locale. Enregistrez vos decks, prêtez-les pour des événements et suivez qui a quoi.
+Dowsing Machine facilite la **gestion d'une bibliothèque partagée de decks physiques Pokemon TCG** pour votre communauté locale. Enregistrez vos decks, prêtez-les pour des événements et suivez qui a quoi.
 
 ### Comment ça marche
 
@@ -1741,7 +1741,7 @@ MD);
         $news2En->setLocale('en');
         $news2En->setTitle('How to borrow a deck for your next event');
         $news2En->setContent(<<<'MD'
-New to Expanded Decks? Here's a quick guide on how to borrow a deck for your next event.
+New to Dowsing Machine? Here's a quick guide on how to borrow a deck for your next event.
 
 ## Step 1: Find a deck
 
@@ -2045,7 +2045,7 @@ MD);
         $philosophyEn->setContent(<<<'MD'
         ## Our Philosophy
 
-        Expanded Decks was born from a simple idea: **making the Expanded format accessible to everyone**.
+        Dowsing Machine was born from a simple idea: **making the Expanded format accessible to everyone**.
 
         We believe that sharing physical decks within a community is the best way to grow the format and let players discover new strategies without the barrier of building a full collection.
         MD);
@@ -2059,7 +2059,7 @@ MD);
         $philosophyFr->setContent(<<<'MD'
         ## Notre Philosophie
 
-        Expanded Decks est né d'une idée simple : **rendre le format Expanded accessible à tous**.
+        Dowsing Machine est né d'une idée simple : **rendre le format Expanded accessible à tous**.
 
         Nous croyons que le partage de decks physiques au sein d'une communauté est le meilleur moyen de faire grandir le format et de permettre aux joueurs de découvrir de nouvelles stratégies sans la contrainte de constituer une collection complète.
         MD);
@@ -2082,7 +2082,7 @@ MD);
         $teamEn->setContent(<<<'MD'
         ## The Team
 
-        Expanded Decks is maintained by a small group of passionate Pokémon TCG players who love the Expanded format.
+        Dowsing Machine is maintained by a small group of passionate Pokémon TCG players who love the Expanded format.
 
         Want to contribute? Check out our [GitHub repository](https://github.com/jbourdin/dowsingMachine).
         MD);
@@ -2096,7 +2096,7 @@ MD);
         $teamFr->setContent(<<<'MD'
         ## L'Équipe
 
-        Expanded Decks est maintenu par un petit groupe de joueurs passionnés du JCC Pokémon qui adorent le format Expanded.
+        Dowsing Machine est maintenu par un petit groupe de joueurs passionnés du JCC Pokémon qui adorent le format Expanded.
 
         Envie de contribuer ? Consultez notre [dépôt GitHub](https://github.com/jbourdin/dowsingMachine).
         MD);
@@ -2154,7 +2154,7 @@ MD);
 
         ## Intellectual Property
 
-        **Expanded Decks** is a non-commercial, community-driven project.
+        **Dowsing Machine** is a non-commercial, community-driven project.
 
         Pokémon and Pokémon TCG are trademarks of Nintendo, Creatures Inc., and GAME FREAK Inc. This project is not affiliated with, endorsed, or sponsored by any of these companies.
 
@@ -2189,7 +2189,7 @@ MD);
 
         ## Propriété intellectuelle
 
-        **Expanded Decks** est un projet communautaire à but non lucratif.
+        **Dowsing Machine** est un projet communautaire à but non lucratif.
 
         Pokémon et Pokémon JCC sont des marques déposées de Nintendo, Creatures Inc. et GAME FREAK Inc. Ce projet n'est ni affilié, ni approuvé, ni sponsorisé par aucune de ces sociétés.
 
@@ -2574,7 +2574,7 @@ PTCG;
     {
         $appChannel = (new Channel())
             ->setCode('app')
-            ->setDomain('expandeddecks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(true)
             ->setEnableRegister(true)
             ->setEnableEvents(true)

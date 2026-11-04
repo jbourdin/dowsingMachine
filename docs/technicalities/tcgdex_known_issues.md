@@ -6,7 +6,7 @@
 
 ---
 
-Issues discovered while building the Expanded Decks enrichment pipeline. Some are worked around in our code via static overrides; others are documented here for awareness.
+Issues discovered while building the Dowsing Machine enrichment pipeline. Some are worked around in our code via static overrides; others are documented here for awareness.
 
 ## Missing Sets
 

@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -24,10 +24,10 @@ class KeyValueTransformerTest extends TestCase
 
         self::assertSame(
             [
-                ['key' => 'brand_name', 'value' => 'Expanded Decks'],
+                ['key' => 'brand_name', 'value' => 'Dowsing Machine'],
                 ['key' => 'tagline', 'value' => 'Play more'],
             ],
-            $transformer->transform(['brand_name' => 'Expanded Decks', 'tagline' => 'Play more']),
+            $transformer->transform(['brand_name' => 'Dowsing Machine', 'tagline' => 'Play more']),
         );
     }
 
@@ -43,9 +43,9 @@ class KeyValueTransformerTest extends TestCase
         $transformer = new KeyValueTransformer();
 
         self::assertSame(
-            ['brand_name' => 'Expanded Decks', 'tagline' => 'Play more'],
+            ['brand_name' => 'Dowsing Machine', 'tagline' => 'Play more'],
             $transformer->reverseTransform([
-                ['key' => 'brand_name', 'value' => 'Expanded Decks'],
+                ['key' => 'brand_name', 'value' => 'Dowsing Machine'],
                 ['key' => 'tagline', 'value' => 'Play more'],
             ]),
         );
@@ -56,9 +56,9 @@ class KeyValueTransformerTest extends TestCase
         $transformer = new KeyValueTransformer();
 
         self::assertSame(
-            ['brand_name' => 'Expanded Decks'],
+            ['brand_name' => 'Dowsing Machine'],
             $transformer->reverseTransform([
-                ['key' => '  brand_name  ', 'value' => 'Expanded Decks'],
+                ['key' => '  brand_name  ', 'value' => 'Dowsing Machine'],
                 ['key' => '   ', 'value' => 'dropped — blank key'],
             ]),
         );

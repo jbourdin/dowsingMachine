@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -49,25 +49,25 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildWebPageIncludesPublisherAndDate(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $page = new Page();
         $translation = new PageTranslation();
         $translation->setTitle('About Us');
 
-        $data = $builder->buildWebPage($translation, $page, 'https://expandeddecks.wip/pages/about');
+        $data = $builder->buildWebPage($translation, $page, 'https://dowsingmachine.wip/pages/about');
 
         self::assertSame('WebPage', $data['@type']);
         self::assertSame('About Us', $data['name']);
-        self::assertSame('https://expandeddecks.wip/pages/about', $data['url']);
+        self::assertSame('https://dowsingmachine.wip/pages/about', $data['url']);
         self::assertArrayHasKey('dateModified', $data);
         self::assertSame('Organization', $data['publisher']['@type']);
-        self::assertSame('Expanded Decks', $data['publisher']['name']);
+        self::assertSame('Dowsing Machine', $data['publisher']['name']);
     }
 
     public function testBuildWebPageEmitsBothDatesWhenPagePublished(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $page = new Page();
         $reflection = new \ReflectionClass($page);
@@ -81,7 +81,7 @@ final class StructuredDataBuilderTest extends TestCase
         $translation = new PageTranslation();
         $translation->setTitle('Release Notes');
 
-        $data = $builder->buildWebPage($translation, $page, 'https://expandeddecks.wip/pages/release-notes');
+        $data = $builder->buildWebPage($translation, $page, 'https://dowsingmachine.wip/pages/release-notes');
 
         self::assertSame($publishedOn->format('c'), $data['datePublished']);
         self::assertSame($updatedOn->format('c'), $data['dateModified']);
@@ -148,7 +148,7 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildEventIncludesLocationAndOrganizer(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $organizer = (new User())->setScreenName('AshKetchum');
         $event = new Event();
@@ -157,7 +157,7 @@ final class StructuredDataBuilderTest extends TestCase
         $event->setDate(new \DateTimeImmutable('2026-06-15T10:00:00+02:00'));
         $event->setLocation('Paris Game Center');
 
-        $data = $builder->buildEvent($event, 'https://expandeddecks.wip/event/42');
+        $data = $builder->buildEvent($event, 'https://dowsingmachine.wip/event/42');
 
         self::assertSame('Event', $data['@type']);
         self::assertSame('June Expanded Cup', $data['name']);
@@ -168,7 +168,7 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildEventMarksAsCancelledWhenApplicable(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $organizer = (new User())->setScreenName('AshKetchum');
         $event = new Event();
@@ -177,21 +177,21 @@ final class StructuredDataBuilderTest extends TestCase
         $event->setDate(new \DateTimeImmutable('2026-06-15'));
         $event->setCancelledAt(new \DateTimeImmutable());
 
-        $data = $builder->buildEvent($event, 'https://expandeddecks.wip/event/99');
+        $data = $builder->buildEvent($event, 'https://dowsingmachine.wip/event/99');
 
         self::assertSame('https://schema.org/EventCancelled', $data['eventStatus']);
     }
 
     public function testBuildCreativeWorkIncludesOwner(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $owner = (new User())->setScreenName('MistyWater');
         $deck = new Deck();
         $deck->setName('Lugia VSTAR');
         $deck->setOwner($owner);
 
-        $data = $builder->buildCreativeWork($deck, 'https://expandeddecks.wip/deck/AB3K7N');
+        $data = $builder->buildCreativeWork($deck, 'https://dowsingmachine.wip/deck/AB3K7N');
 
         self::assertSame('CreativeWork', $data['@type']);
         self::assertSame('Lugia VSTAR', $data['name']);
@@ -202,12 +202,12 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildCreativeWorkIncludesGenre(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $deck = new Deck();
         $deck->setName('Test Deck');
 
-        $data = $builder->buildCreativeWork($deck, 'https://expandeddecks.wip/deck/AB3K7N');
+        $data = $builder->buildCreativeWork($deck, 'https://dowsingmachine.wip/deck/AB3K7N');
 
         self::assertSame('Pokémon TCG Expanded', $data['genre']);
     }
@@ -234,9 +234,9 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildCollectionPageEmptyList(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
-        $data = $builder->buildCollectionPage('Decks', 'https://expandeddecks.wip/deck', []);
+        $data = $builder->buildCollectionPage('Decks', 'https://dowsingmachine.wip/deck', []);
 
         self::assertSame('CollectionPage', $data['@type']);
         self::assertSame([], $data['mainEntity']['itemListElement']);
@@ -357,7 +357,7 @@ final class StructuredDataBuilderTest extends TestCase
     /**
      * @param array<string, string> $extraParams
      */
-    private function createBuilder(string $brandName = 'Expanded Decks', string $domain = 'expandeddecks.wip', array $extraParams = []): StructuredDataBuilder
+    private function createBuilder(string $brandName = 'Dowsing Machine', string $domain = 'dowsingmachine.wip', array $extraParams = []): StructuredDataBuilder
     {
         $channel = (new Channel())
             ->setCode('test')

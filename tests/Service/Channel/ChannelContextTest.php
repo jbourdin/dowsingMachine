@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,7 +26,7 @@ final class ChannelContextTest extends TestCase
 {
     public function testGetChannelReturnsChannelFromRequestAttribute(): void
     {
-        $channel = (new Channel())->setCode('app')->setDomain('expandeddecks.wip');
+        $channel = (new Channel())->setCode('app')->setDomain('dowsingmachine.wip');
 
         $request = new Request();
         $request->attributes->set('_channel', $channel);
@@ -80,7 +80,7 @@ final class ChannelContextTest extends TestCase
 
     public function testGetChannelReadsFromMainRequestInsideSubRequest(): void
     {
-        $channel = (new Channel())->setCode('app')->setDomain('expandeddecks.wip');
+        $channel = (new Channel())->setCode('app')->setDomain('dowsingmachine.wip');
 
         $mainRequest = new Request();
         $mainRequest->attributes->set('_channel', $channel);

@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -50,7 +50,7 @@ class ChannelTest extends TestCase
 
         $result = $channel
             ->setCode('app')
-            ->setDomain('expandeddecks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(true)
             ->setEnableRegister(true)
             ->setEnableEvents(true)
@@ -59,7 +59,7 @@ class ChannelTest extends TestCase
 
         self::assertSame($channel, $result);
         self::assertSame('app', $channel->getCode());
-        self::assertSame('expandeddecks.wip', $channel->getDomain());
+        self::assertSame('dowsingmachine.wip', $channel->getDomain());
         self::assertTrue($channel->getEnableDecks());
         self::assertTrue($channel->getEnableRegister());
         self::assertTrue($channel->getEnableEvents());

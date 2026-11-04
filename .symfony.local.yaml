@@ -1,6 +1,6 @@
 proxy:
     domains:
-        - expandeddecks
+        - dowsingmachine
         - expandedtalks
 http:
     port: 8742

@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -282,7 +282,7 @@ class MenuRuntimeTest extends TestCase
 
     private function createChannelContext(): ChannelContext
     {
-        $channel = (new Channel())->setCode('app')->setDomain('expandeddecks.wip');
+        $channel = (new Channel())->setCode('app')->setDomain('dowsingmachine.wip');
 
         $request = new Request();
         $request->attributes->set('_channel', $channel);

@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -105,7 +105,7 @@ class AdminChannelControllerTest extends AbstractFunctionalTest
         $crawler = $this->client->request('GET', '/admin/channels/'.$channel->getId());
 
         $form = $crawler->selectButton('Save')->form();
-        $form['channel_form[domain]'] = 'updated.expandeddecks.wip';
+        $form['channel_form[domain]'] = 'updated.dowsingmachine.wip';
         $this->client->submit($form);
 
         self::assertResponseRedirects();

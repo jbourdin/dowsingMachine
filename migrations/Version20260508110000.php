@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -33,7 +33,7 @@ use Doctrine\Migrations\AbstractMigration;
  * re-enrich (`/admin/technical/staple-cards-enrich` or
  * `app:staple-cards:enrich`) after this migration.
  *
- * @see https://github.com/jbourdin/expandedDecks/issues/532
+ * @see https://github.com/jbourdin/dowsingMachine/issues/532
  */
 final class Version20260508110000 extends AbstractMigration
 {

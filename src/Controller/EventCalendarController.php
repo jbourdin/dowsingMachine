@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -47,7 +47,7 @@ class EventCalendarController extends AbstractController
             $translator->trans('app.event.ical.feed_title'),
         );
 
-        return $this->buildIcalResponse($calendar, 'expanded-decks-events.ics');
+        return $this->buildIcalResponse($calendar, 'dowsing-machine-events.ics');
     }
 
     /**
@@ -74,7 +74,7 @@ class EventCalendarController extends AbstractController
             $translator->trans('app.event.ical.feed_title_tag', ['%name%' => $tag->getName()]),
         );
 
-        return $this->buildIcalResponse($calendar, \sprintf('expanded-decks-events-%s.ics', $tag->getSlug()));
+        return $this->buildIcalResponse($calendar, \sprintf('dowsing-machine-events-%s.ics', $tag->getSlug()));
     }
 
     private function buildIcalResponse(string $calendar, string $filename): Response

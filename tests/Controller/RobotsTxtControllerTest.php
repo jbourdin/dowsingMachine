@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,7 +31,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $channel = (new Channel())
             ->setCode('app')
-            ->setDomain('expandeddecks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(true)
             ->setEnableEvents(true)
             ->setEnableArchetypes(false)
@@ -52,7 +52,7 @@ final class RobotsTxtControllerTest extends TestCase
         self::assertStringContainsString('Disallow: /fr/archetypes', $body);
         self::assertStringContainsString('Disallow: /login', $body);
         self::assertStringContainsString('Disallow: /register', $body);
-        self::assertStringContainsString('Sitemap: https://expandeddecks.wip/sitemap.xml', $body);
+        self::assertStringContainsString('Sitemap: https://dowsingmachine.wip/sitemap.xml', $body);
     }
 
     public function testContentChannelAllowsArchetypes(): void
@@ -100,7 +100,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $channel = (new Channel())
             ->setCode('app')
-            ->setDomain('expandeddecks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(true)
             ->setEnableEvents(true)
             ->setEnableArchetypes(false)
@@ -120,7 +120,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $channel = (new Channel())
             ->setCode('app')
-            ->setDomain('expandeddecks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableArchetypes(false);
 
         $response = $this->invokeController($channel);
@@ -133,7 +133,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $channel = (new Channel())
             ->setCode('app')
-            ->setDomain('expandeddecks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableArchetypes(false);
 
         $response = $this->invokeController($channel);
@@ -145,7 +145,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $appChannel = (new Channel())
             ->setCode('app')
-            ->setDomain('expandeddecks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableArchetypes(false);
 
         $contentChannel = (new Channel())

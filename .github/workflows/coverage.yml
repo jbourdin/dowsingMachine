@@ -17,9 +17,9 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: expanded_decks_test
-          MYSQL_USER: expanded_decks
-          MYSQL_PASSWORD: expanded_decks
+          MYSQL_DATABASE: dowsing_machine_test
+          MYSQL_USER: dowsing_machine
+          MYSQL_PASSWORD: dowsing_machine
         ports:
           - 3306:3306
         # tmpfs datadir: the test database is dropped and recreated per job and
@@ -63,7 +63,7 @@ jobs:
       - name: PHPUnit with coverage
         run: php -d pcov.enabled=1 -d memory_limit=1G bin/phpunit --coverage-clover var/coverage/clover.xml --coverage-text 2>&1 | tee var/coverage/coverage-text.txt
         env:
-          DATABASE_URL: "mysql://expanded_decks:expanded_decks@127.0.0.1:3306/expanded_decks?serverVersion=8.0&charset=utf8mb4"
+          DATABASE_URL: "mysql://dowsing_machine:dowsing_machine@127.0.0.1:3306/dowsing_machine?serverVersion=8.0&charset=utf8mb4"
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5

@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -50,7 +50,7 @@ final class EventCalendarControllerTest extends TestCase
 
         self::assertSame(200, $response->getStatusCode());
         self::assertSame('text/calendar; charset=utf-8', $response->headers->get('Content-Type'));
-        self::assertSame('inline; filename="expanded-decks-events.ics"', $response->headers->get('Content-Disposition'));
+        self::assertSame('inline; filename="dowsing-machine-events.ics"', $response->headers->get('Content-Disposition'));
 
         $cacheControl = (string) $response->headers->get('Cache-Control');
         self::assertStringContainsString('public', $cacheControl);
@@ -81,7 +81,7 @@ final class EventCalendarControllerTest extends TestCase
 
         $response = $controller->tag('league', $eventRepo, $tagRepo, $builder, $translator);
 
-        self::assertSame('inline; filename="expanded-decks-events-league.ics"', $response->headers->get('Content-Disposition'));
+        self::assertSame('inline; filename="dowsing-machine-events-league.ics"', $response->headers->get('Content-Disposition'));
     }
 
     public function testTagThrowsNotFoundForUnknownSlug(): void

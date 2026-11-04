@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -18,7 +18,7 @@
             <meta name="csrf-token" content="{{ csrf_token('ajax') }}">
         {% endif %}
         {{ include('_partials/theme_color_scheme_script.html.twig') }}
-        <title>{% block title %}{{ channel_param('brand_name', 'Expanded Decks') }}{% endblock %}</title>
+        <title>{% block title %}{{ channel_param('brand_name', 'Dowsing Machine') }}{% endblock %}</title>
         {% if channel_theme() == 'expandedtalks' %}
             <link rel="icon" href="{{ asset('build/images/themes/expandedtalks/dowsing_favicon.svg') }}" type="image/svg+xml">
             {# Raster fallback: Google Search renders PNG/ICO favicons more reliably than SVG. #}
@@ -338,7 +338,7 @@
                     <hr class="my-2">
                 {% endif %}
                 <div class="text-center">
-                    {{ channel_param('copyright_footer', '&copy; ' ~ 'now'|date('Y') ~ ' ' ~ channel_param('brand_name', 'Expanded Decks'))|raw }}
+                    {{ channel_param('copyright_footer', '&copy; ' ~ 'now'|date('Y') ~ ' ' ~ channel_param('brand_name', 'Dowsing Machine'))|raw }}
                     <span class="ms-2" style="font-size: 0.75rem;">{{ app_version }}</span>
                     <span class="ms-2">·</span>
                     <a href="https://github.com/jbourdin/dowsingMachine" class="ms-1" target="_blank" rel="noopener">GitHub</a>

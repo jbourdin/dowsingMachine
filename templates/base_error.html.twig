@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -16,7 +16,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{ include('_partials/theme_color_scheme_script.html.twig') }}
-        <title>{% block title %}Error — {{ channel_param('brand_name', 'Expanded Decks') }}{% endblock %}</title>
+        <title>{% block title %}Error — {{ channel_param('brand_name', 'Dowsing Machine') }}{% endblock %}</title>
         {% if channel_theme() == 'expandedtalks' %}
             <link rel="icon" href="{{ asset('build/images/themes/expandedtalks/dowsing_favicon.svg') }}" type="image/svg+xml">
             <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('build/images/themes/expandedtalks/apple_touch_icon.png') }}">
@@ -47,7 +47,7 @@
                 <div class="d-flex justify-content-center mb-2">
                     {{ include('_partials/theme_switcher.html.twig') }}
                 </div>
-                &copy; {{ 'now'|date('Y') }} {{ channel_param('brand_name', 'Expanded Decks') }}
+                &copy; {{ 'now'|date('Y') }} {{ channel_param('brand_name', 'Dowsing Machine') }}
             </div>
         </footer>
 

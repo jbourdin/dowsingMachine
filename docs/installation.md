@@ -11,7 +11,7 @@
 The application ships as a single Docker image based on [FrankenPHP](https://frankenphp.dev/) (`dunglas/frankenphp:php8.5`).
 
 ```bash
-docker build --build-arg APP_VERSION=$(git describe --tags --always) -t expanded-decks .
+docker build --build-arg APP_VERSION=$(git describe --tags --always) -t dowsing-machine .
 ```
 
 The image includes all PHP extensions (pdo_mysql, intl, opcache, apcu, gd), Composer dependencies, and compiled frontend assets. It exposes port `8080` and runs FrankenPHP in worker mode.
@@ -28,7 +28,7 @@ All configuration is injected via environment variables. No `.env` files are rea
 |----------|----------|---------|-------------|
 | `APP_SECRET` | **Yes** | `a3b8f...` (random hex) | Symfony secret for CSRF tokens, signed cookies, and session encryption. Generate with `openssl rand -hex 32`. |
 | `APP_VERSION` | No | `v1.0.0-beta.5` | Application version displayed in UI footer and sent to Sentry. Set at build time via `--build-arg`. |
-| `DEFAULT_URI` | **Yes** | `https://expanded-decks.com` | Canonical base URL for absolute URL generation (emails, iCal feeds, QR codes). |
+| `DEFAULT_URI` | **Yes** | `https://dowsing-machine.com` | Canonical base URL for absolute URL generation (emails, iCal feeds, QR codes). |
 | `SYMFONY_TRUSTED_PROXIES` | **Yes** | `REMOTE_ADDR` | Trusted proxy IPs. Set to `REMOTE_ADDR` when behind a load balancer/reverse proxy. |
 
 ### Database
@@ -42,8 +42,8 @@ All configuration is injected via environment variables. No `.env` files are rea
 | Variable | Required | Example | Description |
 |----------|----------|---------|-------------|
 | `MAILER_DSN` | **Yes** | `ses+smtp://KEY:SECRET@default?region=eu-west-1` | Symfony Mailer transport. Supports SMTP, AWS SES, Postmark, SendGrid, Mailgun. |
-| `MAIL_SENDER` | **Yes** | `noreply@expanded-decks.com` | "From" address for all transactional emails. |
-| `ADMIN_EMAIL` | **Yes** | `admin@expanded-decks.com` | Administrator email for system notifications. |
+| `MAIL_SENDER` | **Yes** | `noreply@dowsing-machine.com` | "From" address for all transactional emails. |
+| `ADMIN_EMAIL` | **Yes** | `admin@dowsing-machine.com` | Administrator email for system notifications. |
 
 ### Async Messaging (Symfony Messenger)
 
@@ -170,19 +170,19 @@ No orchestrator-side configuration is required; the recovery path relies only on
 docker run -d \
   -p 8080:8080 \
   -e APP_SECRET="$(openssl rand -hex 32)" \
-  -e DEFAULT_URI="https://expanded-decks.com" \
+  -e DEFAULT_URI="https://dowsing-machine.com" \
   -e SYMFONY_TRUSTED_PROXIES="REMOTE_ADDR" \
-  -e DATABASE_URL="mysql://user:pass@db:3306/expanded_decks?serverVersion=8.0&charset=utf8mb4" \
+  -e DATABASE_URL="mysql://user:pass@db:3306/dowsing_machine?serverVersion=8.0&charset=utf8mb4" \
   -e MAILER_DSN="ses+smtp://KEY:SECRET@default?region=eu-west-1" \
-  -e MAIL_SENDER="noreply@expanded-decks.com" \
-  -e ADMIN_EMAIL="admin@expanded-decks.com" \
+  -e MAIL_SENDER="noreply@dowsing-machine.com" \
+  -e ADMIN_EMAIL="admin@dowsing-machine.com" \
   -e SENTRY_DSN="https://key@o0.ingest.sentry.io/0" \
   -e MOSAIC_STORAGE_ADAPTER="s3" \
-  -e SCALEWAY_S3_BUCKET="expanded-decks-mosaic" \
+  -e SCALEWAY_S3_BUCKET="dowsing-machine-mosaic" \
   -e SCALEWAY_S3_REGION="fr-par" \
   -e SCALEWAY_S3_ENDPOINT="https://s3.fr-par.scw.cloud" \
   -e SCALEWAY_S3_ACCESS_KEY="SCWXXXXXXXXX" \
   -e SCALEWAY_S3_SECRET_KEY="secret" \
-  -e MOSAIC_PUBLIC_URL="https://expanded-decks-mosaic.s3.fr-par.scw.cloud" \
-  expanded-decks
+  -e MOSAIC_PUBLIC_URL="https://dowsing-machine-mosaic.s3.fr-par.scw.cloud" \
+  dowsing-machine
 ```

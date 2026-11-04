@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -35,7 +35,7 @@ final class ChannelUrlGeneratorTest extends TestCase
     {
         $this->appChannel = (new Channel())
             ->setCode('app')
-            ->setDomain('expandeddecks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(true)
             ->setEnableRegister(true)
             ->setEnableEvents(true)
@@ -94,7 +94,7 @@ final class ChannelUrlGeneratorTest extends TestCase
 
         $result = $generator->forFeature('decks', 'app_deck_show', ['short_tag' => 'AB3K7N']);
 
-        self::assertSame('https://expandeddecks.wip/deck/AB3K7N', $result);
+        self::assertSame('https://dowsingmachine.wip/deck/AB3K7N', $result);
     }
 
     public function testForFeatureArchetypesCrossDomainFromAppChannel(): void
@@ -121,7 +121,7 @@ final class ChannelUrlGeneratorTest extends TestCase
 
         $result = $generator->forFeature('register', 'app_login', []);
 
-        self::assertSame('https://expandeddecks.wip/login', $result);
+        self::assertSame('https://dowsingmachine.wip/login', $result);
     }
 
     public function testForFeatureFallsBackToPathWhenNoChannelHasFeature(): void
@@ -180,7 +180,7 @@ final class ChannelUrlGeneratorTest extends TestCase
 
         $result = $generator->canonicalUrl('decks', 'app_deck_show', ['short_tag' => 'AB3K7N']);
 
-        self::assertSame('https://expandeddecks.wip/deck/AB3K7N', $result);
+        self::assertSame('https://dowsingmachine.wip/deck/AB3K7N', $result);
     }
 
     /**
@@ -192,7 +192,7 @@ final class ChannelUrlGeneratorTest extends TestCase
 
         $result = $generator->selfCanonicalUrl('app_deck_list');
 
-        self::assertSame('https://expandeddecks.wip/decks', $result);
+        self::assertSame('https://dowsingmachine.wip/decks', $result);
     }
 
     /**
@@ -250,7 +250,7 @@ final class ChannelUrlGeneratorTest extends TestCase
 
         $result = $generator->absolutizeUrl('/uploads/og.png');
 
-        self::assertSame('https://expandeddecks.wip/uploads/og.png', $result);
+        self::assertSame('https://dowsingmachine.wip/uploads/og.png', $result);
     }
 
     /**

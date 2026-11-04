@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -16,14 +16,14 @@
     ? 'app.event.meta_description_with_location'|trans({'%name%': event.name, '%format%': event.format, '%location%': event.location})
     : 'app.event.meta_description'|trans({'%name%': event.name, '%format%': event.format})) %}
 
-{% block title %}{{ event.name }} — {{ channel_param('brand_name', 'Expanded Decks') }}{% endblock %}
+{% block title %}{{ event.name }} — {{ channel_param('brand_name', 'Dowsing Machine') }}{% endblock %}
 
 {% block canonical %}
     <link rel="canonical" href="{{ canonical_url('events', 'app_event_show', {id: event.id}) }}">
 {% endblock %}
 
 {% block opengraph %}
-    {% set og_title = event.name ~ ' — ' ~ channel_param('brand_name', 'Expanded Decks') %}
+    {% set og_title = event.name ~ ' — ' ~ channel_param('brand_name', 'Dowsing Machine') %}
     {% set og_description = metaDescription %}
     {% set og_url = canonical_url('events', 'app_event_show', {id: event.id}) %}
     {% set og_type = 'article' %}

@@ -15,6 +15,7 @@ services:
       - "3342:3306"
     volumes:
       - database_data:/var/lib/mysql
+      - ./docker/mysql/initdb:/docker-entrypoint-initdb.d:ro
 
   meilisearch:
     image: getmeili/meilisearch:v1

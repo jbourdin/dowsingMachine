@@ -25,6 +25,15 @@ stop: ## Stop dev server and Docker services
 	symfony server:stop
 	docker compose down
 
+.PHONY: reset
+reset: ## Wipe Docker services and volumes, restart and reload fixtures
+	-symfony server:stop
+	docker compose down --volumes --remove-orphans
+	docker compose up -d --wait
+	symfony proxy:start
+	symfony server:start -d
+	$(MAKE) fixtures
+
 .PHONY: ngrok.start
 ngrok.start: ## Start ngrok tunnel (daemon) and print the public URL
 	@ngrok http https://127.0.0.1:8742 --log=stdout > /dev/null & echo $$! > var/ngrok.pid
@@ -122,7 +131,12 @@ assets.watch: ## Build frontend assets and watch for changes
 lint-all: lint-yaml lint-i18n cs-fix twig-cs-fix eslint-fix stylelint-fix lint-container phpstan ## Run all linters and fixers
 
 .PHONY: test
-test: ## Run test suite
+.PHONY: test.db
+test.db: ## Create the PHPUnit database if missing
+	symfony console doctrine:database:create --env=test --if-not-exists
+
+.PHONY: test
+test: test.db ## Run test suite
 	symfony php bin/phpunit
 
 .PHONY: test.unit
@@ -130,11 +144,11 @@ test.unit: ## Run PHP unit tests only
 	symfony php bin/phpunit --testsuite unit
 
 .PHONY: test.functional
-test.functional: ## Run PHP functional tests only
+test.functional: test.db ## Run PHP functional tests only
 	symfony php bin/phpunit --testsuite functional
 
 .PHONY: coverage
-coverage: ## Run PHP tests with coverage (requires pcov)
+coverage: test.db ## Run PHP tests with coverage (requires pcov)
 	symfony php -d pcov.enabled=1 bin/phpunit --coverage-clover var/coverage/clover.xml --coverage-text
 
 .PHONY: test.front

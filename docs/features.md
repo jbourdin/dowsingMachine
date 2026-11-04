@@ -328,6 +328,7 @@ Rich text editing for Markdown fields (archetype descriptions, CMS pages) with a
 | F17.6   | Toolbar buttons to insert reference tags     | Medium   | Done   | Reusable `InsertReferenceButton` component with popover input for inserting card, archetype, and deck reference tags from the toolbar. Validates input format before insertion. |
 | F17.7   | Image float and alignment                    | Medium   | Done   | `ResizableImage` extension with CSS class-based alignment (float left, center, float right, none). Dimensions serialized as style attributes. `ImageAlignButton` toolbar controls. |
 | F17.8   | Insert card image from reference             | Medium   |        | Toolbar button that prompts for a card reference (e.g. `UPR-100`), resolves it to a TCGdex image URL via a backend endpoint (`GET /api/card/image-url`), and inserts the image into the editor as a standard image node. Supports resize and alignment like any other image. Markdown output: `![SET-NUM](url)`. |
+| F17.9   | Zoom on large rich text images               | Medium   | Done   | Images in rendered rich text (`.cms-content`) whose original is more than 1.25× wider than displayed become click-to-zoom (keyboard accessible), opening the full image in a native `<dialog>`. Linked images and card-hover previews are skipped; add the `.no-zoom` class to opt an image out. Implemented in `assets/shared/image-zoom.ts`. |
 
 ---
 

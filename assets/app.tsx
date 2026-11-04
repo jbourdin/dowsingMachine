@@ -9,6 +9,7 @@
 
 import './styles/app.scss';
 import { Tooltip } from 'bootstrap';
+import { initImageZoom } from './shared/image-zoom';
 
 type ThemeMode = 'light' | 'dark' | 'auto';
 
@@ -51,4 +52,5 @@ const initThemeSwitcher = (): void => {
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(element => new Tooltip(element));
     initThemeSwitcher();
+    initImageZoom();
 });

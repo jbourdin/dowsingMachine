@@ -16,6 +16,20 @@ Items marked *(partial)* have scaffolding or basic functionality but are not yet
 
 ---
 
+## [1.15.2] — 2026-11-04
+
+Patch release: click-to-zoom on large images in rich text content, plus a security dependency sweep covering the Symfony advisories published on 2026-11-04.
+
+### Features
+
+- **Zoom on large rich text images (F17.9)** — Images in rendered rich text (pages, archetypes, home blocks, banned/staple intros) open full-size in a native `<dialog>` when the original is more than 1.25× wider than displayed. Keyboard accessible (Enter/Space to open, Esc to close). Linked images and card-hover previews are skipped; the `.no-zoom` class opts an image out. ([#816](https://github.com/jbourdin/dowsingMachine/pull/816))
+
+### Infrastructure
+
+- **Security dependency sweep** — Composer: Symfony components → 8.1.11 (advisories published 2026-11-04 on http-foundation, routing, security-http, serializer, http-client, yaml and others), `league/commonmark` → 2.10.7, plus later `symfony/mime` and `league/flysystem` fixes. npm: scoped override forcing `minimatch` ^11.0.4 under `@typescript-eslint/typescript-estree` (GHSA-g3hv-75wg-m249, dev-only); to be dropped once typescript-eslint moves to minimatch 11. Both audits report zero advisories. ([#816](https://github.com/jbourdin/dowsingMachine/pull/816))
+
+---
+
 ## [1.15.1] — 2026-10-27
 
 Patch release: a security dependency sweep (Composer and npm, including tiptap), a fix for editor popovers that scrolled the page to the top, and the move of the repository to `jbourdin/dowsingMachine` with a README refocused on dowsingmachine.com.

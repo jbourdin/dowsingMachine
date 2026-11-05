@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,7 +20,7 @@ use Doctrine\Migrations\AbstractMigration;
  * Add `og_image` column to `homepage_layout` so editors can configure the
  * Open Graph image rendered on the homepage. Mirrors `Page.ogImage`.
  *
- * @see https://github.com/jbourdin/expandedDecks/issues/554
+ * @see https://github.com/jbourdin/dowsingMachine/issues/554
  */
 final class Version20260509220511 extends AbstractMigration
 {

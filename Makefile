@@ -12,7 +12,7 @@ help: ## Show this help
 install: ## Install project dependencies
 	symfony composer install
 	npm install
-	symfony proxy:domain:attach expandedDecks expanded-decks expandedtalks
+	symfony proxy:domain:attach dowsingmachine dowsing-machine expandeddecks
 
 .PHONY: start
 start: ## Start dev server and Docker services
@@ -24,6 +24,15 @@ start: ## Start dev server and Docker services
 stop: ## Stop dev server and Docker services
 	symfony server:stop
 	docker compose down
+
+.PHONY: reset
+reset: ## Wipe Docker services and volumes, restart and reload fixtures
+	-symfony server:stop
+	docker compose down --volumes --remove-orphans
+	docker compose up -d --wait
+	symfony proxy:start
+	symfony server:start -d
+	$(MAKE) fixtures
 
 .PHONY: ngrok.start
 ngrok.start: ## Start ngrok tunnel (daemon) and print the public URL
@@ -91,8 +100,9 @@ fixtures: ## Load fixture data, enrich, and rebuild search index
 	symfony console doctrine:database:create
 	symfony console doctrine:migrations:migrate --no-interaction
 	symfony console doctrine:fixtures:load --no-interaction --append
-	symfony console app:banned-cards:sync
+	symfony console app:listings:seed-intros
 	$(MAKE) tcgdex.import
+	symfony console app:banned-cards:sync
 	symfony console app:enrich:retry
 	symfony console app:og-image:card-fan SIT-136 UPR-100 SFA-47 --deck=Regidrago
 	$(MAKE) sprites.sync
@@ -121,8 +131,12 @@ assets.watch: ## Build frontend assets and watch for changes
 .PHONY: lint-all
 lint-all: lint-yaml lint-i18n cs-fix twig-cs-fix eslint-fix stylelint-fix lint-container phpstan ## Run all linters and fixers
 
+.PHONY: test.db
+test.db: ## Create the PHPUnit database if missing
+	symfony console doctrine:database:create --env=test --if-not-exists
+
 .PHONY: test
-test: ## Run test suite
+test: test.db ## Run test suite
 	symfony php bin/phpunit
 
 .PHONY: test.unit
@@ -130,11 +144,11 @@ test.unit: ## Run PHP unit tests only
 	symfony php bin/phpunit --testsuite unit
 
 .PHONY: test.functional
-test.functional: ## Run PHP functional tests only
+test.functional: test.db ## Run PHP functional tests only
 	symfony php bin/phpunit --testsuite functional
 
 .PHONY: coverage
-coverage: ## Run PHP tests with coverage (requires pcov)
+coverage: test.db ## Run PHP tests with coverage (requires pcov)
 	symfony php -d pcov.enabled=1 bin/phpunit --coverage-clover var/coverage/clover.xml --coverage-text
 
 .PHONY: test.front

@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------------
-# Multi-stage Dockerfile for the Expanded Decks Symfony application.
+# Multi-stage Dockerfile for the Dowsing Machine Symfony application.
 #
 # Stages:
 #   1. composer  — install PHP dependencies (no dev)
 #   2. assets    — build frontend with Webpack Encore
 #   3. runtime   — final production image
 #
-# Build:  docker build -t expanded-decks .
-# Run:    docker run -p 8080:8080 --env-file .env.local expanded-decks
+# Build:  docker build -t dowsing-machine .
+# Run:    docker run -p 8080:8080 --env-file .env.local dowsing-machine
 # ---------------------------------------------------------------------------
 
 # ---------------------------------------------------------------------------

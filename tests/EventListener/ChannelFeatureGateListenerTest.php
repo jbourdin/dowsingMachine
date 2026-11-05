@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -166,7 +166,7 @@ final class ChannelFeatureGateListenerTest extends TestCase
     {
         return (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(false)
             ->setEnableRegister(false)
             ->setEnableEvents(false)

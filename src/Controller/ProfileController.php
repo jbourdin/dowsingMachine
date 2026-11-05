@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -281,7 +281,7 @@ class ProfileController extends AbstractAppController
             Response::HTTP_OK,
             ['Content-Type' => 'application/json']
         );
-        $response->headers->set('Content-Disposition', 'attachment; filename="expanded-decks-export.json"');
+        $response->headers->set('Content-Disposition', 'attachment; filename="dowsing-machine-export.json"');
 
         return $response;
     }

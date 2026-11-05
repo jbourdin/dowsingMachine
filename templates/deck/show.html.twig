@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block opengraph %}
-    {% set og_title = deck.name ~ ' — ' ~ channel_param('brand_name', 'Expanded Decks') %}
+    {% set og_title = deck.name ~ ' — ' ~ channel_param('brand_name', 'Dowsing Machine') %}
     {% set og_url = canonical_url('decks', 'app_deck_show', {short_tag: deck.shortTag}) %}
     {% set og_type = 'article' %}
     {% set og_image = ogImage %}
@@ -65,7 +65,7 @@
     </div>
 {% endmacro %}
 
-{% block title %}{{ deck.name }} — {{ channel_param('brand_name', 'Expanded Decks') }}{% endblock %}
+{% block title %}{{ deck.name }} — {{ channel_param('brand_name', 'Dowsing Machine') }}{% endblock %}
 
 {% block body %}
     {# Deck info — compact header #}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b5c4a9c5a5a485b33cfcf91ebcbae71",
+    "content-hash": "659801cced95c0b8d45cebc0e866d9ff",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -11509,7 +11509,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-04T22:21:45+00:00"
+            "time": "2026-08-04T22:21:45+00:00",
+            "published-time": "2026-08-04T22:21:59+00:00"
         },
         {
             "name": "phpstan/phpstan-doctrine",

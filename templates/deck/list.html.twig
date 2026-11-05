@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -14,7 +14,7 @@
  # falls through to the channel default (F19.7). #}
 {% set metaDescription = isMyDecks ? null : 'app.deck.list.meta_description'|trans %}
 
-{% block title %}{{ (isMyDecks ? 'app.nav.my_decks' : 'app.deck.catalog_title')|trans }} — {{ channel_param('brand_name', 'Expanded Decks') }}{% endblock %}
+{% block title %}{{ (isMyDecks ? 'app.nav.my_decks' : 'app.deck.catalog_title')|trans }} — {{ channel_param('brand_name', 'Dowsing Machine') }}{% endblock %}
 
 {% block canonical %}
     {% if not isMyDecks %}
@@ -24,7 +24,7 @@
 
 {% block opengraph %}
     {% if not isMyDecks %}
-        {% set og_title = 'app.deck.catalog_title'|trans ~ ' — ' ~ channel_param('brand_name', 'Expanded Decks') %}
+        {% set og_title = 'app.deck.catalog_title'|trans ~ ' — ' ~ channel_param('brand_name', 'Dowsing Machine') %}
         {% set og_url = canonical_url('decks', 'app_deck_list') %}
         {{ include('_partials/opengraph.html.twig') }}
     {% endif %}

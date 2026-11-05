@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,7 +23,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class PageControllerTest extends AbstractFunctionalTest
 {
     /** Pages are on the content channel. */
-    private const array CONTENT_HOST = ['HTTP_HOST' => 'expandedtalks.wip'];
+    private const array CONTENT_HOST = ['HTTP_HOST' => 'dowsingmachine.wip'];
 
     public function testPublishedPageIsAccessible(): void
     {
@@ -103,7 +103,7 @@ class PageControllerTest extends AbstractFunctionalTest
         self::assertNotFalse($xml);
         self::assertSame('en', (string) $xml->channel->language);
         // Channel title carries the channel brand for feed readers.
-        self::assertStringContainsString('Expanded Talks', (string) $xml->channel->title);
+        self::assertStringContainsString('Dowsing Machine', (string) $xml->channel->title);
         // Themed channels expose their icon as the RSS channel image
         // (Encore versions the filename, hence the loose match).
         self::assertStringContainsString('apple_touch_icon', (string) $xml->channel->image->url);
@@ -154,8 +154,8 @@ class PageControllerTest extends AbstractFunctionalTest
         self::assertResponseIsSuccessful();
         $content = (string) $this->client->getResponse()->getContent();
         self::assertStringNotContainsString('Unpublished feed entry', $content);
-        // borrowing-rules belongs to the Rules & Info category.
-        self::assertStringNotContainsString('/pages/borrowing-rules', $content);
+        // what-is-expanded belongs to the Getting started category.
+        self::assertStringNotContainsString('/pages/what-is-expanded', $content);
     }
 
     public function testCategoryFeedEscapesSpecialCharacters(): void
@@ -248,7 +248,7 @@ class PageControllerTest extends AbstractFunctionalTest
         self::assertNotNull($linkTitle);
         // A missing translation parameter would leak the literal placeholder.
         self::assertStringNotContainsString('%brand%', $linkTitle);
-        self::assertStringContainsString('Expanded Talks', $linkTitle);
+        self::assertStringContainsString('Dowsing Machine', $linkTitle);
     }
 
     public function testPageShowFeedAutodiscoveryTitleIncludesBrand(): void
@@ -259,7 +259,7 @@ class PageControllerTest extends AbstractFunctionalTest
         $linkTitle = $crawler->filter('link[rel="alternate"][type="application/rss+xml"]')->attr('title');
         self::assertNotNull($linkTitle);
         self::assertStringNotContainsString('%brand%', $linkTitle);
-        self::assertStringContainsString('Expanded Talks', $linkTitle);
+        self::assertStringContainsString('Dowsing Machine', $linkTitle);
     }
 
     public function testCategoryFeedUnknownCategoryReturns404(): void

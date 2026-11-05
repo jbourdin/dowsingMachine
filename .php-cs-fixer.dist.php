@@ -19,9 +19,9 @@ return (new PhpCsFixer\Config())
         'void_return' => true,
         'header_comment' => [
             'header' => <<<'HEADER'
-                This file is part of the Expanded Decks project.
+                This file is part of the Dowsing Machine project.
 
-                (c) Expanded Decks contributors
+                (c) Dowsing Machine contributors
 
                 For the full copyright and license information, please view the LICENSE
                 file that was distributed with this source code.

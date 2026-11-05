@@ -4,7 +4,7 @@
 
 ← Back to [Main Documentation](docs.md) | [Feature List](features.md) | [Changelog](changelog.md) | [README](../README.md)
 
-The [GitHub Project board](https://github.com/users/jbourdin/projects/1) is the roadmap for the Expanded Decks project. All issue prioritization and status live there — this document provides an overview and links to the relevant views.
+The [GitHub Project board](https://github.com/users/jbourdin/projects/1) is the roadmap for the Dowsing Machine project. All issue prioritization and status live there — this document provides an overview and links to the relevant views.
 
 ## Project Board
 

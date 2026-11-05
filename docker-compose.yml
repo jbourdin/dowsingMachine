@@ -3,9 +3,9 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: expanded_decks
-      MYSQL_USER: expanded_decks
-      MYSQL_PASSWORD: expanded_decks
+      MYSQL_DATABASE: dowsing_machine
+      MYSQL_USER: dowsing_machine
+      MYSQL_PASSWORD: dowsing_machine
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 5s
@@ -15,6 +15,7 @@ services:
       - "3342:3306"
     volumes:
       - database_data:/var/lib/mysql
+      - ./docker/mysql/initdb:/docker-entrypoint-initdb.d:ro
 
   meilisearch:
     image: getmeili/meilisearch:v1

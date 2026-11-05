@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -39,17 +39,17 @@ final class StructuredDataBuilderTest extends TestCase
     {
         $builder = $this->createBuilder('Expanded Talks');
 
-        $data = $builder->buildWebSite('https://expandedtalks.wip/');
+        $data = $builder->buildWebSite('https://dowsingmachine.wip/');
 
         self::assertSame('https://schema.org', $data['@context']);
         self::assertSame('WebSite', $data['@type']);
         self::assertSame('Expanded Talks', $data['name']);
-        self::assertSame('https://expandedtalks.wip/', $data['url']);
+        self::assertSame('https://dowsingmachine.wip/', $data['url']);
     }
 
     public function testBuildWebPageIncludesPublisherAndDate(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $page = new Page();
         $translation = new PageTranslation();
@@ -62,12 +62,12 @@ final class StructuredDataBuilderTest extends TestCase
         self::assertSame('https://expandeddecks.wip/pages/about', $data['url']);
         self::assertArrayHasKey('dateModified', $data);
         self::assertSame('Organization', $data['publisher']['@type']);
-        self::assertSame('Expanded Decks', $data['publisher']['name']);
+        self::assertSame('Dowsing Machine', $data['publisher']['name']);
     }
 
     public function testBuildWebPageEmitsBothDatesWhenPagePublished(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $page = new Page();
         $reflection = new \ReflectionClass($page);
@@ -93,7 +93,7 @@ final class StructuredDataBuilderTest extends TestCase
 
         $archetype = (new Archetype())->setName('Iron Thorns');
 
-        $data = $builder->buildArticle($archetype, 'en', 'https://expandedtalks.wip/archetypes/iron-thorns');
+        $data = $builder->buildArticle($archetype, 'en', 'https://dowsingmachine.wip/archetypes/iron-thorns');
 
         self::assertSame('Article', $data['@type']);
         self::assertSame('Iron Thorns', $data['name']);
@@ -119,7 +119,7 @@ final class StructuredDataBuilderTest extends TestCase
         $firstField->setValue($archetype, $publishedOn);
         $lastField->setValue($archetype, $updatedOn);
 
-        $data = $builder->buildArticle($archetype, 'en', 'https://expandedtalks.wip/archetypes/iron-thorns');
+        $data = $builder->buildArticle($archetype, 'en', 'https://dowsingmachine.wip/archetypes/iron-thorns');
 
         self::assertSame($publishedOn->format('c'), $data['datePublished']);
         self::assertSame($updatedOn->format('c'), $data['dateModified']);
@@ -131,11 +131,11 @@ final class StructuredDataBuilderTest extends TestCase
 
         $archetype = (new Archetype())->setName('Iron Thorns');
         $variants = [
-            ['name' => 'Spread variant', 'url' => 'https://expandedtalks.wip/archetypes/iron-thorns#98QPPD'],
-            ['name' => 'Control variant', 'url' => 'https://expandedtalks.wip/archetypes/iron-thorns#MQN93L'],
+            ['name' => 'Spread variant', 'url' => 'https://dowsingmachine.wip/archetypes/iron-thorns#98QPPD'],
+            ['name' => 'Control variant', 'url' => 'https://dowsingmachine.wip/archetypes/iron-thorns#MQN93L'],
         ];
 
-        $data = $builder->buildArticle($archetype, 'en', 'https://expandedtalks.wip/archetypes/iron-thorns', $variants);
+        $data = $builder->buildArticle($archetype, 'en', 'https://dowsingmachine.wip/archetypes/iron-thorns', $variants);
 
         self::assertArrayHasKey('hasPart', $data);
         self::assertCount(2, $data['hasPart']);
@@ -148,7 +148,7 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildEventIncludesLocationAndOrganizer(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $organizer = (new User())->setScreenName('AshKetchum');
         $event = new Event();
@@ -168,7 +168,7 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildEventMarksAsCancelledWhenApplicable(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $organizer = (new User())->setScreenName('AshKetchum');
         $event = new Event();
@@ -184,7 +184,7 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildCreativeWorkIncludesOwner(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $owner = (new User())->setScreenName('MistyWater');
         $deck = new Deck();
@@ -202,7 +202,7 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildCreativeWorkIncludesGenre(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $deck = new Deck();
         $deck->setName('Test Deck');
@@ -217,11 +217,11 @@ final class StructuredDataBuilderTest extends TestCase
         $builder = $this->createBuilder('Expanded Talks');
 
         $items = [
-            ['name' => 'Iron Thorns', 'url' => 'https://expandedtalks.wip/archetypes/iron-thorns'],
-            ['name' => 'Lugia VSTAR', 'url' => 'https://expandedtalks.wip/archetypes/lugia-vstar'],
+            ['name' => 'Iron Thorns', 'url' => 'https://dowsingmachine.wip/archetypes/iron-thorns'],
+            ['name' => 'Lugia VSTAR', 'url' => 'https://dowsingmachine.wip/archetypes/lugia-vstar'],
         ];
 
-        $data = $builder->buildCollectionPage('Archetypes', 'https://expandedtalks.wip/archetypes', $items);
+        $data = $builder->buildCollectionPage('Archetypes', 'https://dowsingmachine.wip/archetypes', $items);
 
         self::assertSame('CollectionPage', $data['@type']);
         self::assertSame('Archetypes', $data['name']);
@@ -234,7 +234,7 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testBuildCollectionPageEmptyList(): void
     {
-        $builder = $this->createBuilder('Expanded Decks');
+        $builder = $this->createBuilder('Dowsing Machine');
 
         $data = $builder->buildCollectionPage('Decks', 'https://expandeddecks.wip/deck', []);
 
@@ -244,13 +244,13 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testOrganizationUrlUsesChannelDomain(): void
     {
-        $builder = $this->createBuilder('Expanded Talks', 'expandedtalks.wip');
+        $builder = $this->createBuilder('Expanded Talks', 'dowsingmachine.wip');
 
         $archetype = (new Archetype())->setName('Test');
 
-        $data = $builder->buildArticle($archetype, 'en', 'https://expandedtalks.wip/archetypes/test');
+        $data = $builder->buildArticle($archetype, 'en', 'https://dowsingmachine.wip/archetypes/test');
 
-        self::assertSame('https://expandedtalks.wip', $data['publisher']['url']);
+        self::assertSame('https://dowsingmachine.wip', $data['publisher']['url']);
     }
 
     public function testBuildArticleAuthorIsPersonAndNeverLeaksEmailOrLegalName(): void
@@ -270,7 +270,7 @@ final class StructuredDataBuilderTest extends TestCase
             ->setAvatarUrl('https://example.test/avatar.png');
         $archetype = (new Archetype())->setName('Iron Thorns')->setAuthor($author);
 
-        $data = $builder->buildArticle($archetype, 'en', 'https://expandedtalks.wip/archetypes/iron-thorns');
+        $data = $builder->buildArticle($archetype, 'en', 'https://dowsingmachine.wip/archetypes/iron-thorns');
 
         self::assertSame('Person', $data['author']['@type']);
         self::assertSame('TestAuthor', $data['author']['name']);
@@ -298,7 +298,7 @@ final class StructuredDataBuilderTest extends TestCase
         // isPublicAuthor defaults to false.
         $archetype = (new Archetype())->setName('Iron Thorns')->setAuthor($author);
 
-        $data = $builder->buildArticle($archetype, 'en', 'https://expandedtalks.wip/archetypes/iron-thorns');
+        $data = $builder->buildArticle($archetype, 'en', 'https://dowsingmachine.wip/archetypes/iron-thorns');
 
         self::assertSame('Person', $data['author']['@type']);
         self::assertSame('SomeOwner', $data['author']['name']);
@@ -314,7 +314,7 @@ final class StructuredDataBuilderTest extends TestCase
 
         $archetype = (new Archetype())->setName('Iron Thorns');
 
-        $data = $builder->buildArticle($archetype, 'en', 'https://expandedtalks.wip/archetypes/iron-thorns');
+        $data = $builder->buildArticle($archetype, 'en', 'https://dowsingmachine.wip/archetypes/iron-thorns');
 
         self::assertSame('Organization', $data['author']['@type']);
         self::assertSame('Expanded Talks', $data['author']['name']);
@@ -329,7 +329,7 @@ final class StructuredDataBuilderTest extends TestCase
         $translation = (new ArchetypeTranslation())->setLocale('fr')->setName('Iron Thorns')->setTranslator($translator);
         $archetype->addTranslation($translation);
 
-        $data = $builder->buildArticle($archetype, 'fr', 'https://expandedtalks.wip/fr/archetypes/iron-thorns');
+        $data = $builder->buildArticle($archetype, 'fr', 'https://dowsingmachine.wip/fr/archetypes/iron-thorns');
 
         self::assertArrayHasKey('translator', $data);
         self::assertSame('Person', $data['translator']['@type']);
@@ -338,26 +338,26 @@ final class StructuredDataBuilderTest extends TestCase
 
     public function testOrganizationPublisherIncludesLogoAndSameAs(): void
     {
-        $builder = $this->createBuilder('Expanded Talks', 'expandedtalks.wip', [
+        $builder = $this->createBuilder('Expanded Talks', 'dowsingmachine.wip', [
             'org_logo' => '/images/logo.png',
             'org_same_as' => "https://bsky.app/profile/x\nhttps://github.com/y",
         ]);
 
         $archetype = (new Archetype())->setName('Iron Thorns');
 
-        $data = $builder->buildArticle($archetype, 'en', 'https://expandedtalks.wip/archetypes/iron-thorns');
+        $data = $builder->buildArticle($archetype, 'en', 'https://dowsingmachine.wip/archetypes/iron-thorns');
 
         $publisher = $data['publisher'];
         self::assertSame('Organization', $publisher['@type']);
         self::assertSame('ImageObject', $publisher['logo']['@type']);
-        self::assertSame('https://expandedtalks.wip/images/logo.png', $publisher['logo']['url']);
+        self::assertSame('https://dowsingmachine.wip/images/logo.png', $publisher['logo']['url']);
         self::assertSame(['https://bsky.app/profile/x', 'https://github.com/y'], $publisher['sameAs']);
     }
 
     /**
      * @param array<string, string> $extraParams
      */
-    private function createBuilder(string $brandName = 'Expanded Decks', string $domain = 'expandeddecks.wip', array $extraParams = []): StructuredDataBuilder
+    private function createBuilder(string $brandName = 'Dowsing Machine', string $domain = 'expandeddecks.wip', array $extraParams = []): StructuredDataBuilder
     {
         $channel = (new Channel())
             ->setCode('test')

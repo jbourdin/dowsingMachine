@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -173,8 +173,11 @@ class BannedCardsSyncService
                     ++$unchanged;
                 }
 
+                // A printing left unresolved by an earlier run (card data not
+                // imported yet) sits under its own placeholder parent: once it
+                // resolves, merge it into the canonical parent for its identity.
                 $this->cardEnricher->enrichPrinting($printing);
-                $this->trackByIdentity($parent, $parentsByIdentityId);
+                $this->reparentByIdentity($printing, $parentsByIdentityId);
                 continue;
             }
 
@@ -250,6 +253,8 @@ class BannedCardsSyncService
     {
         $cardPrinting = $printing->getCardPrinting();
         if (null === $cardPrinting) {
+            $this->trackByIdentity($printing->getBannedCard(), $parentsByIdentityId);
+
             return;
         }
 

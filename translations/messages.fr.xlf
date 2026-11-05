@@ -271,7 +271,7 @@
             <!-- Homepage -->
             <trans-unit id="app.home.hero_title">
                 <source>app.home.hero_title</source>
-                <target>Expanded Decks</target>
+                <target>Dowsing Machine</target>
                 <note>Homepage hero banner</note>
             </trans-unit>
             <trans-unit id="app.home.hero_text">
@@ -303,7 +303,7 @@
             <!-- Dashboard -->
             <trans-unit id="app.dashboard.title">
                 <source>app.dashboard.title</source>
-                <target>Tableau de bord — Expanded Decks</target>
+                <target>Tableau de bord — Dowsing Machine</target>
                 <note>HTML page title for dashboard</note>
             </trans-unit>
             <trans-unit id="app.dashboard.welcome">
@@ -1280,12 +1280,12 @@
             </trans-unit>
             <trans-unit id="app.event.ical.feed_title">
                 <source>app.event.ical.feed_title</source>
-                <target>Expanded Decks — Événements à venir</target>
+                <target>Dowsing Machine — Événements à venir</target>
                 <note>Calendar feed title shown by calendar apps</note>
             </trans-unit>
             <trans-unit id="app.event.ical.feed_title_tag">
                 <source>app.event.ical.feed_title_tag</source>
-                <target>Expanded Decks — Événements tagués « %name% »</target>
+                <target>Dowsing Machine — Événements tagués « %name% »</target>
                 <note>Per-tag calendar feed title shown by calendar apps</note>
             </trans-unit>
             <trans-unit id="app.event.ical.organized_by">
@@ -1300,7 +1300,7 @@
             </trans-unit>
             <trans-unit id="app.event.ical.agenda_feed_title">
                 <source>app.event.ical.agenda_feed_title</source>
-                <target>Agenda Expanded Decks de %name%</target>
+                <target>Agenda Dowsing Machine de %name%</target>
                 <note>Per-user iCal agenda feed title</note>
             </trans-unit>
             <trans-unit id="app.event.agenda.title">
@@ -1320,7 +1320,7 @@
             </trans-unit>
             <trans-unit id="app.event.agenda.feed_section_help">
                 <source>app.event.agenda.feed_section_help</source>
-                <target>Abonne-toi à cette URL dans ton agenda pour garder ton planning Expanded Decks à jour.</target>
+                <target>Abonne-toi à cette URL dans ton agenda pour garder ton planning Dowsing Machine à jour.</target>
                 <note>Help text above the per-user calendar URL field</note>
             </trans-unit>
             <trans-unit id="app.event.agenda.security_warning_title">
@@ -1410,7 +1410,7 @@
             </trans-unit>
             <trans-unit id="app.event.philosophy_notice.body">
                 <source>app.event.philosophy_notice.body</source>
-                <target>Expanded Decks est un projet communautaire indépendant conçu pour promouvoir le format Expanded et faciliter sa découverte en permettant aux nouvelles et nouveaux joueur·euses d&apos;emprunter des decks lors d&apos;événements. Cet outil ne remplace ni ne concurrence les services officiels du Pokémon Organized Play. En créant ou modifiant un événement ici, tu confirmes que tu respecteras l&apos;ensemble des règles et politiques officielles des tournois Pokémon. L&apos;identifiant de tournoi est utilisé uniquement à des fins de référencement — cette plateforme n&apos;a aucune affiliation avec The Pokémon Company.
+                <target>Dowsing Machine est un projet communautaire indépendant conçu pour promouvoir le format Expanded et faciliter sa découverte en permettant aux nouvelles et nouveaux joueur·euses d&apos;emprunter des decks lors d&apos;événements. Cet outil ne remplace ni ne concurrence les services officiels du Pokémon Organized Play. En créant ou modifiant un événement ici, tu confirmes que tu respecteras l&apos;ensemble des règles et politiques officielles des tournois Pokémon. L&apos;identifiant de tournoi est utilisé uniquement à des fins de référencement — cette plateforme n&apos;a aucune affiliation avec The Pokémon Company.
 </target>
                 <note>Legal notice shown on event create/edit forms</note>
             </trans-unit>
@@ -2197,7 +2197,7 @@
             <!-- Footer -->
             <trans-unit id="app.footer.copyright">
                 <source>app.footer.copyright</source>
-                <target>Expanded Decks</target>
+                <target>Dowsing Machine</target>
                 <note>Brand name in footer copyright line</note>
             </trans-unit>
 
@@ -3097,19 +3097,19 @@
             </trans-unit>
             <trans-unit id="app.email.footer">
                 <source>app.email.footer</source>
-                <target>Expanded Decks — Bibliothèque partagée de decks Pokémon TCG</target>
+                <target>Dowsing Machine — Le guide du format Expanded de Pokémon TCG</target>
                 <note>Email footer tagline</note>
             </trans-unit>
 
             <!-- Email: verification -->
             <trans-unit id="app.email.verification_subject">
                 <source>app.email.verification_subject</source>
-                <target>Vérifie ton compte Expanded Decks</target>
+                <target>Vérifie ton compte Dowsing Machine</target>
                 <note>Verification email subject line</note>
             </trans-unit>
             <trans-unit id="app.email.verification_heading">
                 <source>app.email.verification_heading</source>
-                <target>Bienvenue sur Expanded Decks !</target>
+                <target>Bienvenue sur Dowsing Machine !</target>
                 <note>Verification email heading</note>
             </trans-unit>
             <trans-unit id="app.email.verification_body">
@@ -3136,7 +3136,7 @@
             <!-- Email: password reset -->
             <trans-unit id="app.email.password_reset_subject">
                 <source>app.email.password_reset_subject</source>
-                <target>Réinitialise ton mot de passe Expanded Decks</target>
+                <target>Réinitialise ton mot de passe Dowsing Machine</target>
                 <note>Password reset email subject line</note>
             </trans-unit>
             <trans-unit id="app.email.password_reset_heading">
@@ -3714,7 +3714,7 @@
             <!-- Email: Account Deletion -->
             <trans-unit id="app.email.deletion_subject">
                 <source>app.email.deletion_subject</source>
-                <target>Confirme la suppression de ton compte — Expanded Decks</target>
+                <target>Confirme la suppression de ton compte — Dowsing Machine</target>
                 <note>Subject line for account deletion confirmation email</note>
             </trans-unit>
             <trans-unit id="app.email.deletion_heading">
@@ -3724,7 +3724,7 @@
             </trans-unit>
             <trans-unit id="app.email.deletion_body">
                 <source>app.email.deletion_body</source>
-                <target>Tu as demandé la suppression de ton compte Expanded Decks. Clique sur le bouton ci-dessous pour confirmer. Cette action est irréversible — toutes tes données personnelles seront définitivement anonymisées.</target>
+                <target>Tu as demandé la suppression de ton compte Dowsing Machine. Clique sur le bouton ci-dessous pour confirmer. Cette action est irréversible — toutes tes données personnelles seront définitivement anonymisées.</target>
                 <note>Body text in deletion confirmation email</note>
             </trans-unit>
             <trans-unit id="app.email.deletion_button">
@@ -6417,7 +6417,7 @@
             <!-- Meta descriptions for indexable pages (F19.7) -->
             <trans-unit id="app.seo.meta_description.default">
                 <source>app.seo.meta_description.default</source>
-                <target>Une bibliothèque partagée de decks Pokémon TCG Expanded physiques : suis les propriétaires, emprunte des decks pour tes événements et explore les deck lists.</target>
+                <target>Le guide du format Expanded de Pokémon TCG : archétypes et leurs variantes, deck lists, liste des cartes bannies et staples du format.</target>
                 <note>Site-wide default meta description; ultimate fallback when no per-channel default is set</note>
             </trans-unit>
             <trans-unit id="app.archetype.list.meta_description">

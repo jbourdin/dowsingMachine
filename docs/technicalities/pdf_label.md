@@ -63,7 +63,7 @@ The card-sized label contains: deck name, archetype sprites, QR code (linking to
 |   First Last (smaller)  |
 |                         |
 |  ———————————————————————|
-|  expandeddecks.wip     |
+|  expandeddecks.wip      |
 |                         |
 +-------------------------+
    63.5 mm x 88.9 mm
@@ -107,7 +107,7 @@ Two card-sized panels placed **side by side on landscape A4** (book layout):
 |  4 Ancient Booster...   |   |     Screen Name         |
 |  1 Exp. Share SVI 174   |   |   First Last (smaller)  |
 |                         |   |  ———————————————————————|
-|  7 Darkness Energy SVE  |   |  expandeddecks.wip     |
+|  7 Darkness Energy SVE  |   |  expandeddecks.wip      |
 |                         |   |                         |
 +-------------------------+---+-------------------------+
        BACK (deck list)    ↕         FRONT (label)

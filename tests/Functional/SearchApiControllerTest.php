@@ -58,7 +58,7 @@ class SearchApiControllerTest extends AbstractFunctionalTest
 
     public function testQuickSearchOnContentChannel(): void
     {
-        $this->client->request('GET', '/api/search/quick?q=test', server: ['HTTP_HOST' => 'expandedtalks.wip']);
+        $this->client->request('GET', '/api/search/quick?q=test', server: ['HTTP_HOST' => 'dowsingmachine.wip']);
 
         self::assertResponseIsSuccessful();
         self::assertResponseHeaderSame('content-type', 'application/json');

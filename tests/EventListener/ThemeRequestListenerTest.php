@@ -31,7 +31,7 @@ final class ThemeRequestListenerTest extends TestCase
         $projectDir = \dirname(__DIR__, 2);
         $loader = new FilesystemLoader($projectDir.'/templates');
 
-        $channel = (new Channel())->setCode('content')->setDomain('expandedtalks.wip')->setThemeName('expandedtalks');
+        $channel = (new Channel())->setCode('content')->setDomain('dowsingmachine.wip')->setThemeName('expandedtalks');
 
         $listener = new ThemeRequestListener($loader, $projectDir);
         $listener($this->createEvent($channel));
@@ -46,7 +46,7 @@ final class ThemeRequestListenerTest extends TestCase
         $loader = new FilesystemLoader($projectDir.'/templates');
         $originalPaths = $loader->getPaths();
 
-        $channel = (new Channel())->setCode('app')->setDomain('dowsingmachine.wip');
+        $channel = (new Channel())->setCode('app')->setDomain('expandeddecks.wip');
 
         $listener = new ThemeRequestListener($loader, $projectDir);
         $listener($this->createEvent($channel));
@@ -74,7 +74,7 @@ final class ThemeRequestListenerTest extends TestCase
         $loader = new FilesystemLoader($projectDir.'/templates');
         $originalPaths = $loader->getPaths();
 
-        $channel = (new Channel())->setCode('content')->setDomain('expandedtalks.wip')->setThemeName('expandedtalks');
+        $channel = (new Channel())->setCode('content')->setDomain('dowsingmachine.wip')->setThemeName('expandedtalks');
 
         $listener = new ThemeRequestListener($loader, $projectDir);
         $listener($this->createEvent($channel, HttpKernelInterface::SUB_REQUEST));

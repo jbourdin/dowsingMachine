@@ -35,7 +35,7 @@ final class SitemapGeneratorTest extends TestCase
     {
         $this->appChannel = (new Channel())
             ->setCode('app')
-            ->setDomain('dowsingmachine.wip')
+            ->setDomain('expandeddecks.wip')
             ->setEnableDecks(true)
             ->setEnableRegister(true)
             ->setEnableEvents(true)
@@ -45,7 +45,7 @@ final class SitemapGeneratorTest extends TestCase
 
         $this->contentChannel = (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(false)
             ->setEnableRegister(false)
             ->setEnableEvents(false)
@@ -85,10 +85,10 @@ final class SitemapGeneratorTest extends TestCase
 
         self::assertStringContainsString('<?xml version="1.0" encoding="UTF-8"?>', $xml);
         self::assertStringContainsString('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/en/', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/fr/', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/en/pages/about', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/fr/pages/about', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/fr/', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/pages/about', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/fr/pages/about', $xml);
         self::assertStringContainsString('<lastmod>2026-04-01</lastmod>', $xml);
         self::assertStringContainsString('<priority>1.0</priority>', $xml);
         self::assertStringContainsString('<priority>0.6</priority>', $xml);
@@ -105,8 +105,8 @@ final class SitemapGeneratorTest extends TestCase
 
         $xml = $generator->generateCombined($this->contentChannel);
 
-        self::assertStringContainsString('https://expandedtalks.wip/en/archetypes/lugia-vstar', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/fr/archetypes/lugia-vstar', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/archetypes/lugia-vstar', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/fr/archetypes/lugia-vstar', $xml);
         self::assertStringContainsString('<lastmod>2026-03-15</lastmod>', $xml);
         self::assertStringContainsString('<changefreq>weekly</changefreq>', $xml);
         self::assertStringContainsString('<priority>0.8</priority>', $xml);
@@ -137,7 +137,7 @@ final class SitemapGeneratorTest extends TestCase
 
         $xml = $generator->generateCombined($this->appChannel);
 
-        self::assertStringContainsString('https://dowsingmachine.wip/deck/AB3K7N', $xml);
+        self::assertStringContainsString('https://expandeddecks.wip/deck/AB3K7N', $xml);
         self::assertStringContainsString('<lastmod>2026-04-10</lastmod>', $xml);
         self::assertStringContainsString('<priority>0.5</priority>', $xml);
     }
@@ -153,7 +153,7 @@ final class SitemapGeneratorTest extends TestCase
 
         $xml = $generator->generateCombined($this->appChannel);
 
-        self::assertStringContainsString('https://dowsingmachine.wip/event/42', $xml);
+        self::assertStringContainsString('https://expandeddecks.wip/event/42', $xml);
         self::assertStringContainsString('<lastmod>2026-05-01</lastmod>', $xml);
     }
 
@@ -164,9 +164,9 @@ final class SitemapGeneratorTest extends TestCase
         $xml = $generator->generateIndex($this->appChannel);
 
         self::assertStringContainsString('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', $xml);
-        self::assertStringContainsString('https://dowsingmachine.wip/sitemap-pages.xml', $xml);
-        self::assertStringContainsString('https://dowsingmachine.wip/sitemap-decks.xml', $xml);
-        self::assertStringContainsString('https://dowsingmachine.wip/sitemap-events.xml', $xml);
+        self::assertStringContainsString('https://expandeddecks.wip/sitemap-pages.xml', $xml);
+        self::assertStringContainsString('https://expandeddecks.wip/sitemap-decks.xml', $xml);
+        self::assertStringContainsString('https://expandeddecks.wip/sitemap-events.xml', $xml);
         self::assertStringNotContainsString('sitemap-archetypes.xml', $xml);
     }
 
@@ -176,8 +176,8 @@ final class SitemapGeneratorTest extends TestCase
 
         $xml = $generator->generateSection($this->appChannel, 'pages');
 
-        self::assertStringContainsString('https://dowsingmachine.wip/en/', $xml);
-        self::assertStringContainsString('https://dowsingmachine.wip/fr/', $xml);
+        self::assertStringContainsString('https://expandeddecks.wip/en/', $xml);
+        self::assertStringContainsString('https://expandeddecks.wip/fr/', $xml);
         self::assertStringContainsString('<priority>1.0</priority>', $xml);
     }
 
@@ -255,9 +255,9 @@ final class SitemapGeneratorTest extends TestCase
 
         $xml = $generator->generateCombined($this->contentChannel);
 
-        self::assertStringContainsString('https://expandedtalks.wip/en/', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/en/pages/about', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/en/archetypes/lugia-vstar', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/pages/about', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/archetypes/lugia-vstar', $xml);
         self::assertStringNotContainsString('/fr/', $xml);
 
         $document = new \DOMDocument();

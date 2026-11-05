@@ -60,7 +60,7 @@ class AdminMenuCategoryControllerCoverageTest extends AbstractFunctionalTest
         $this->loginAs('admin@example.com');
 
         $news = $this->getCategoryByName('News');
-        $rules = $this->getCategoryByName('Rules & Info');
+        $rules = $this->getCategoryByName('Getting started');
 
         $this->client->request(
             'POST',

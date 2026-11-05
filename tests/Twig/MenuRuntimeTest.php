@@ -282,7 +282,7 @@ class MenuRuntimeTest extends TestCase
 
     private function createChannelContext(): ChannelContext
     {
-        $channel = (new Channel())->setCode('app')->setDomain('dowsingmachine.wip');
+        $channel = (new Channel())->setCode('app')->setDomain('expandeddecks.wip');
 
         $request = new Request();
         $request->attributes->set('_channel', $channel);

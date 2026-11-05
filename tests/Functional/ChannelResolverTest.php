@@ -23,7 +23,7 @@ class ChannelResolverTest extends AbstractFunctionalTest
 {
     public function testAppChannelResolvesFromHostHeader(): void
     {
-        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'dowsingmachine.wip']);
+        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'expandeddecks.wip']);
 
         self::assertResponseIsSuccessful();
 
@@ -34,7 +34,7 @@ class ChannelResolverTest extends AbstractFunctionalTest
 
     public function testContentChannelResolvesFromHostHeader(): void
     {
-        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'expandedtalks.wip']);
+        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'dowsingmachine.wip']);
 
         self::assertResponseIsSuccessful();
 
@@ -56,7 +56,7 @@ class ChannelResolverTest extends AbstractFunctionalTest
 
     public function testAppChannelHasDecksEnabled(): void
     {
-        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'dowsingmachine.wip']);
+        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'expandeddecks.wip']);
 
         self::assertResponseIsSuccessful();
 
@@ -68,7 +68,7 @@ class ChannelResolverTest extends AbstractFunctionalTest
 
     public function testContentChannelHasDecksDisabled(): void
     {
-        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'expandedtalks.wip']);
+        $this->client->request('GET', '/', server: ['HTTP_HOST' => 'dowsingmachine.wip']);
 
         self::assertResponseIsSuccessful();
 

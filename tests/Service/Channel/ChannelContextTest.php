@@ -26,7 +26,7 @@ final class ChannelContextTest extends TestCase
 {
     public function testGetChannelReturnsChannelFromRequestAttribute(): void
     {
-        $channel = (new Channel())->setCode('app')->setDomain('dowsingmachine.wip');
+        $channel = (new Channel())->setCode('app')->setDomain('expandeddecks.wip');
 
         $request = new Request();
         $request->attributes->set('_channel', $channel);
@@ -80,7 +80,7 @@ final class ChannelContextTest extends TestCase
 
     public function testGetChannelReadsFromMainRequestInsideSubRequest(): void
     {
-        $channel = (new Channel())->setCode('app')->setDomain('dowsingmachine.wip');
+        $channel = (new Channel())->setCode('app')->setDomain('expandeddecks.wip');
 
         $mainRequest = new Request();
         $mainRequest->attributes->set('_channel', $channel);

@@ -180,13 +180,13 @@ class AuthControllerTest extends AbstractFunctionalTest
      */
     public function testLoginOnChannelWithoutDecksRedirectsToHome(): void
     {
-        $this->client->request('GET', 'https://expandedtalks.wip/login');
+        $this->client->request('GET', 'https://dowsingmachine.wip/login');
         $this->client->submitForm('Login', [
             '_email' => 'admin@example.com',
             '_password' => 'password',
         ]);
 
-        self::assertResponseRedirects('https://expandedtalks.wip/');
+        self::assertResponseRedirects('https://dowsingmachine.wip/');
     }
 
     public function testRegistrationPreservesTargetPathInLoginRedirect(): void

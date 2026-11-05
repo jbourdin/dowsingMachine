@@ -12,7 +12,7 @@ help: ## Show this help
 install: ## Install project dependencies
 	symfony composer install
 	npm install
-	symfony proxy:domain:attach dowsingmachine dowsing-machine expandedtalks
+	symfony proxy:domain:attach dowsingmachine dowsing-machine expandeddecks
 
 .PHONY: start
 start: ## Start dev server and Docker services
@@ -100,6 +100,7 @@ fixtures: ## Load fixture data, enrich, and rebuild search index
 	symfony console doctrine:database:create
 	symfony console doctrine:migrations:migrate --no-interaction
 	symfony console doctrine:fixtures:load --no-interaction --append
+	symfony console app:listings:seed-intros
 	symfony console app:banned-cards:sync
 	$(MAKE) tcgdex.import
 	symfony console app:enrich:retry
@@ -130,7 +131,6 @@ assets.watch: ## Build frontend assets and watch for changes
 .PHONY: lint-all
 lint-all: lint-yaml lint-i18n cs-fix twig-cs-fix eslint-fix stylelint-fix lint-container phpstan ## Run all linters and fixers
 
-.PHONY: test
 .PHONY: test.db
 test.db: ## Create the PHPUnit database if missing
 	symfony console doctrine:database:create --env=test --if-not-exists

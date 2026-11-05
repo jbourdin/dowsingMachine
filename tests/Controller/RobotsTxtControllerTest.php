@@ -31,7 +31,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $channel = (new Channel())
             ->setCode('app')
-            ->setDomain('dowsingmachine.wip')
+            ->setDomain('expandeddecks.wip')
             ->setEnableDecks(true)
             ->setEnableEvents(true)
             ->setEnableArchetypes(false)
@@ -52,14 +52,14 @@ final class RobotsTxtControllerTest extends TestCase
         self::assertStringContainsString('Disallow: /fr/archetypes', $body);
         self::assertStringContainsString('Disallow: /login', $body);
         self::assertStringContainsString('Disallow: /register', $body);
-        self::assertStringContainsString('Sitemap: https://dowsingmachine.wip/sitemap.xml', $body);
+        self::assertStringContainsString('Sitemap: https://expandeddecks.wip/sitemap.xml', $body);
     }
 
     public function testContentChannelAllowsArchetypes(): void
     {
         $channel = (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableArchetypes(true)
             ->setEnableDecks(false)
             ->setEnableEvents(false)
@@ -75,14 +75,14 @@ final class RobotsTxtControllerTest extends TestCase
         self::assertStringNotContainsString('Allow: /deck/', $body);
         self::assertStringNotContainsString('Allow: /event', $body);
         self::assertStringContainsString('Disallow: /admin/', $body);
-        self::assertStringContainsString('Sitemap: https://expandedtalks.wip/sitemap.xml', $body);
+        self::assertStringContainsString('Sitemap: https://dowsingmachine.wip/sitemap.xml', $body);
     }
 
     public function testContentChannelWithSingleLocaleOmitsFrenchPaths(): void
     {
         $channel = (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableArchetypes(true)
             ->setEnableDecks(false)
             ->setEnableEvents(false)
@@ -100,7 +100,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $channel = (new Channel())
             ->setCode('app')
-            ->setDomain('dowsingmachine.wip')
+            ->setDomain('expandeddecks.wip')
             ->setEnableDecks(true)
             ->setEnableEvents(true)
             ->setEnableArchetypes(false)
@@ -120,7 +120,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $channel = (new Channel())
             ->setCode('app')
-            ->setDomain('dowsingmachine.wip')
+            ->setDomain('expandeddecks.wip')
             ->setEnableArchetypes(false);
 
         $response = $this->invokeController($channel);
@@ -133,7 +133,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $channel = (new Channel())
             ->setCode('app')
-            ->setDomain('dowsingmachine.wip')
+            ->setDomain('expandeddecks.wip')
             ->setEnableArchetypes(false);
 
         $response = $this->invokeController($channel);
@@ -145,12 +145,12 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $appChannel = (new Channel())
             ->setCode('app')
-            ->setDomain('dowsingmachine.wip')
+            ->setDomain('expandeddecks.wip')
             ->setEnableArchetypes(false);
 
         $contentChannel = (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableArchetypes(true);
 
         $appBody = (string) $this->invokeController($appChannel)->getContent();

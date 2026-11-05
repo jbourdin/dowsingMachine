@@ -99,7 +99,10 @@ class AdminHomepageControllerTest extends AbstractFunctionalTest
         $entityManager = static::getContainer()->get('doctrine.orm.entity_manager');
         \assert($entityManager instanceof \Doctrine\ORM\EntityManagerInterface);
         $layoutRepository = $entityManager->getRepository(\App\Entity\HomepageLayout::class);
-        $layouts = $layoutRepository->findAll();
+        $layouts = array_values(array_filter(
+            $layoutRepository->findAll(),
+            static fn (\App\Entity\HomepageLayout $layout): bool => 'app' === $layout->getChannel()?->getCode(),
+        ));
         self::assertNotEmpty($layouts, 'Save should have created at least one HomepageLayout.');
         $layout = $layouts[\count($layouts) - 1];
 
@@ -143,7 +146,10 @@ class AdminHomepageControllerTest extends AbstractFunctionalTest
         $entityManager = static::getContainer()->get('doctrine.orm.entity_manager');
         \assert($entityManager instanceof \Doctrine\ORM\EntityManagerInterface);
         $layoutRepository = $entityManager->getRepository(\App\Entity\HomepageLayout::class);
-        $layouts = $layoutRepository->findAll();
+        $layouts = array_values(array_filter(
+            $layoutRepository->findAll(),
+            static fn (\App\Entity\HomepageLayout $layout): bool => 'content' === $layout->getChannel()?->getCode(),
+        ));
         $layout = $layouts[\count($layouts) - 1];
 
         $englishTranslation = $layout->getTranslation('en');
@@ -191,7 +197,10 @@ class AdminHomepageControllerTest extends AbstractFunctionalTest
         $entityManager = static::getContainer()->get('doctrine.orm.entity_manager');
         \assert($entityManager instanceof \Doctrine\ORM\EntityManagerInterface);
         $layoutRepository = $entityManager->getRepository(\App\Entity\HomepageLayout::class);
-        $layouts = $layoutRepository->findAll();
+        $layouts = array_values(array_filter(
+            $layoutRepository->findAll(),
+            static fn (\App\Entity\HomepageLayout $layout): bool => 'app' === $layout->getChannel()?->getCode(),
+        ));
         $layout = $layouts[\count($layouts) - 1];
 
         self::assertNull($layout->getTranslation('en')?->getTitle());

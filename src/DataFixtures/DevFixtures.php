@@ -84,10 +84,10 @@ class DevFixtures extends Fixture
         // The optional first/last publishedAt args showcase the F2.27 freshness UI:
         // mix archetypes published months ago (some untouched, some recently
         // updated) with brand-new ones.
-        $archetypeIronThorns = $this->createArchetype($manager, 'Iron Thorns ex', ['iron-thorns'], true, ['Aggressive', 'Spread'], 2, new \DateTimeImmutable('-6 months'), new \DateTimeImmutable('-3 weeks'));
+        $archetypeIronThorns = $this->createArchetype($manager, 'Iron Thorns ex', ['iron-thorns'], true, ['Aggressive', 'Spread'], 4, new \DateTimeImmutable('-6 months'), new \DateTimeImmutable('-3 weeks'));
         $this->addArchetypeTranslation($manager, $archetypeIronThorns, 'en', 'Iron Thorns ex', 'A powerful **Iron Thorns ex** deck built around the Paradox Pokemon. Uses heavy energy acceleration and spread damage to overwhelm opponents.');
 
-        $archetypeAncientBox = $this->createArchetype($manager, 'Ancient Box', ['roaring-moon', 'flutter-mane'], true, ['Toolbox', 'Aggressive'], 7, new \DateTimeImmutable('-9 months'));
+        $archetypeAncientBox = $this->createArchetype($manager, 'Ancient Box', ['roaring-moon', 'flutter-mane'], true, ['Toolbox', 'Aggressive'], 18, new \DateTimeImmutable('-9 months'));
         $this->addArchetypeTranslation($manager, $archetypeAncientBox, 'en', 'Ancient Box', 'The **Ancient Box** archetype combines multiple Ancient Pokemon to leverage Ancient support cards for a versatile attack strategy.');
         $this->addArchetypeTranslation($manager, $archetypeAncientBox, 'fr', 'Box Anciens', "L'archétype **Box Anciens** combine plusieurs Pokémon Anciens pour tirer parti des cartes de support Anciennes dans une stratégie d'attaque polyvalente.");
 
@@ -109,15 +109,15 @@ On en est au point où de nombreuses listes essaient des techs non conventionnel
 MARKDOWN;
         $this->addArchetypeTranslation($manager, $archetypeRegidrago, 'fr', 'Regidrago', $regidragoDescriptionFr);
 
-        $archetypeKyurem = $this->createArchetype($manager, 'Kyurem', ['kyurem'], true, ['Spread'], 5, new \DateTimeImmutable('-4 months'), new \DateTimeImmutable('-2 weeks'));
+        $archetypeKyurem = $this->createArchetype($manager, 'Kyurem', ['kyurem'], true, ['Spread'], 37, new \DateTimeImmutable('-4 months'), new \DateTimeImmutable('-2 weeks'));
         $this->addArchetypeTranslation($manager, $archetypeKyurem, 'en', 'Kyurem', 'A **Kyurem** archetype that punishes Basic-heavy boards with its spread attack, often teched into [[archetype:regidrago]] builds.');
 
-        $archetypeSalamence = $this->createArchetype($manager, 'Salamence ex', ['salamence'], true, ['Aggressive'], 4, new \DateTimeImmutable('-5 months'));
+        $archetypeSalamence = $this->createArchetype($manager, 'Salamence ex', ['salamence'], true, ['Aggressive'], 36, new \DateTimeImmutable('-5 months'));
         $this->addArchetypeTranslation($manager, $archetypeSalamence, 'en', 'Salamence ex', 'The **Salamence ex** archetype leverages its massive damage output to oneshot virtually anything. Commonly used as a finisher in [[archetype:regidrago]] lists.');
 
-        $archetypeLugia = $this->createArchetype($manager, 'Lugia Archeops', ['lugia', 'archeops'], false, [], 3);
+        $archetypeLugia = $this->createArchetype($manager, 'Lugia Archeops', ['lugia', 'archeops'], false, [], 8);
 
-        $archetypeCharizardEevee = $this->createArchetype($manager, 'Charizard Flareon', ['charizard', 'eevee'], true, ['Aggressive', 'Combo'], 6, new \DateTimeImmutable('-2 weeks'));
+        $archetypeCharizardEevee = $this->createArchetype($manager, 'Charizard Flareon', ['charizard', 'eevee'], true, ['Aggressive', 'Combo'], 19, new \DateTimeImmutable('-2 weeks'));
         $this->addArchetypeTranslation($manager, $archetypeCharizardEevee, 'en', 'Charizard Flareon', 'A **Charizard & Flareon** deck that evolves Eevee into Flareon for energy acceleration, fueling Charizard\'s massive fire attacks.');
         $this->addArchetypeTranslation($manager, $archetypeCharizardEevee, 'fr', 'Dracaufeu Pyroli', "Un deck **Dracaufeu & Pyroli** qui fait évoluer Évoli en Pyroli pour l'accélération d'énergie, alimentant les attaques de feu massives de Dracaufeu.");
 
@@ -155,13 +155,51 @@ MARKDOWN;
         $charizardFlareon->setPublic(true);
         $this->createCharizardFlareonDeckVersion($manager, $charizardFlareon);
 
-        $archetypeShadowRider = $this->createArchetype($manager, 'Shadow Rider Calyrex', ['calyrex-shadow-rider'], true, ['Control'], 1, new \DateTimeImmutable('-7 months'), new \DateTimeImmutable('-2 months'));
+        $archetypeShadowRider = $this->createArchetype($manager, 'Shadow Rider Calyrex', ['calyrex-shadow-rider'], true, ['Control'], 3, new \DateTimeImmutable('-7 months'), new \DateTimeImmutable('-2 months'));
         $this->addArchetypeTranslation($manager, $archetypeShadowRider, 'en', 'Shadow Rider Calyrex', 'A **Shadow Rider Calyrex VMAX** control deck that uses hand disruption and item lock to starve the opponent of resources.');
         $shadowRider = $this->createDeck($manager, $admin, 'Shadow Rider Calyrex');
         $shadowRider->setArchetype($archetypeShadowRider);
         $shadowRider->setLanguages(['en', 'jp']);
         $shadowRider->setPublic(true);
         $this->createShadowRiderDeckVersion($manager, $shadowRider);
+
+        // The rest of the production catalog, in production order (positions
+        // match prod; the archetypes above fill the gaps). No tags or
+        // descriptions: they only make the catalog and sitemap realistic.
+        foreach ([
+            1 => ['Mega Absol', ['absol-mega']],
+            2 => ['Evo Vileplume', ['vileplume']],
+            5 => ['Snorlax Stall', ['snorlax']],
+            6 => ['Gardevoir', ['gardevoir']],
+            7 => ['Ceruledge', ['ceruledge']],
+            9 => ['Electro Rain OTK', []],
+            10 => ['Mew VMAX', ['mew']],
+            11 => ['Miraidon', ['miraidon']],
+            12 => ['Dusknoir Spread', ['dusknoir']],
+            13 => ['ADP', ['arceus', 'dialga', 'palkia']],
+            14 => ['Meloetta OTK', ['meloetta']],
+            15 => ['Tsareena', ['tsareena']],
+            16 => ['Slowking', ['slowking']],
+            17 => ['Palafin', ['palafin']],
+            20 => ['Kangaskhan Tank', ['kangaskhan']],
+            21 => ['Hide n Sneak', []],
+            22 => ["Archie's Baxcalibur", ['baxcalibur']],
+            23 => ['Jellicent', ['jellicent']],
+            24 => ['Blissey', ['blissey']],
+            25 => ['Articuno Lock', ['articuno']],
+            26 => ['Tatsugiri', ['tatsugiri']],
+            27 => ['Lost Box', []],
+            28 => ['Trevnoir', ['trevenant', 'dusknoir']],
+            29 => ['Zoroark Checkmate', ['zoroark']],
+            30 => ['Dragapult', ['dragapult']],
+            31 => ['United Wings', []],
+            32 => ['Gourgeist', ['gourgeist']],
+            33 => ['Welder Box', []],
+            34 => ['Great Tusk', ['great-tusk']],
+            35 => ['Eternatus', ['eternatus']],
+        ] as $position => [$name, $pokemonSlugs]) {
+            $this->createArchetype($manager, $name, $pokemonSlugs, true, [], $position, new \DateTimeImmutable(\sprintf('-%d weeks', 40 - $position)));
+        }
 
         // Update Regidrago translations with a deck link now that decks exist
         $regidragoTranslationEn = $archetypeRegidrago->getTranslation('en');
@@ -194,6 +232,7 @@ MARKDOWN;
         $this->createAdminNotifications($manager, $admin, $borrower, $todayEvent, $pendingBorrow);
         $this->createCmsFixtures($manager, $contentChannel);
         $this->createHomepageFixtures($manager, $lenderDeck, $futureEvent, $appChannel);
+        $this->createContentHomepageFixtures($manager, $contentChannel);
         $this->createTcgdexSetMappings($manager);
 
         $manager->flush();
@@ -1583,633 +1622,246 @@ MARKDOWN);
         $manager->persist($n3);
     }
 
+    /**
+     * Content-channel CMS pages, mirroring the production menu structure
+     * (About, News, Getting started, footer Legal) with fixture-only copy.
+     *
+     * The banned/staple listing intro pages are not seeded here: `make fixtures`
+     * runs `app:listings:seed-intros` like the production entrypoint, and the
+     * functional tests seed their own intro pages.
+     */
     private function createCmsFixtures(ObjectManager $manager, Channel $contentChannel): void
     {
-        // --- Menu categories ---
-
-        $newsCategory = new MenuCategory();
-        $newsCategory->setPosition(1);
-        $newsCategory->setChannel($contentChannel);
-        $manager->persist($newsCategory);
-
-        $newsEn = new MenuCategoryTranslation();
-        $newsEn->setMenuCategory($newsCategory);
-        $newsEn->setLocale('en');
-        $newsEn->setName('News');
-        $newsCategory->addTranslation($newsEn);
-        $manager->persist($newsEn);
-
-        $newsFr = new MenuCategoryTranslation();
-        $newsFr->setMenuCategory($newsCategory);
-        $newsFr->setLocale('fr');
-        $newsFr->setName('Actualités');
-        $newsCategory->addTranslation($newsFr);
-        $manager->persist($newsFr);
-
-        $rulesCategory = new MenuCategory();
-        $rulesCategory->setPosition(2);
-        $rulesCategory->setChannel($contentChannel);
-        $manager->persist($rulesCategory);
-
-        $rulesEn = new MenuCategoryTranslation();
-        $rulesEn->setMenuCategory($rulesCategory);
-        $rulesEn->setLocale('en');
-        $rulesEn->setName('Rules & Info');
-        $rulesCategory->addTranslation($rulesEn);
-        $manager->persist($rulesEn);
-
-        $rulesFr = new MenuCategoryTranslation();
-        $rulesFr->setMenuCategory($rulesCategory);
-        $rulesFr->setLocale('fr');
-        $rulesFr->setName('Règles & Infos');
-        $rulesCategory->addTranslation($rulesFr);
-        $manager->persist($rulesFr);
-
-        // --- Welcome page (shown on homepage) ---
-
-        $welcomePage = new Page();
-        $welcomePage->setChannel($contentChannel);
-        $welcomePage->setSlug('welcome');
-        $welcomePage->setIsPublished(true);
-        $this->backdatePublication($welcomePage, new \DateTimeImmutable('-10 months'), new \DateTimeImmutable('-1 month'));
-        $manager->persist($welcomePage);
-
-        $welcomeEn = new PageTranslation();
-        $welcomeEn->setPage($welcomePage);
-        $welcomeEn->setLocale('en');
-        $welcomeEn->setTitle('Welcome to Dowsing Machine');
-        $welcomeEn->setContent(<<<'MD'
-## Your shared deck library
-
-Dowsing Machine makes it easy to **manage a shared library of physical Pokemon TCG decks** for your local community. Register your decks, lend them for events, and keep track of who has what.
-
-### How it works
-
-1. **Register your decks** — import your deck list in PTCG text format, validated against TCGdex
-2. **Share for events** — other players can request to borrow a deck for upcoming events
-3. **Track everything** — see who borrowed what, when, and get notified at every step
-
-Jump in and explore the library!
-MD);
-        $welcomePage->addTranslation($welcomeEn);
-        $manager->persist($welcomeEn);
-
-        $welcomeFr = new PageTranslation();
-        $welcomeFr->setPage($welcomePage);
-        $welcomeFr->setLocale('fr');
-        $welcomeFr->setTitle('Bienvenue sur Dowsing Machine');
-        $welcomeFr->setContent(<<<'MD'
-## Votre bibliothèque de decks partagée
-
-Dowsing Machine facilite la **gestion d'une bibliothèque partagée de decks physiques Pokemon TCG** pour votre communauté locale. Enregistrez vos decks, prêtez-les pour des événements et suivez qui a quoi.
-
-### Comment ça marche
-
-1. **Enregistrez vos decks** — importez votre liste au format texte PTCG, validée via TCGdex
-2. **Partagez pour les événements** — d'autres joueurs peuvent demander à emprunter un deck
-3. **Suivez tout** — voyez qui a emprunté quoi, quand, et recevez des notifications à chaque étape
-
-Plongez et explorez la bibliothèque !
-MD);
-        $welcomePage->addTranslation($welcomeFr);
-        $manager->persist($welcomeFr);
-
-        // --- News articles ---
-
-        $news1 = new Page();
-        $news1->setChannel($contentChannel);
-        $news1->setSlug('season-2026-kickoff');
-        $news1->setMenuCategory($newsCategory);
-        $news1->setIsPublished(true);
-        $this->backdatePublication($news1, new \DateTimeImmutable('-5 months'));
-        $manager->persist($news1);
-
-        $news1En = new PageTranslation();
-        $news1En->setPage($news1);
-        $news1En->setLocale('en');
-        $news1En->setTitle('Season 2026 is here!');
-        $news1En->setContent(<<<'MD'
-The new Pokemon TCG season is upon us! Here's what's new for the Expanded format community:
-
-## New rotation policy
-
-The Expanded format continues to include all cards from **Black & White** onward. No rotation this year — your favorite decks are safe.
-
-## Upcoming events
-
-We have several League Challenges and local tournaments lined up. Check the [events page](/events) to see what's coming up near you.
-
-## New deck additions
-
-Our library has grown to over **20 decks** available for borrowing. If you have decks you'd like to share, register them and help the community!
-MD);
-        $news1->addTranslation($news1En);
-        $manager->persist($news1En);
-
-        $news1Fr = new PageTranslation();
-        $news1Fr->setPage($news1);
-        $news1Fr->setLocale('fr');
-        $news1Fr->setTitle('La saison 2026 est lancée !');
-        $news1Fr->setContent(<<<'MD'
-La nouvelle saison Pokemon TCG est là ! Voici les nouveautés pour la communauté Expanded :
-
-## Nouvelle politique de rotation
-
-Le format Expanded continue d'inclure toutes les cartes depuis **Noir & Blanc**. Pas de rotation cette année — vos decks préférés sont en sécurité.
-
-## Événements à venir
-
-Plusieurs League Challenges et tournois locaux sont prévus. Consultez la [page événements](/events) pour voir ce qui se passe près de chez vous.
-
-## Nouveaux decks ajoutés
-
-Notre bibliothèque compte désormais plus de **20 decks** disponibles à l'emprunt. Si vous avez des decks à partager, enregistrez-les et aidez la communauté !
-MD);
-        $news1->addTranslation($news1Fr);
-        $manager->persist($news1Fr);
-
-        $news2 = new Page();
-        $news2->setChannel($contentChannel);
-        $news2->setSlug('borrowing-guide');
-        $news2->setMenuCategory($newsCategory);
-        $news2->setIsPublished(true);
-        $this->backdatePublication($news2, new \DateTimeImmutable('-4 months'), new \DateTimeImmutable('-2 weeks'));
-        $manager->persist($news2);
-
-        $news2En = new PageTranslation();
-        $news2En->setPage($news2);
-        $news2En->setLocale('en');
-        $news2En->setTitle('How to borrow a deck for your next event');
-        $news2En->setContent(<<<'MD'
-New to Dowsing Machine? Here's a quick guide on how to borrow a deck for your next event.
-
-## Step 1: Find a deck
-
-Browse the [deck catalog](/decks) and find a deck that suits your playstyle. Each deck page shows the full card list and availability status.
-
-## Step 2: Request to borrow
-
-On the deck page, select the event you want to borrow for and click **Request**. The deck owner will be notified.
-
-## Step 3: Pick up at the event
-
-Once approved, meet the deck owner (or their designated staff) at the event to collect the deck. The handoff is tracked in the system.
-
-## Step 4: Return after the event
-
-After playing, return the deck to the owner or staff. Everyone gets notified when the deck is back.
-
-That's it! Happy playing.
-MD);
-        $news2->addTranslation($news2En);
-        $manager->persist($news2En);
-
-        $news3 = new Page();
-        $news3->setChannel($contentChannel);
-        $news3->setSlug('march-league-challenge');
-        $news3->setMenuCategory($newsCategory);
-        $news3->setIsPublished(true);
-        $this->backdatePublication($news3, new \DateTimeImmutable('-2 months'));
-        $manager->persist($news3);
-
-        $news3En = new PageTranslation();
-        $news3En->setPage($news3);
-        $news3En->setLocale('en');
-        $news3En->setTitle('March League Challenge recap');
-        $news3En->setContent(<<<'MD'
-Our March League Challenge was a blast! 16 players battled it out in Swiss rounds.
-
-## Top 4
-
-1. **Lugia VSTAR / Archeops** — piloted by Alex
-2. **Mew VMAX / Genesect V** — piloted by Jordan
-3. **Gardevoir ex** — piloted by Sam
-4. **Lost Zone Box** — piloted by Casey
-
-Congratulations to all participants! See you at the next event.
-MD);
-        $news3->addTranslation($news3En);
-        $manager->persist($news3En);
-
-        $news3Fr = new PageTranslation();
-        $news3Fr->setPage($news3);
-        $news3Fr->setLocale('fr');
-        $news3Fr->setTitle('Résumé du League Challenge de mars');
-        $news3Fr->setContent(<<<'MD'
-Notre League Challenge de mars était génial ! 16 joueurs se sont affrontés en rondes suisses.
-
-## Top 4
-
-1. **Lugia VSTAR / Archeops** — piloté par Alex
-2. **Mew VMAX / Genesect V** — piloté par Jordan
-3. **Gardevoir ex** — piloté par Sam
-4. **Lost Zone Box** — piloté par Casey
-
-Félicitations à tous les participants ! À bientôt au prochain événement.
-MD);
-        $news3->addTranslation($news3Fr);
-        $manager->persist($news3Fr);
-
-        $news4 = new Page();
-        $news4->setChannel($contentChannel);
-        $news4->setSlug('new-decks-february');
-        $news4->setMenuCategory($newsCategory);
-        $news4->setIsPublished(true);
-        $this->backdatePublication($news4, new \DateTimeImmutable('-3 months'), new \DateTimeImmutable('-7 weeks'));
-        $manager->persist($news4);
-
-        $news4En = new PageTranslation();
-        $news4En->setPage($news4);
-        $news4En->setLocale('en');
-        $news4En->setTitle('5 new decks added to the library');
-        $news4En->setContent(<<<'MD'
-We're excited to announce that five new decks have been added to our shared library:
-
-- **Charizard ex / Pidgeot ex** — aggressive fire build
-- **Iron Hands ex** — Future Box variant
-- **Roaring Moon ex** — Ancient turbo
-- **Snorlax Stall** — the classic wall
-- **Raging Bolt ex / Ogerpon ex** — energy acceleration combo
-
-All are available for borrowing at upcoming events. Check the [deck catalog](/decks) for details!
-MD);
-        $news4->addTranslation($news4En);
-        $manager->persist($news4En);
-
-        $news5 = new Page();
-        $news5->setChannel($contentChannel);
-        $news5->setSlug('label-printing-live');
-        $news5->setMenuCategory($newsCategory);
-        $news5->setIsPublished(true);
-        $this->backdatePublication($news5, new \DateTimeImmutable('-6 weeks'));
-        $manager->persist($news5);
-
-        $news5En = new PageTranslation();
-        $news5En->setPage($news5);
-        $news5En->setLocale('en');
-        $news5En->setTitle('Zebra label printing is now live');
-        $news5En->setContent(<<<'MD'
-Deck owners can now print Zebra labels directly from the deck page! Each label includes:
-
-- Deck name and short tag
-- QR code for quick scanning at events
-- Owner name and deck archetype
-
-Just click **Print Label** on any deck you own. You'll need a Zebra printer connected via PrintNode.
-MD);
-        $news5->addTranslation($news5En);
-        $manager->persist($news5En);
-
-        $news6 = new Page();
-        $news6->setChannel($contentChannel);
-        $news6->setSlug('community-guidelines');
-        $news6->setMenuCategory($newsCategory);
-        $news6->setIsPublished(true);
-        $this->backdatePublication($news6, new \DateTimeImmutable('-3 weeks'), new \DateTimeImmutable('-5 days'));
-        $manager->persist($news6);
-
-        $news6En = new PageTranslation();
-        $news6En->setPage($news6);
-        $news6En->setLocale('en');
-        $news6En->setTitle('Community guidelines update');
-        $news6En->setContent(<<<'MD'
-We've updated our community guidelines to better reflect how the platform works. Key points:
-
-- Be respectful to deck owners and fellow borrowers
-- Report any issues with borrowed decks promptly
-- Organizers should verify deck returns before closing events
-- Repeated no-shows may result in borrowing restrictions
-
-Read the full [borrowing rules](/pages/borrowing-rules) for details.
-MD);
-        $news6->addTranslation($news6En);
-        $manager->persist($news6En);
-
-        $news7 = new Page();
-        $news7->setChannel($contentChannel);
-        $news7->setSlug('spring-tournament-series');
-        $news7->setMenuCategory($newsCategory);
-        $news7->setIsPublished(true);
-        $this->backdatePublication($news7, new \DateTimeImmutable('-12 days'));
-        $manager->persist($news7);
-
-        $news7En = new PageTranslation();
-        $news7En->setPage($news7);
-        $news7En->setLocale('en');
-        $news7En->setTitle('Spring Tournament Series announced');
-        $news7En->setContent(<<<'MD'
-We're kicking off a Spring Tournament Series with three events over April and May!
-
-## Schedule
-
-- **April 5** — League Challenge at the usual venue
-- **April 19** — Special side event with promo prizes
-- **May 10** — Season finale with top cut
-
-Registration opens one week before each event. Deck borrowing will be available for all three.
-MD);
-        $news7->addTranslation($news7En);
-        $manager->persist($news7En);
-
-        $news8 = new Page();
-        $news8->setChannel($contentChannel);
-        $news8->setSlug('deck-enrichment-update');
-        $news8->setMenuCategory($newsCategory);
-        $news8->setIsPublished(true);
-        $this->backdatePublication($news8, new \DateTimeImmutable('-3 days'));
-        $manager->persist($news8);
-
-        $news8En = new PageTranslation();
-        $news8En->setPage($news8);
-        $news8En->setLocale('en');
-        $news8En->setTitle('Card images now auto-loaded from TCGdex');
-        $news8En->setContent(<<<'MD'
-Great news for deck browsing! Card images are now automatically fetched from TCGdex when a deck list is imported.
-
-This means every card in a deck shows its actual artwork — making it much easier to browse and identify cards at a glance.
-
-The enrichment happens in the background, so it may take a few seconds after importing a new deck list.
-MD);
-        $news8->addTranslation($news8En);
-        $manager->persist($news8En);
-
-        // --- Rules page (in Rules & Info category) ---
-
-        $rulesPage = new Page();
-        $rulesPage->setChannel($contentChannel);
-        $rulesPage->setSlug('borrowing-rules');
-        $rulesPage->setMenuCategory($rulesCategory);
-        $rulesPage->setIsPublished(true);
-        $this->backdatePublication($rulesPage, new \DateTimeImmutable('-11 months'), new \DateTimeImmutable('-2 months'));
-        $manager->persist($rulesPage);
-
-        $rulesPageEn = new PageTranslation();
-        $rulesPageEn->setPage($rulesPage);
-        $rulesPageEn->setLocale('en');
-        $rulesPageEn->setTitle('Borrowing Rules');
-        $rulesPageEn->setContent(<<<'MD'
-Please follow these rules when borrowing decks from the shared library:
-
-1. **Return on time** — Decks must be returned before the end of the event or as agreed with the owner
-2. **Handle with care** — These are real cards that belong to someone. Keep them sleeved and protected
-3. **No modifications** — Do not add, remove, or swap cards without the owner's permission
-4. **Report damage** — If any card is damaged during your use, inform the owner immediately
-5. **One deck per event** — You may borrow one deck per event unless the owner agrees otherwise
-
-Repeated violations may result in borrowing restrictions. Thank you for respecting the community!
-MD);
-        $rulesPage->addTranslation($rulesPageEn);
-        $manager->persist($rulesPageEn);
-
-        $rulesPageFr = new PageTranslation();
-        $rulesPageFr->setPage($rulesPage);
-        $rulesPageFr->setLocale('fr');
-        $rulesPageFr->setTitle('Règles d\'emprunt');
-        $rulesPageFr->setContent(<<<'MD'
-Veuillez respecter ces règles lors de l'emprunt de decks de la bibliothèque partagée :
-
-1. **Rendez à l'heure** — Les decks doivent être rendus avant la fin de l'événement ou selon l'accord avec le propriétaire
-2. **Manipulez avec soin** — Ce sont de vraies cartes qui appartiennent à quelqu'un. Gardez-les protégées
-3. **Pas de modifications** — N'ajoutez, ne retirez ou n'échangez pas de cartes sans l'accord du propriétaire
-4. **Signalez les dégâts** — Si une carte est endommagée, informez immédiatement le propriétaire
-5. **Un deck par événement** — Vous pouvez emprunter un deck par événement sauf accord du propriétaire
-
-Les violations répétées peuvent entraîner des restrictions d'emprunt. Merci de respecter la communauté !
-MD);
-        $rulesPage->addTranslation($rulesPageFr);
-        $manager->persist($rulesPageFr);
-
-        // --- Draft page (unpublished, for testing editor preview) ---
-
-        $draftPage = new Page();
-        $draftPage->setChannel($contentChannel);
-        $draftPage->setSlug('upcoming-features');
-        $draftPage->setIsPublished(false);
-        $draftPage->setNoIndex(true);
-        $manager->persist($draftPage);
-
-        $draftEn = new PageTranslation();
-        $draftEn->setPage($draftPage);
-        $draftEn->setLocale('en');
-        $draftEn->setTitle('Upcoming Features (Draft)');
-        $draftEn->setContent(<<<'MD'
-> **This page is a draft and not visible to regular users.**
-
-## Planned features
-
-- Zebra label printing for deck boxes
-- QR code scanning for deck identification
-- iCal calendar feeds for events
-- Visual deck list with card mosaic
-
-Stay tuned!
-MD);
-        $draftPage->addTranslation($draftEn);
-        $manager->persist($draftEn);
-
-        // --- Footer categories ---
-
-        $projectCategory = new MenuCategory();
-        $projectCategory->setPosition(1);
-        $projectCategory->setIsFooter(true);
-        $projectCategory->setChannel($contentChannel);
-        $manager->persist($projectCategory);
-
-        $projectEn = new MenuCategoryTranslation();
-        $projectEn->setMenuCategory($projectCategory);
-        $projectEn->setLocale('en');
-        $projectEn->setName('The Project');
-        $projectCategory->addTranslation($projectEn);
-        $manager->persist($projectEn);
-
-        $projectFr = new MenuCategoryTranslation();
-        $projectFr->setMenuCategory($projectCategory);
-        $projectFr->setLocale('fr');
-        $projectFr->setName('Le Projet');
-        $projectCategory->addTranslation($projectFr);
-        $manager->persist($projectFr);
-
-        $philosophyPage = new Page();
-        $philosophyPage->setChannel($contentChannel);
-        $philosophyPage->setSlug('the-philosophy');
-        $philosophyPage->setMenuCategory($projectCategory);
-        $philosophyPage->setIsPublished(true);
-        $philosophyPage->setPosition(1);
-        $this->backdatePublication($philosophyPage, new \DateTimeImmutable('-1 year'));
-        $manager->persist($philosophyPage);
-
-        $philosophyEn = new PageTranslation();
-        $philosophyEn->setPage($philosophyPage);
-        $philosophyEn->setLocale('en');
-        $philosophyEn->setTitle('The Philosophy');
-        $philosophyEn->setContent(<<<'MD'
-        ## Our Philosophy
-
-        Dowsing Machine was born from a simple idea: **making the Expanded format accessible to everyone**.
-
-        We believe that sharing physical decks within a community is the best way to grow the format and let players discover new strategies without the barrier of building a full collection.
-        MD);
-        $philosophyPage->addTranslation($philosophyEn);
-        $manager->persist($philosophyEn);
-
-        $philosophyFr = new PageTranslation();
-        $philosophyFr->setPage($philosophyPage);
-        $philosophyFr->setLocale('fr');
-        $philosophyFr->setTitle('La Philosophie');
-        $philosophyFr->setContent(<<<'MD'
-        ## Notre Philosophie
-
-        Dowsing Machine est né d'une idée simple : **rendre le format Expanded accessible à tous**.
-
-        Nous croyons que le partage de decks physiques au sein d'une communauté est le meilleur moyen de faire grandir le format et de permettre aux joueurs de découvrir de nouvelles stratégies sans la contrainte de constituer une collection complète.
-        MD);
-        $philosophyPage->addTranslation($philosophyFr);
-        $manager->persist($philosophyFr);
-
-        $teamPage = new Page();
-        $teamPage->setChannel($contentChannel);
-        $teamPage->setSlug('the-team');
-        $teamPage->setMenuCategory($projectCategory);
-        $teamPage->setIsPublished(true);
-        $teamPage->setPosition(2);
-        $this->backdatePublication($teamPage, new \DateTimeImmutable('-8 months'), new \DateTimeImmutable('-3 weeks'));
-        $manager->persist($teamPage);
-
-        $teamEn = new PageTranslation();
-        $teamEn->setPage($teamPage);
-        $teamEn->setLocale('en');
-        $teamEn->setTitle('The Team');
-        $teamEn->setContent(<<<'MD'
-        ## The Team
-
-        Dowsing Machine is maintained by a small group of passionate Pokémon TCG players who love the Expanded format.
-
-        Want to contribute? Check out our [GitHub repository](https://github.com/jbourdin/dowsingMachine).
-        MD);
-        $teamPage->addTranslation($teamEn);
-        $manager->persist($teamEn);
-
-        $teamFr = new PageTranslation();
-        $teamFr->setPage($teamPage);
-        $teamFr->setLocale('fr');
-        $teamFr->setTitle("L'Équipe");
-        $teamFr->setContent(<<<'MD'
-        ## L'Équipe
-
-        Dowsing Machine est maintenu par un petit groupe de joueurs passionnés du JCC Pokémon qui adorent le format Expanded.
-
-        Envie de contribuer ? Consultez notre [dépôt GitHub](https://github.com/jbourdin/dowsingMachine).
-        MD);
-        $teamPage->addTranslation($teamFr);
-        $manager->persist($teamFr);
-
-        $legalCategory = new MenuCategory();
-        $legalCategory->setPosition(2);
-        $legalCategory->setIsFooter(true);
-        $legalCategory->setChannel($contentChannel);
-        $manager->persist($legalCategory);
-
-        $legalEn = new MenuCategoryTranslation();
-        $legalEn->setMenuCategory($legalCategory);
-        $legalEn->setLocale('en');
-        $legalEn->setName('Legal');
-        $legalCategory->addTranslation($legalEn);
-        $manager->persist($legalEn);
-
-        $legalFr = new MenuCategoryTranslation();
-        $legalFr->setMenuCategory($legalCategory);
-        $legalFr->setLocale('fr');
-        $legalFr->setName('Légal');
-        $legalCategory->addTranslation($legalFr);
-        $manager->persist($legalFr);
-
-        $legalNoticePage = new Page();
-        $legalNoticePage->setChannel($contentChannel);
-        $legalNoticePage->setSlug('legal-notice');
-        $legalNoticePage->setMenuCategory($legalCategory);
-        $legalNoticePage->setIsPublished(true);
-        $legalNoticePage->setPosition(1);
-        $this->backdatePublication($legalNoticePage, new \DateTimeImmutable('-13 months'), new \DateTimeImmutable('-4 months'));
-        $manager->persist($legalNoticePage);
-
-        $legalNoticeEn = new PageTranslation();
-        $legalNoticeEn->setPage($legalNoticePage);
-        $legalNoticeEn->setLocale('en');
-        $legalNoticeEn->setTitle('Legal Notice');
-        $legalNoticeEn->setContent(<<<'MD'
-        ## Site Owner
-
-        This website is operated by [Julien Bourdin](https://github.com/jbourdin) as a non-commercial, open-source project.
-
-        - **Source code:** [github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine)
-
-        ## Hosting
-
-        - **Hosting provider:** [Scaleway](https://www.scaleway.com/) — 8 rue de la Ville-l'Évêque, 75008 Paris, France
-        - **CDN:** [Bunny.net](https://bunny.net/)
-
-        ## Contact
-
-        For any question or request regarding this website, please [open an issue](https://github.com/jbourdin/dowsingMachine/issues) on the GitHub project.
-
-        ## Intellectual Property
-
-        **Dowsing Machine** is a non-commercial, community-driven project.
-
-        Pokémon and Pokémon TCG are trademarks of Nintendo, Creatures Inc., and GAME FREAK Inc. This project is not affiliated with, endorsed, or sponsored by any of these companies.
-
-        All card data is sourced from the [TCGdex API](https://tcgdex.dev/), an independent community project.
-
-        ## Liability
-
-        The information provided on this website is for informational purposes only. The site owner makes no warranty as to the accuracy, completeness, or reliability of the content. Use of this website is at your own risk.
-        MD);
-        $legalNoticePage->addTranslation($legalNoticeEn);
-        $manager->persist($legalNoticeEn);
-
-        $legalNoticeFr = new PageTranslation();
-        $legalNoticeFr->setPage($legalNoticePage);
-        $legalNoticeFr->setLocale('fr');
-        $legalNoticeFr->setTitle('Mentions Légales');
-        $legalNoticeFr->setContent(<<<'MD'
-        ## Éditeur du site
-
-        Ce site est édité par [Julien Bourdin](https://github.com/jbourdin) dans le cadre d'un projet open-source à but non lucratif.
-
-        - **Code source :** [github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine)
-
-        ## Hébergement
-
-        - **Hébergeur :** [Scaleway](https://www.scaleway.com/) — 8 rue de la Ville-l'Évêque, 75008 Paris, France
-        - **CDN :** [Bunny.net](https://bunny.net/)
-
-        ## Contact
-
-        Pour toute question ou demande concernant ce site, veuillez [ouvrir une issue](https://github.com/jbourdin/dowsingMachine/issues) sur le projet GitHub.
-
-        ## Propriété intellectuelle
-
-        **Dowsing Machine** est un projet communautaire à but non lucratif.
-
-        Pokémon et Pokémon JCC sont des marques déposées de Nintendo, Creatures Inc. et GAME FREAK Inc. Ce projet n'est ni affilié, ni approuvé, ni sponsorisé par aucune de ces sociétés.
-
-        Les données de cartes proviennent de l'[API TCGdex](https://tcgdex.dev/), un projet communautaire indépendant.
-
-        ## Responsabilité
-
-        Les informations fournies sur ce site le sont à titre informatif uniquement. L'éditeur ne garantit pas l'exactitude, l'exhaustivité ou la fiabilité du contenu. L'utilisation de ce site se fait sous votre propre responsabilité.
-        MD);
-        $legalNoticePage->addTranslation($legalNoticeFr);
-        $manager->persist($legalNoticeFr);
-
-        // Attribute every fixture page to the content author (F19.8) — dev's
-        // analogue of the production backfill.
-        foreach ([
-            $welcomePage, $news1, $news2, $news3, $news4, $news5, $news6, $news7, $news8,
-            $rulesPage, $draftPage, $philosophyPage, $teamPage, $legalNoticePage,
-        ] as $page) {
-            $page->setAuthor($this->contentAuthor);
+        $aboutCategory = $this->createMenuCategory($manager, $contentChannel, 0, false, 'About', 'À propos');
+        $newsCategory = $this->createMenuCategory($manager, $contentChannel, 1, false, 'News', 'Actualités');
+        $gettingStartedCategory = $this->createMenuCategory($manager, $contentChannel, 2, false, 'Getting started', 'Pour commencer');
+        $legalCategory = $this->createMenuCategory($manager, $contentChannel, 1, true, 'Legal', 'Légal');
+
+        // Embedded on the homepage; not listed in any menu.
+        $this->createPage($manager, $contentChannel, 'welcome', null, '-10 months', '-1 month', [
+            'en' => ['Welcome to Dowsing Machine', <<<'MD'
+                Dowsing Machine is a guide to the **Pokémon TCG Expanded format**. Browse the archetypes and their variants, check sample deck lists, and see which cards are banned and which ones show up in almost every deck.
+                MD],
+            'fr' => ['Bienvenue sur Dowsing Machine', <<<'MD'
+                Dowsing Machine est un guide du **format Expanded de Pokémon TCG**. Parcours les archétypes et leurs variantes, consulte des deck lists d'exemple, et vois quelles cartes sont bannies et lesquelles reviennent dans presque tous les decks.
+                MD],
+        ]);
+
+        $this->createPage($manager, $contentChannel, 'about-dowsing-machine', $aboutCategory, '-1 year', '-2 months', [
+            'en' => ['About Dowsing Machine', <<<'MD'
+                Dowsing Machine is written by a small group of Expanded players. Card data comes from [TCGdex](https://tcgdex.dev/), and every page goes through a translation review before it is published in another language.
+
+                The site started as Expanded Decks, a tool to lend physical decks at events. The archetype pages ended up being what people came for, so the project now focuses on them.
+
+                The code is open source on [GitHub](https://github.com/jbourdin/dowsingMachine).
+                MD],
+            'fr' => ['À propos de Dowsing Machine', <<<'MD'
+                Dowsing Machine est écrit par un petit groupe de joueur·euses Expanded. Les données des cartes viennent de [TCGdex](https://tcgdex.dev/), et chaque page passe par une relecture avant d'être publiée dans une autre langue.
+
+                Le site a commencé sous le nom d'Expanded Decks, un outil pour prêter des decks physiques en tournoi. Les gens venaient surtout pour les pages d'archétypes, alors le projet se concentre maintenant dessus.
+
+                Le code est open source sur [GitHub](https://github.com/jbourdin/dowsingMachine).
+                MD],
+        ], position: 1);
+
+        // --- News (≥ 8 published pages with en + fr: PageRepositoryTest relies on it) ---
+
+        $newsPages = [
+            ['season-2026-kickoff', '-5 months', null,
+                ['Season 2026 is here!', <<<'MD'
+                    No rotation in Expanded this year: every card from **Black & White** onward stays legal, minus the banned list. The new sets add a few cards worth testing, and we will update the archetype pages as results come in.
+                    MD],
+                ['La saison 2026 est lancée !', <<<'MD'
+                    Pas de rotation en Expanded cette année : toutes les cartes depuis **Noir & Blanc** restent légales, à part la liste des bannies. Les nouvelles extensions apportent quelques cartes à tester, et on mettra à jour les pages d'archétypes au fil des résultats.
+                    MD]],
+            ['tcg-live-expanded-friend-games', '-4 months', '-6 weeks',
+                ['Expanded friend games come to TCG Live', <<<'MD'
+                    You can now challenge a friend in Expanded on TCG Live. Ranked play is still Standard only, but it makes testing a new list a lot easier.
+                    MD],
+                ['Les parties amicales Expanded arrivent sur TCG Live', <<<'MD'
+                    Tu peux maintenant défier un·e ami·e en Expanded sur TCG Live. Le classé reste en Standard, mais tester une nouvelle liste devient beaucoup plus simple.
+                    MD]],
+            ['champions-league-aichi-review', '-3 months', null,
+                ['Champions League Aichi: a look at the results', <<<'MD'
+                    The top cut lists from Aichi are in. We went through them and noted the cards that could cross over to Expanded.
+                    MD],
+                ['Champions League Aichi : retour sur les résultats', <<<'MD'
+                    Les listes du top cut d'Aichi sont publiées. On les a passées en revue pour repérer les cartes qui pourraient servir en Expanded.
+                    MD]],
+            ['march-league-challenge', '-2 months', null,
+                ['March League Challenge recap', <<<'MD'
+                    **Regidrago** took the event again, with **Iron Thorns ex** close behind. Both lists are on their archetype pages.
+                    MD],
+                ['Résumé du League Challenge de mars', <<<'MD'
+                    **Regidrago** remporte encore l'événement, suivi de près par **Iron Thorns ex**. Les deux listes sont sur leurs pages d'archétype.
+                    MD]],
+            ['lumiose-tour-2026', '-6 weeks', null,
+                ['The Lumiose Tour 2026', <<<'MD'
+                    A new online tournament series, played in Expanded. Here is how the qualifiers work and how to sign up.
+                    MD],
+                ['Le Lumiose Tour 2026', <<<'MD'
+                    Une nouvelle série de tournois en ligne, jouée en Expanded. Voici comment fonctionnent les qualifications et comment t'inscrire.
+                    MD]],
+            ['lumiose-tour-2026-review', '-3 weeks', '-5 days',
+                ['Lumiose Tour 2026: results and review', <<<'MD'
+                    The final standings, the decks that made the top 8, and what the event tells us about the format.
+                    MD],
+                ['Lumiose Tour 2026 : résultats et analyse', <<<'MD'
+                    Le classement final, les decks du top 8, et ce que l'événement nous apprend sur le format.
+                    MD]],
+            ['banned-list-explained', '-12 days', null,
+                ['Every ban, explained', <<<'MD'
+                    The [banned cards](/en/banned-cards) page now gives the reason behind each ban and links to the official announcement.
+                    MD],
+                ['Chaque ban, expliqué', <<<'MD'
+                    La page des [cartes bannies](/fr/banned-cards) donne maintenant la raison de chaque ban et renvoie vers l'annonce officielle.
+                    MD]],
+            ['compare-archetype-variants', '-3 days', null,
+                ['Compare archetype variants side by side', <<<'MD'
+                    Archetype pages with several variants now have a compare view: pick two lists and see which cards differ.
+                    MD],
+                ['Compare les variantes d\'un archétype', <<<'MD'
+                    Les pages d'archétype avec plusieurs variantes ont maintenant une vue de comparaison : choisis deux listes et vois les cartes qui changent.
+                    MD]],
+        ];
+        foreach ($newsPages as [$slug, $firstPublishedAt, $lastPublishedAt, $english, $french]) {
+            $this->createPage($manager, $contentChannel, $slug, $newsCategory, $firstPublishedAt, $lastPublishedAt, ['en' => $english, 'fr' => $french]);
         }
+
+        // --- Getting started ---
+
+        $this->createPage($manager, $contentChannel, 'what-is-expanded', $gettingStartedCategory, '-11 months', '-2 months', [
+            'en' => ['What is Expanded?', <<<'MD'
+                Expanded is a Pokémon TCG format where every card from **Black & White** onward is legal, except for a short banned list. Decks follow the usual rules: 60 cards, at most 4 copies of a card except basic Energy.
+
+                The large card pool means old combos are still around, which is why the format feels so different from Standard.
+                MD],
+            'fr' => ['C\'est quoi, l\'Expanded ?', <<<'MD'
+                L'Expanded est un format de Pokémon TCG où toutes les cartes depuis **Noir & Blanc** sont légales, sauf une courte liste de cartes bannies. Les decks suivent les règles habituelles : 60 cartes, 4 exemplaires maximum d'une même carte hors Énergies de base.
+
+                Avec un tel pool de cartes, de vieux combos tournent toujours, et c'est ce qui rend le format si différent du Standard.
+                MD],
+        ], position: 1);
+
+        $this->createPage($manager, $contentChannel, 'types-of-cards', $gettingStartedCategory, '-11 months', null, [
+            'en' => ['Pokémon EX, GX, V and more: how do they work?', <<<'MD'
+                Expanded mixes several generations of special Pokémon. Most of them (EX, GX, V, VSTAR, ex) give up **2 prize cards** when knocked out; VMAX gives up 3.
+
+                GX attacks and VSTAR Powers can each be used once per game, so timing them is a big part of playing these decks.
+                MD],
+            'fr' => ['Pokémon EX, GX, V et compagnie : comment ça marche ?', <<<'MD'
+                L'Expanded mélange plusieurs générations de Pokémon spéciaux. La plupart (EX, GX, V, VSTAR, ex) donnent **2 cartes Récompense** quand ils sont mis K.O. ; les VMAX en donnent 3.
+
+                Les attaques GX et les Pouvoirs VSTAR ne s'utilisent qu'une fois par partie, donc bien choisir le moment compte beaucoup avec ces decks.
+                MD],
+        ], position: 2);
+
+        // --- Footer: Legal ---
+
+        $this->createPage($manager, $contentChannel, 'legal', $legalCategory, '-13 months', '-4 months', [
+            'en' => ['Legal notice', <<<'MD'
+                ## Site owner
+
+                This website is operated by [Julien Bourdin](https://github.com/jbourdin) as a non-commercial, open-source project. Source code: [github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine).
+
+                ## Hosting
+
+                Hosted by [Scaleway](https://www.scaleway.com/), 8 rue de la Ville-l'Évêque, 75008 Paris, France, behind the [Bunny.net](https://bunny.net/) CDN.
+
+                ## Contact
+
+                For any question about this website, [open an issue](https://github.com/jbourdin/dowsingMachine/issues) on GitHub.
+
+                ## Intellectual property
+
+                Pokémon and Pokémon TCG are trademarks of Nintendo, Creatures Inc. and GAME FREAK Inc. This project is not affiliated with, endorsed or sponsored by any of them. Card data comes from the [TCGdex API](https://tcgdex.dev/).
+                MD],
+            'fr' => ['Mentions légales', <<<'MD'
+                ## Éditeur du site
+
+                Ce site est édité par [Julien Bourdin](https://github.com/jbourdin), dans le cadre d'un projet open source non commercial. Code source : [github.com/jbourdin/dowsingMachine](https://github.com/jbourdin/dowsingMachine).
+
+                ## Hébergement
+
+                Hébergé par [Scaleway](https://www.scaleway.com/), 8 rue de la Ville-l'Évêque, 75008 Paris, France, derrière le CDN [Bunny.net](https://bunny.net/).
+
+                ## Contact
+
+                Pour toute question sur ce site, [ouvre une issue](https://github.com/jbourdin/dowsingMachine/issues) sur GitHub.
+
+                ## Propriété intellectuelle
+
+                Pokémon et Pokémon TCG sont des marques de Nintendo, Creatures Inc. et GAME FREAK Inc. Ce projet n'est ni affilié, ni approuvé, ni sponsorisé par ces sociétés. Les données des cartes viennent de l'[API TCGdex](https://tcgdex.dev/).
+                MD],
+        ], position: 1);
+
+        // --- Draft page (preview-only, used by PageControllerTest) ---
+
+        $draftPage = $this->createPage($manager, $contentChannel, 'upcoming-features', null, null, null, [
+            'en' => ['Upcoming features (draft)', <<<'MD'
+                > **This page is a draft and not visible to regular users.**
+
+                Planned: a matchup table on archetype pages, and French versions of the Getting started guides.
+                MD],
+        ]);
+        $draftPage->setNoIndex(true);
+    }
+
+    private function createMenuCategory(ObjectManager $manager, Channel $channel, int $position, bool $isFooter, string $nameEn, string $nameFr): MenuCategory
+    {
+        $category = new MenuCategory();
+        $category->setPosition($position);
+        $category->setIsFooter($isFooter);
+        $category->setChannel($channel);
+        $manager->persist($category);
+
+        foreach (['en' => $nameEn, 'fr' => $nameFr] as $locale => $name) {
+            $translation = new MenuCategoryTranslation();
+            $translation->setMenuCategory($category);
+            $translation->setLocale($locale);
+            $translation->setName($name);
+            $category->addTranslation($translation);
+            $manager->persist($translation);
+        }
+
+        return $category;
+    }
+
+    /**
+     * Creates a page attributed to the content author (F19.8). A null
+     * `$firstPublishedAt` leaves the page unpublished.
+     *
+     * @param array<string, array{0: string, 1: string}> $translations locale => [title, Markdown content]
+     */
+    private function createPage(ObjectManager $manager, Channel $channel, string $slug, ?MenuCategory $category, ?string $firstPublishedAt, ?string $lastPublishedAt, array $translations, int $position = 0): Page
+    {
+        $page = new Page();
+        $page->setChannel($channel);
+        $page->setSlug($slug);
+        $page->setMenuCategory($category);
+        $page->setPosition($position);
+        $page->setIsPublished(null !== $firstPublishedAt);
+        $page->setAuthor($this->contentAuthor);
+        if (null !== $firstPublishedAt) {
+            $this->backdatePublication(
+                $page,
+                new \DateTimeImmutable($firstPublishedAt),
+                null !== $lastPublishedAt ? new \DateTimeImmutable($lastPublishedAt) : null,
+            );
+        }
+        $manager->persist($page);
+
+        foreach ($translations as $locale => [$title, $content]) {
+            $translation = new PageTranslation();
+            $translation->setPage($page);
+            $translation->setLocale($locale);
+            $translation->setTitle($title);
+            $translation->setContent($content);
+            $page->addTranslation($translation);
+            $manager->persist($translation);
+        }
+
+        return $page;
     }
 
     private function createCharizardFlareonDeckVersion(ObjectManager $manager, Deck $deck): void
@@ -2555,6 +2207,66 @@ PTCG;
         $manager->persist($translationFr);
     }
 
+    /**
+     * Content-channel homepage, same block sequence as production:
+     * rich text, carousel, latest news, rich text.
+     *
+     * @see docs/models/homepage.md
+     */
+    private function createContentHomepageFixtures(ObjectManager $manager, Channel $contentChannel): void
+    {
+        $slide = static fn (string $text, string $link): array => [
+            'image' => 'https://placehold.co/1200x400/14213d/fca311?text='.rawurlencode($text),
+            'alt' => $text,
+            'link' => $link,
+            'startAt' => null,
+            'endAt' => null,
+        ];
+
+        $layout = new HomepageLayout();
+        $layout->setIsPublished(true);
+        $layout->setChannel($contentChannel);
+        $layout->setBlocks([
+            $this->homepageBlock('richText'),
+            $this->homepageBlock('carousel', ['items' => [
+                $slide('Regidrago, the deck to beat', '/en/archetypes/regidrago'),
+                $slide('The banned list, explained', '/en/banned-cards'),
+                $slide('Format staples', '/en/staple-cards'),
+            ]]),
+            $this->homepageBlock('latestPages', ['categorySlug' => 'news', 'limit' => 5]),
+            $this->homepageBlock('richText'),
+        ]);
+        $manager->persist($layout);
+
+        foreach ([
+            'en' => [
+                "## Pokémon TCG Expanded, archetype by archetype\n\nDeck lists, variants, the banned list and the cards every deck plays.",
+                'New to the format? Start with [What is Expanded?](/en/pages/what-is-expanded).',
+            ],
+            'fr' => [
+                "## Pokémon TCG Expanded, archétype par archétype\n\nDes deck lists, des variantes, la liste des bannies et les cartes que tous les decks jouent.",
+                'Tu découvres le format ? Commence par [C\'est quoi, l\'Expanded ?](/fr/pages/what-is-expanded).',
+            ],
+        ] as $locale => [$intro, $outro]) {
+            $translation = new HomepageLayoutTranslation();
+            $translation->setHomepageLayout($layout);
+            $translation->setLocale($locale);
+            $translation->setBlockTranslations(['0' => ['content' => $intro], '3' => ['content' => $outro]]);
+            $layout->addTranslation($translation);
+            $manager->persist($translation);
+        }
+    }
+
+    /**
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
+    private function homepageBlock(string $type, array $data = []): array
+    {
+        return ['type' => $type, 'columnWidth' => null, 'cssClasses' => null, 'startAt' => null, 'endAt' => null] + $data;
+    }
+
     private function createTcgdexSetMappings(ObjectManager $manager): void
     {
         /** @var array<string, string> $mappings */
@@ -2574,7 +2286,7 @@ PTCG;
     {
         $appChannel = (new Channel())
             ->setCode('app')
-            ->setDomain('dowsingmachine.wip')
+            ->setDomain('expandeddecks.wip')
             ->setEnableDecks(true)
             ->setEnableRegister(true)
             ->setEnableEvents(true)
@@ -2584,7 +2296,7 @@ PTCG;
 
         $contentChannel = (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(false)
             ->setEnableRegister(false)
             ->setEnableEvents(false)
@@ -2603,7 +2315,7 @@ PTCG;
             // when a page supplies none (F19.7). The app channel intentionally
             // omits it so it falls through to the translatable site default.
             ->setParameters([
-                'brand_name' => 'Expanded Talks',
+                'brand_name' => 'Dowsing Machine',
                 'org_logo' => '/build/images/themes/expandedtalks/apple_touch_icon.png',
                 'org_same_as' => "https://bsky.app/profile/example.bsky.social\nhttps://discord.gg/example\nhttps://github.com/jbourdin/dowsingMachine",
                 'meta_description' => 'Pokémon TCG Expanded strategy: deck archetypes, the banned list, staple cards, and competitive deck lists.',

@@ -120,15 +120,15 @@ class SecurityControllerCoverageTest extends AbstractFunctionalTest
      */
     public function testLoginPageRedirectsToHomeWhenLoggedInOnChannelWithoutDecks(): void
     {
-        $this->client->request('GET', 'https://expandedtalks.wip/login');
+        $this->client->request('GET', 'https://dowsingmachine.wip/login');
         $this->client->submitForm('Login', [
             '_email' => 'admin@example.com',
             '_password' => 'password',
         ]);
-        self::assertResponseRedirects('https://expandedtalks.wip/');
+        self::assertResponseRedirects('https://dowsingmachine.wip/');
 
-        $this->client->request('GET', 'https://expandedtalks.wip/login');
+        $this->client->request('GET', 'https://dowsingmachine.wip/login');
 
-        self::assertResponseRedirects('https://expandedtalks.wip/');
+        self::assertResponseRedirects('https://dowsingmachine.wip/');
     }
 }

@@ -154,7 +154,7 @@ final class ChannelFeatureGateListenerTest extends TestCase
     {
         return (new Channel())
             ->setCode('app')
-            ->setDomain('dowsingmachine.wip')
+            ->setDomain('expandeddecks.wip')
             ->setEnableDecks(true)
             ->setEnableRegister(true)
             ->setEnableEvents(true)
@@ -166,7 +166,7 @@ final class ChannelFeatureGateListenerTest extends TestCase
     {
         return (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(false)
             ->setEnableRegister(false)
             ->setEnableEvents(false)

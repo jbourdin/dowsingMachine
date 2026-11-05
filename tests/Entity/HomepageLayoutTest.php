@@ -137,7 +137,7 @@ class HomepageLayoutTest extends TestCase
     public function testSetChannel(): void
     {
         $layout = new HomepageLayout();
-        $channel = (new Channel())->setCode('app')->setDomain('dowsingmachine.wip');
+        $channel = (new Channel())->setCode('app')->setDomain('expandeddecks.wip');
 
         $result = $layout->setChannel($channel);
 

@@ -222,7 +222,7 @@ class LocaleListenerTest extends TestCase
         $localeSwitcher = $this->createMock(LocaleSwitcher::class);
         $localeSwitcher->expects(self::once())->method('setLocale')->with('en');
 
-        $channel = (new Channel())->setCode('content')->setDomain('expandedtalks.wip')->setLocales(['en']);
+        $channel = (new Channel())->setCode('content')->setDomain('dowsingmachine.wip')->setLocales(['en']);
 
         $request = $this->createRequestWithSession();
         $request->attributes->set('_channel', $channel);
@@ -242,7 +242,7 @@ class LocaleListenerTest extends TestCase
         $localeSwitcher = $this->createMock(LocaleSwitcher::class);
         $localeSwitcher->expects(self::once())->method('setLocale')->with('en');
 
-        $channel = (new Channel())->setCode('content')->setDomain('expandedtalks.wip')->setLocales(['en']);
+        $channel = (new Channel())->setCode('content')->setDomain('dowsingmachine.wip')->setLocales(['en']);
 
         $request = $this->createRequestWithSession();
         $request->getSession()->set('_locale', 'fr');
@@ -263,7 +263,7 @@ class LocaleListenerTest extends TestCase
         $localeSwitcher = $this->createMock(LocaleSwitcher::class);
         $localeSwitcher->expects(self::once())->method('setLocale')->with('en');
 
-        $channel = (new Channel())->setCode('content')->setDomain('expandedtalks.wip')->setLocales(['en']);
+        $channel = (new Channel())->setCode('content')->setDomain('dowsingmachine.wip')->setLocales(['en']);
 
         $request = $this->createRequestWithSession();
         $request->headers->set('Accept-Language', 'fr-FR,fr;q=0.9,en;q=0.8');
@@ -287,7 +287,7 @@ class LocaleListenerTest extends TestCase
         $localeSwitcher = $this->createMock(LocaleSwitcher::class);
         $localeSwitcher->expects(self::once())->method('setLocale')->with('fr');
 
-        $channel = (new Channel())->setCode('app')->setDomain('dowsingmachine.wip')->setLocales(['en', 'fr']);
+        $channel = (new Channel())->setCode('app')->setDomain('expandeddecks.wip')->setLocales(['en', 'fr']);
 
         $request = $this->createRequestWithSession();
         $this->addSessionCookie($request);
@@ -391,7 +391,7 @@ class LocaleListenerTest extends TestCase
         $urlGenerator = $this->createStub(\Symfony\Component\Routing\Generator\UrlGeneratorInterface::class);
         $urlGenerator->method('generate')->willReturn('/en/archetypes');
 
-        $channel = (new Channel())->setCode('content')->setDomain('expandedtalks.wip')->setLocales(['en']);
+        $channel = (new Channel())->setCode('content')->setDomain('dowsingmachine.wip')->setLocales(['en']);
 
         $request = $this->createRequestWithSession();
         $request->attributes->set('_locale', 'fr');

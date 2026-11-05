@@ -33,7 +33,7 @@ final class SitemapControllerTest extends TestCase
     {
         $this->channel = (new Channel())
             ->setCode('app')
-            ->setDomain('dowsingmachine.wip')
+            ->setDomain('expandeddecks.wip')
             ->setEnableDecks(true)
             ->setEnableEvents(true);
     }

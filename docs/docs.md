@@ -50,7 +50,7 @@
 - [Documentation Standards](standards/documentation.md) — File structure, headers, linking
 - [File Headers](standards/file_headers.md) — Copyright & license blocks
 - [Release Process](standards/release_process.md) — Release workflow, tagging, and GitHub releases
-- [Security Scanning](standards/security.md) — Dependency vulnerability scanning, Dependabot, CI audit job
+- [Security Scanning](standards/security.md) — Dependency vulnerability scanning, weekly dependency report, CI audit job
 - [French Translation Guide](standards/french_translation.md) — Tone (tutoiement), TCG glossary, typography rules
 
 ## Technical Deep-Dives

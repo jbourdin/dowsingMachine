@@ -1,0 +1,10 @@
+{
+    "doctrine/orm": "Held below 3.6.8 by a composer.json conflict: 3.6.8 needs doctrine/dbal ^4.5, not released yet. Lift the conflict once DBAL 4.5.0 ships.",
+    "@symfony/webpack-encore": "Encore 7 needs Babel 8: one coordinated migration, see #767.",
+    "@babel/*": "Babel 8 comes with the Encore 7 migration, see #767.",
+    "webpack-cli": "webpack-cli 7 comes with the Encore 7 migration, see #767.",
+    "sass-loader": "Encore 6 peer-pins sass-loader ^16; Encore 7 allows 17, see #767.",
+    "typescript": "Encore peer-pins typescript ^5: a major makes npm ci fail with ERESOLVE.",
+    "eslint": "eslint-plugin-react does not accept eslint 10 yet, see #767.",
+    "@eslint/js": "Moves with eslint 10, blocked by eslint-plugin-react, see #767."
+}

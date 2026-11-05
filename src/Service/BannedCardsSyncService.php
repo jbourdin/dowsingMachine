@@ -173,8 +173,11 @@ class BannedCardsSyncService
                     ++$unchanged;
                 }
 
+                // A printing left unresolved by an earlier run (card data not
+                // imported yet) sits under its own placeholder parent: once it
+                // resolves, merge it into the canonical parent for its identity.
                 $this->cardEnricher->enrichPrinting($printing);
-                $this->trackByIdentity($parent, $parentsByIdentityId);
+                $this->reparentByIdentity($printing, $parentsByIdentityId);
                 continue;
             }
 
@@ -250,6 +253,8 @@ class BannedCardsSyncService
     {
         $cardPrinting = $printing->getCardPrinting();
         if (null === $cardPrinting) {
+            $this->trackByIdentity($printing->getBannedCard(), $parentsByIdentityId);
+
             return;
         }
 

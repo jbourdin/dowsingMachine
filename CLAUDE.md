@@ -344,6 +344,7 @@ Pattern: services dispatch messages → handlers process them asynchronously. Ea
 ## Translations
 
 - **Format:** XLIFF (`.xlf`) in `translations/`
+- **Validation messages:** Symfony translates constraint messages in the `validators` domain, so an `app.*` key used as a constraint `message` must also be in `translations/validators.{en,fr}.xlf`
 - **Key pattern:** `app.<domain>.<context>.<key>` (e.g. `app.borrow.status.pending`)
 - **Supported locales:** `en` (default), `fr`
 - **French copy rules:** [docs/standards/french_translation.md](docs/standards/french_translation.md) — tutoiement everywhere, no « Veuillez », keep TCG jargon in English (deck, staple, set, top cut), `rendre`/`rendu` not « retourné », point médian inclusive writing (« joueur·euse », « Seul·es les invité·es »)

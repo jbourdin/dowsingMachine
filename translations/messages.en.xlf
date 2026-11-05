@@ -3001,6 +3001,11 @@
                 <target>Screen name</target>
                 <note>Form label for screen name field</note>
             </trans-unit>
+            <trans-unit id="app.form.error.screen_name_no_at">
+                <source>app.form.error.screen_name_no_at</source>
+                <target>A screen name cannot contain “@”.</target>
+                <note>F1.9 — screen names double as login identifiers, so they cannot look like an email</note>
+            </trans-unit>
             <trans-unit id="app.form.label.player_id">
                 <source>app.form.label.player_id</source>
                 <target>Player ID (optional)</target>

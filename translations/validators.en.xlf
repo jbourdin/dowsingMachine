@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" datatype="plaintext" original="validators">
+        <body>
+            <!-- Validation messages: Symfony translates constraint messages in this domain. Keep in sync with the same keys in messages.*.xlf. -->
+            <trans-unit id="app.admin.staple_card.field.code_invalid">
+                <source>app.admin.staple_card.field.code_invalid</source>
+                <target>Code must be in the form SET-NUMBER (e.g. LOR-093).</target>
+                <note>F6.15 — admin form validation error</note>
+            </trans-unit>
+            <trans-unit id="app.captcha.verification_failed">
+                <source>app.captcha.verification_failed</source>
+                <target>Captcha verification failed. Please try again.</target>
+                <note>Error when Friendly Captcha server-side validation rejects the response</note>
+            </trans-unit>
+            <trans-unit id="app.cms.og_image_url_format">
+                <source>app.cms.og_image_url_format</source>
+                <target>Must be a URL (starting with / or http).</target>
+            </trans-unit>
+            <trans-unit id="app.cms.slug_format">
+                <source>app.cms.slug_format</source>
+                <target>Slug must only contain lowercase letters, numbers, and hyphens.</target>
+            </trans-unit>
+            <trans-unit id="app.cms.slug_unique">
+                <source>app.cms.slug_unique</source>
+                <target>This slug is already in use.</target>
+            </trans-unit>
+            <trans-unit id="app.cms.translation_locale_unique">
+                <source>app.cms.translation_locale_unique</source>
+                <target>A translation already exists for this locale.</target>
+            </trans-unit>
+            <trans-unit id="app.form.error.screen_name_no_at">
+                <source>app.form.error.screen_name_no_at</source>
+                <target>A screen name cannot contain “@”.</target>
+                <note>F1.9 — screen names double as login identifiers, so they cannot look like an email</note>
+            </trans-unit>
+            <trans-unit id="app.homepage.og_image_url_format">
+                <source>app.homepage.og_image_url_format</source>
+                <target>The Open Graph image must be a relative path or an absolute URL (http or https).</target>
+                <note>#554 — validation message mirroring app.cms.og_image_url_format for HomepageLayout.ogImage</note>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

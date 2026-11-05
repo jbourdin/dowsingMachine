@@ -1,0 +1,172 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the Dowsing Machine project.
+ *
+ * (c) Dowsing Machine contributors
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+/*
+ * Renders the weekly dependency report (Markdown, on stdout) from the JSON
+ * output of `composer audit`, `composer outdated`, `npm audit` and
+ * `npm outdated`, written beforehand into the directory given as argument.
+ * Used by .github/workflows/dependency-report.yml.
+ *
+ * Usage: php .github/scripts/dependency_report.php <json-dir>
+ */
+
+$directory = $argv[1] ?? throw new InvalidArgumentException('Usage: dependency_report.php <json-dir>');
+
+/** @return array<mixed> */
+function readJson(string $path): array
+{
+    $content = is_file($path) ? (string) file_get_contents($path) : '';
+    $decoded = json_decode($content, true);
+
+    return is_array($decoded) ? $decoded : [];
+}
+
+function majorOf(string $version): int
+{
+    return (int) ltrim($version, 'v^~');
+}
+
+/** @param array<string, string> $holds */
+function holdFor(string $package, array $holds): ?string
+{
+    foreach ($holds as $pattern => $reason) {
+        if (fnmatch($pattern, $package)) {
+            return $reason;
+        }
+    }
+
+    return null;
+}
+
+function cell(string $value): string
+{
+    return str_replace(['|', "\n"], ['\|', ' '], $value);
+}
+
+/** @var array<string, string> $holds */
+$holds = readJson(__DIR__.'/../dependency-holds.json');
+
+$lockedVersions = [];
+foreach (['packages', 'packages-dev'] as $section) {
+    foreach (readJson(__DIR__.'/../../composer.lock')[$section] ?? [] as $package) {
+        $lockedVersions[$package['name']] = $package['version'];
+    }
+}
+
+$npmVersions = [];
+foreach (readJson(__DIR__.'/../../package-lock.json')['packages'] ?? [] as $path => $package) {
+    if (str_starts_with($path, 'node_modules/') && !str_contains(substr($path, 13), 'node_modules/')) {
+        $npmVersions[substr($path, 13)] = $package['version'] ?? '?';
+    }
+}
+
+// --- Security: every package with a known advisory, direct or not ---
+
+$securityRows = [];
+foreach (readJson($directory.'/composer-audit.json')['advisories'] ?? [] as $package => $advisories) {
+    foreach ($advisories as $advisory) {
+        $securityRows[] = sprintf(
+            '| `%s` | composer | %s | %s | %s | [%s](%s) |',
+            $package,
+            $lockedVersions[$package] ?? '?',
+            cell($advisory['affectedVersions'] ?? ''),
+            $advisory['severity'] ?? '?',
+            cell($advisory['cve'] ?? $advisory['advisoryId'] ?? 'advisory'),
+            $advisory['link'] ?? '',
+        );
+    }
+}
+foreach (readJson($directory.'/npm-audit.json')['vulnerabilities'] ?? [] as $package => $vulnerability) {
+    $advisories = array_filter($vulnerability['via'] ?? [], 'is_array');
+    $links = array_map(static fn (array $via): string => sprintf('[%s](%s)', cell($via['title'] ?? 'advisory'), $via['url'] ?? ''), $advisories);
+    $causes = array_filter($vulnerability['via'] ?? [], 'is_string');
+    $securityRows[] = sprintf(
+        '| `%s` | npm%s | %s | %s | %s | %s |',
+        $package,
+        ($vulnerability['isDirect'] ?? false) ? '' : ' (indirect)',
+        $npmVersions[$package] ?? '?',
+        cell($vulnerability['range'] ?? ''),
+        $vulnerability['severity'] ?? '?',
+        [] !== $links ? implode('<br>', $links) : 'via '.implode(', ', $causes),
+    );
+}
+
+// --- Functional: outdated direct dependencies, split by update size ---
+
+$minorRows = [];
+$majorRows = [];
+$addRow = static function (string $package, string $ecosystem, string $current, string $latest, bool $isMajor) use ($holds, &$minorRows, &$majorRows): void {
+    $hold = holdFor($package, $holds);
+    $row = sprintf('| `%s` | %s | %s | %s | %s |', $package, $ecosystem, $current, $latest, null !== $hold ? '⏸ '.cell($hold) : '');
+    if ($isMajor) {
+        $majorRows[] = $row;
+    } else {
+        $minorRows[] = $row;
+    }
+};
+
+foreach (readJson($directory.'/composer-outdated.json')['locked'] ?? [] as $package) {
+    if ('up-to-date' === ($package['latest-status'] ?? '')) {
+        continue;
+    }
+    $addRow($package['name'], 'composer', $package['version'], $package['latest'], 'update-possible' === $package['latest-status']);
+}
+foreach (readJson($directory.'/npm-outdated.json') as $package => $versions) {
+    $current = (string) ($versions['current'] ?? $versions['wanted'] ?? '?');
+    $latest = (string) ($versions['latest'] ?? '?');
+    if ($current === $latest) {
+        continue;
+    }
+    $addRow($package, 'npm', $current, $latest, majorOf($latest) > majorOf($current));
+}
+
+// --- Markdown ---
+
+$table = static fn (string $header, array $rows): string => [] === $rows
+    ? "_Nothing here._\n"
+    : $header."\n".implode("\n", $rows)."\n";
+
+$generatedAt = gmdate('Y-m-d H:i').' UTC';
+$runUrl = getenv('RUN_URL') ?: '';
+
+printf(
+    <<<'MD'
+        Weekly report generated by `.github/workflows/dependency-report.yml` on %s%s. This issue is rewritten on every run, so don't edit it by hand. Packages marked ⏸ are held back on purpose (`.github/dependency-holds.json`).
+
+        To update, open a `chore/update-dependencies` branch, run `symfony composer update <package>` or `npm install <package>@<version>`, then `make audit` and `make test`.
+
+        ## 🔒 Security (%d)
+
+        Known vulnerabilities in installed packages, direct or indirect. CI's Security Audit job fails on these, so they come first.
+
+        %s
+        ## ⬆️ Functional: patch and minor (%d)
+
+        Direct dependencies with a semver-compatible update.
+
+        %s
+        ## ⚠️ Functional: major (%d)
+
+        Direct dependencies with a new major version: read the changelog first.
+
+        %s
+        MD,
+    $generatedAt,
+    '' !== $runUrl ? sprintf(' ([run](%s))', $runUrl) : '',
+    count($securityRows),
+    $table('| Package | Ecosystem | Installed | Affected | Severity | Advisory |'."\n".'|---|---|---|---|---|---|', $securityRows),
+    count($minorRows),
+    $table('| Package | Ecosystem | Current | Latest | Note |'."\n".'|---|---|---|---|---|', $minorRows),
+    count($majorRows),
+    $table('| Package | Ecosystem | Current | Latest | Note |'."\n".'|---|---|---|---|---|', $majorRows),
+);

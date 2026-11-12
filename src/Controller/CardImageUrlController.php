@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Repository\DeckCardRepository;
+use App\Service\CardImageHost;
 use App\Service\Tcgdex\TcgdexApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\ExpressionLanguage\Expression;
@@ -62,7 +63,7 @@ class CardImageUrlController extends AbstractController
         // Fall back to TCGdex API
         $tcgdexCard = $this->tcgdexApiClient->findCard($setCode, $cardNumber);
         if (null !== $tcgdexCard && null !== $tcgdexCard->imageUrl) {
-            return $this->json(['url' => $tcgdexCard->imageUrl]);
+            return $this->json(['url' => CardImageHost::toPublic($tcgdexCard->imageUrl)]);
         }
 
         return $this->json(['error' => 'Card not found.'], Response::HTTP_NOT_FOUND);

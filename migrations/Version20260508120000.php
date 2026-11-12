@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,7 +31,7 @@ use Doctrine\Migrations\AbstractMigration;
  * any block this migration couldn't resolve (e.g. a slug that doesn't match
  * any current category name) so render-time behavior is unchanged for those.
  *
- * @see https://github.com/jbourdin/expandedDecks/issues/536
+ * @see https://github.com/jbourdin/dowsingMachine/issues/536
  */
 final class Version20260508120000 extends AbstractMigration
 {

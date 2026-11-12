@@ -1,0 +1,67 @@
+name: Dependency report
+
+# Replaces Dependabot version-update PRs: one pinned issue, rewritten every
+# week, lists security fixes first, then patch/minor and major updates.
+# Updates themselves are done by hand in a chore/update-dependencies branch.
+# See docs/standards/security.md.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  report:
+    name: Update the dependency report issue
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: intl, zip
+          coverage: none
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        run: npm ci --ignore-scripts
+
+      # audit/outdated exit non-zero when they find something: that is the
+      # data we want, not a failure.
+      - name: Collect audit and outdated data
+        run: |
+          mkdir -p var/dependency-report
+          composer audit --locked --format=json > var/dependency-report/composer-audit.json || true
+          composer outdated --locked --direct --format=json > var/dependency-report/composer-outdated.json || true
+          npm audit --json > var/dependency-report/npm-audit.json || true
+          npm outdated --json > var/dependency-report/npm-outdated.json || true
+
+      - name: Render the report
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: php .github/scripts/dependency_report.php var/dependency-report > var/dependency-report/report.md
+
+      - name: Create or update the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title='Dependency report'
+          number=$(gh issue list --state open --label dependencies --search "\"$title\" in:title" --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -n 1)
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --body-file var/dependency-report/report.md
+          else
+            url=$(gh issue create --title "$title" --label dependencies --body-file var/dependency-report/report.md)
+            gh issue pin "$url"
+          fi

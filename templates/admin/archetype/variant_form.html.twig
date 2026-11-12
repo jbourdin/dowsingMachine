@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -10,9 +10,9 @@
 
 {% block title %}
     {% if isNew %}
-        {{ 'app.archetype.variant.new_title'|trans({'%archetype%': archetype.name}) }} — {{ channel_param('brand_name', 'Expanded Decks') }}
+        {{ 'app.archetype.variant.new_title'|trans({'%archetype%': archetype.name}) }} — {{ channel_param('brand_name', 'Dowsing Machine') }}
     {% else %}
-        {{ 'app.archetype.variant.edit_title'|trans({'%name%': deck.name, '%archetype%': archetype.name}) }} — {{ channel_param('brand_name', 'Expanded Decks') }}
+        {{ 'app.archetype.variant.edit_title'|trans({'%name%': deck.name, '%archetype%': archetype.name}) }} — {{ channel_param('brand_name', 'Dowsing Machine') }}
     {% endif %}
 {% endblock %}
 

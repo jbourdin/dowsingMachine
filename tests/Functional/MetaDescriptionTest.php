@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -81,7 +81,7 @@ class MetaDescriptionTest extends AbstractFunctionalTest
         // dowsingmachine-style content channel carries a configured
         // meta_description param. The homepage sets no page-level description,
         // so it falls through to that channel default.
-        $home = $this->client->request('GET', '/en/', server: ['HTTP_HOST' => 'expandedtalks.wip']);
+        $home = $this->client->request('GET', '/en/', server: ['HTTP_HOST' => 'dowsingmachine.wip']);
         self::assertResponseIsSuccessful();
 
         $description = strtolower($this->singleMetaDescription($home));
@@ -99,7 +99,7 @@ class MetaDescriptionTest extends AbstractFunctionalTest
     public function testStapleCardsPageHasDescription(): void
     {
         // Staples are a content-channel feature; request the content host.
-        $crawler = $this->client->request('GET', '/en/staple-cards', server: ['HTTP_HOST' => 'expandedtalks.wip']);
+        $crawler = $this->client->request('GET', '/en/staple-cards', server: ['HTTP_HOST' => 'dowsingmachine.wip']);
         self::assertResponseIsSuccessful();
 
         self::assertNotSame('', $this->singleMetaDescription($crawler));

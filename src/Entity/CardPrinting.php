@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\CardPrintingRepository;
+use App\Service\CardImageHost;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -171,12 +172,12 @@ class CardPrinting
 
     public function getImageUrl(): ?string
     {
-        return $this->imageUrl;
+        return CardImageHost::toPublic($this->imageUrl);
     }
 
     public function setImageUrl(?string $imageUrl): static
     {
-        $this->imageUrl = $imageUrl;
+        $this->imageUrl = CardImageHost::toCanonical($imageUrl);
 
         return $this;
     }

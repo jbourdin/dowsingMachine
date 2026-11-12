@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -46,9 +46,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Length(max: 180)]
     private string $email = '';
 
+    /**
+     * No "@": the login form accepts an email or a screen name (F1.9), so a
+     * screen name equal to another user's email would make the lookup ambiguous.
+     *
+     * @see docs/features.md F1.9 — Login with screen name or email
+     */
     #[ORM\Column(length: 50, unique: true)]
     #[Assert\NotBlank]
     #[Assert\Length(min: 2, max: 50)]
+    #[Assert\Regex(pattern: '/@/', match: false, message: 'app.form.error.screen_name_no_at')]
     private string $screenName = '';
 
     #[ORM\Column(length: 50)]

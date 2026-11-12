@@ -1,7 +1,7 @@
 proxy:
     domains:
+        - dowsingmachine
         - expandeddecks
-        - expandedtalks
 http:
     port: 8742
 php:

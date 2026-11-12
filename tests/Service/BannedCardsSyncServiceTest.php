@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -381,6 +381,84 @@ class BannedCardsSyncServiceTest extends TestCase
         self::assertTrue($result->success);
         self::assertSame(2, $result->added);
         self::assertCount(1, $removed, 'second placeholder parent should be removed after merge');
+    }
+
+    public function testSyncMergesPreviouslyUnresolvedPrintingIntoCanonicalParent(): void
+    {
+        // A first run could not resolve 91/214 (card data not imported yet), so
+        // it got its own placeholder parent next to the canonical Unown one.
+        // Once it resolves, a re-sync must move it under the canonical parent
+        // and drop the empty placeholder.
+        $html = $this->buildHtml(
+            '<ul><li><a href="#">Unown</a> (<em>Sun &amp; Moon—Lost Thunder</em>, 90/214 and 91/214)</li></ul>',
+        );
+
+        $identity = $this->createStub(\App\Entity\CardIdentity::class);
+        $identity->method('getId')->willReturn(42);
+        $identity->method('getName')->willReturn('Unown');
+        $local = $this->createStub(\App\Entity\CardPrinting::class);
+        $local->method('getCardIdentity')->willReturn($identity);
+
+        $canonical = new BannedCard();
+        $canonical->setCardName('Unown');
+        $canonical->setCardIdentity($identity);
+        $resolvedPrinting = new BannedCardPrinting();
+        $resolvedPrinting->setSetCode('LOT');
+        $resolvedPrinting->setCardNumber('90');
+        $resolvedPrinting->setCardPrinting($local);
+        $canonical->addPrinting($resolvedPrinting);
+
+        $placeholder = new BannedCard();
+        $placeholder->setCardName('Unown');
+        $unresolvedPrinting = new BannedCardPrinting();
+        $unresolvedPrinting->setSetCode('LOT');
+        $unresolvedPrinting->setCardNumber('91');
+        $placeholder->addPrinting($unresolvedPrinting);
+
+        $printingRepo = $this->createStub(BannedCardPrintingRepository::class);
+        $printingRepo->method('findOneBySetCodeAndCardNumber')->willReturnCallback(
+            static fn (string $setCode, string $cardNumber): ?BannedCardPrinting => match ($cardNumber) {
+                '90' => $resolvedPrinting,
+                '91' => $unresolvedPrinting,
+                default => null,
+            },
+        );
+
+        $bannedCardRepo = $this->createStub(BannedCardRepository::class);
+        $bannedCardRepo->method('findActiveOrderedByEffectiveDate')->willReturn([$canonical, $placeholder]);
+        $bannedCardRepo->method('findOneByCardIdentity')->willReturn($canonical);
+
+        $cardPrintingRepository = $this->createStub(\App\Repository\CardPrintingRepository::class);
+        $cardPrintingRepository->method('findFirstBySetCodeAndCardNumber')->willReturn($local);
+
+        $enricher = new BannedCardEnricher(
+            $this->createStub(\App\Service\Tcgdex\TcgdexApiClient::class),
+            $this->createStub(\App\Service\CardIdentity\CardIdentityResolver::class),
+            $cardPrintingRepository,
+            $printingRepo,
+            $bannedCardRepo,
+            $this->createStub(EntityManagerInterface::class),
+        );
+
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager->expects(self::once())->method('remove')->with($placeholder);
+
+        $service = new BannedCardsSyncService(
+            new MockHttpClient([new MockResponse($html)]),
+            $bannedCardRepo,
+            $printingRepo,
+            $entityManager,
+            $enricher,
+            $this->buildSeedStub(),
+        );
+
+        $result = $service->sync();
+
+        self::assertTrue($result->success);
+        self::assertSame(2, $result->unchanged);
+        self::assertSame(0, $result->removed);
+        self::assertCount(2, $canonical->getPrintings());
+        self::assertSame($canonical, $unresolvedPrinting->getBannedCard());
     }
 
     public function testSyncParsesCardNameWithEmTagInAltAttribute(): void

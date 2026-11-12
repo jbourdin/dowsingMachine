@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,7 +34,7 @@ use App\Repository\TcgdexSetRepository;
  */
 final readonly class BannedCardImageResolver
 {
-    private const string TCGDEX_CDN_BASE = 'https://assets.tcgdex.net';
+    private const string TCGDEX_CDN_BASE = CardImageHost::TCGDEX_BASE;
     private const string POKEMONTCG_IO_BASE = 'https://images.pokemontcg.io';
 
     public function __construct(
@@ -48,6 +48,11 @@ final readonly class BannedCardImageResolver
      * printing that yields a non-null URL.
      */
     public function resolveForBan(BannedCard $card): ?string
+    {
+        return CardImageHost::toPublic($this->resolveCanonical($card));
+    }
+
+    private function resolveCanonical(BannedCard $card): ?string
     {
         $representative = $card->getRepresentativePrinting();
         if (null !== $representative) {
@@ -88,7 +93,7 @@ final readonly class BannedCardImageResolver
     {
         $direct = $printing->getImageUrl();
         if (null !== $direct && '' !== $direct) {
-            return $this->normalizeTcgdexCdnUrl($direct);
+            return $this->normalizeTcgdexCdnUrl(CardImageHost::toCanonical($direct));
         }
 
         $cdn = $this->buildTcgdexCdnFromPrinting($printing);

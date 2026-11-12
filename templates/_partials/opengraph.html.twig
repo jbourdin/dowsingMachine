@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -22,7 +22,7 @@
 {% for locale in current_channel().locales|filter(locale => locale != app.request.locale) %}
     <meta property="og:locale:alternate" content="{{ og_locale_map[locale]|default('en_US') }}">
 {% endfor %}
-<meta property="og:site_name" content="{{ channel_param('brand_name', 'Expanded Decks') }}">
+<meta property="og:site_name" content="{{ channel_param('brand_name', 'Dowsing Machine') }}">
 {% if og_image is defined and og_image %}
     <meta property="og:image" content="{{ channel_absolute_url(og_image) }}">
 {% endif %}

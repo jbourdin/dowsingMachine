@@ -4,7 +4,7 @@
 
 <- Back to [Main Documentation](docs.md) | [Feature List](features.md)
 
-This document specifies the public REST API for Expanded Decks. The API enables third-party integrations, mobile clients, and AI-powered tools (via MCP) to interact with events and CMS content programmatically.
+This document specifies the public REST API for Dowsing Machine. The API enables third-party integrations, mobile clients, and AI-powered tools (via MCP) to interact with events and CMS content programmatically.
 
 ---
 
@@ -323,14 +323,14 @@ CRUD on CMS pages with translation support.
       "title": "March Tournament Recap",
       "slug": "march-tournament-recap",
       "content": "## Great event!\n\nWe had 32 players...",
-      "metaTitle": "March Tournament Recap - Expanded Decks",
+      "metaTitle": "March Tournament Recap - Dowsing Machine",
       "metaDescription": "Recap of the March expanded format tournament."
     },
     "fr": {
       "title": "Bilan du tournoi de mars",
       "slug": "bilan-tournoi-mars",
       "content": "## Super tournoi !\n\nNous avons eu 32 joueurs...",
-      "metaTitle": "Bilan du tournoi de mars - Expanded Decks",
+      "metaTitle": "Bilan du tournoi de mars - Dowsing Machine",
       "metaDescription": "Bilan du tournoi de mars au format expanded."
     }
   }
@@ -369,7 +369,7 @@ CRUD on menu categories with translation support.
 | **Priority** | Low |
 | **Depends on** | F16.1, F16.3, F16.4, F16.6 |
 
-A [Model Context Protocol](https://modelcontextprotocol.io/) server that exposes Expanded Decks functionality as tools usable by AI agents (Claude, etc.).
+A [Model Context Protocol](https://modelcontextprotocol.io/) server that exposes Dowsing Machine functionality as tools usable by AI agents (Claude, etc.).
 
 **Transport:** Streamable HTTP (`/mcp`) — the server handles MCP JSON-RPC messages over HTTP, compatible with Claude Desktop and other MCP clients.
 
@@ -442,7 +442,7 @@ Errors follow the [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457) Problem Det
 
 ```json
 {
-  "type": "https://expandeddecks.com/errors/validation",
+  "type": "https://dowsingmachine.com/errors/validation",
   "title": "Validation Failed",
   "status": 422,
   "detail": "The 'name' field is required.",
@@ -474,7 +474,7 @@ Endpoints that accept a user identifier support two fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `userId` | int | Internal Expanded Decks user ID |
+| `userId` | int | Internal Dowsing Machine user ID |
 | `playerId` | string | Play! Pokemon player ID (see F1.1) |
 
 These fields are **mutually exclusive** — providing both returns `422 Unprocessable Entity`. When neither is provided, the action applies to the authenticated user. If the identifier does not match any user, the API returns `404 Not Found`.

@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -14,14 +14,14 @@
  # @see docs/features.md F21.2 — RSS feed of archetype variants
  -#}
 <?xml version="1.0" encoding="UTF-8"?>
-{%- set feedTitle = 'app.archetype.feed.title'|trans({'%brand%': channel_param('brand_name', 'Expanded Decks')}) %}
+{%- set feedTitle = 'app.archetype.feed.title'|trans({'%brand%': channel_param('brand_name', 'Dowsing Machine')}) %}
 {%- set feedLink = url('app_archetype_list') %}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
     <channel>
         <title>{{ feedTitle }}</title>
         <link>{{ feedLink }}</link>
         <atom:link href="{{ url('app_archetype_feed') }}" rel="self" type="application/rss+xml"/>
-        <description>{{ 'app.archetype.feed.description'|trans({'%brand%': channel_param('brand_name', 'Expanded Decks')}) }}</description>
+        <description>{{ 'app.archetype.feed.description'|trans({'%brand%': channel_param('brand_name', 'Dowsing Machine')}) }}</description>
         <language>{{ locale }}</language>
         {{- include('_partials/feed_image.xml.twig', {imageTitle: feedTitle, imageLink: feedLink}) -}}
         {%- if items|length > 0 %}

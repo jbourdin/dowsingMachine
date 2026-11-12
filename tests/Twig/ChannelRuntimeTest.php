@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -45,7 +45,7 @@ final class ChannelRuntimeTest extends TestCase
     public function testChannelUrlDelegatesToGenerator(): void
     {
         $generator = $this->createStub(ChannelUrlGenerator::class);
-        $generator->method('forChannel')->willReturn('https://expandedtalks.wip/archetypes');
+        $generator->method('forChannel')->willReturn('https://dowsingmachine.wip/archetypes');
 
         $runtime = new ChannelRuntime(
             $this->createChannelContext((new Channel())->setCode('app')),
@@ -53,7 +53,7 @@ final class ChannelRuntimeTest extends TestCase
             $this->createLocaleVisibility(),
         );
 
-        self::assertSame('https://expandedtalks.wip/archetypes', $runtime->channelUrl('content', 'app_archetype_list'));
+        self::assertSame('https://dowsingmachine.wip/archetypes', $runtime->channelUrl('content', 'app_archetype_list'));
     }
 
     public function testFeatureUrlDelegatesToGenerator(): void
@@ -87,7 +87,7 @@ final class ChannelRuntimeTest extends TestCase
     public function testSelfCanonicalUrlDelegatesToGenerator(): void
     {
         $generator = $this->createStub(ChannelUrlGenerator::class);
-        $generator->method('selfCanonicalUrl')->willReturn('https://expandedtalks.wip/archetypes/zard');
+        $generator->method('selfCanonicalUrl')->willReturn('https://dowsingmachine.wip/archetypes/zard');
 
         $runtime = new ChannelRuntime(
             $this->createChannelContext((new Channel())->setCode('content')),
@@ -95,7 +95,7 @@ final class ChannelRuntimeTest extends TestCase
             $this->createLocaleVisibility(),
         );
 
-        self::assertSame('https://expandedtalks.wip/archetypes/zard', $runtime->selfCanonicalUrl('app_archetype_show', ['slug' => 'zard']));
+        self::assertSame('https://dowsingmachine.wip/archetypes/zard', $runtime->selfCanonicalUrl('app_archetype_show', ['slug' => 'zard']));
     }
 
     public function testChannelThemeReturnsThemeName(): void
@@ -122,10 +122,10 @@ final class ChannelRuntimeTest extends TestCase
     public function testChannelParamReturnsParameterValue(): void
     {
         $channel = (new Channel())->setCode('app');
-        $channel->setParameters(['brand_name' => 'Expanded Decks']);
+        $channel->setParameters(['brand_name' => 'Dowsing Machine']);
         $runtime = $this->createRuntime($channel);
 
-        self::assertSame('Expanded Decks', $runtime->channelParam('brand_name'));
+        self::assertSame('Dowsing Machine', $runtime->channelParam('brand_name'));
     }
 
     public function testChannelParamReturnsDefaultWhenContextThrowsLogicException(): void

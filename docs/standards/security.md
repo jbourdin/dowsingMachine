@@ -8,7 +8,7 @@
 
 ## Overview
 
-The project uses automated dependency vulnerability scanning for both PHP and JavaScript ecosystems. Scans run locally via Make targets, in CI on every push/PR, and on a weekly schedule via GitHub Dependabot.
+The project uses automated dependency vulnerability scanning for both PHP and JavaScript ecosystems. Scans run locally via Make targets, in CI on every push/PR, and every week in the dependency report issue.
 
 ## Local Scanning
 
@@ -26,31 +26,33 @@ The **Security Audit** job in `.github/workflows/ci.yml` runs `composer audit` a
 
 If the job fails, it means one or more dependencies have known CVEs that must be addressed before merging.
 
-## Dependabot
+## Weekly Dependency Report
 
-GitHub Dependabot is configured in `.github/dependabot.yml` to scan both ecosystems weekly:
+Dependabot is not used: its weekly grouped PRs were replaced by the next week's before anyone could act on them. Instead, `.github/workflows/dependency-report.yml` runs every Monday (and on demand from the Actions tab) and rewrites a single pinned issue titled **Dependency report**, with three sections:
 
-- **Composer** (PHP) — checks `composer.lock` against the [PHP Security Advisories Database](https://github.com/FriendsOfPHP/security-advisories)
-- **npm** (JavaScript) — checks `package-lock.json` against the [GitHub Advisory Database](https://github.com/advisories)
+- **Security**: every installed package with a known advisory, direct or indirect (`composer audit --locked`, `npm audit`). The CI Security Audit job fails on these too.
+- **Functional, patch and minor**: direct dependencies with a semver-compatible update (`composer outdated --locked --direct`, `npm outdated`).
+- **Functional, major**: direct dependencies with a new major version.
 
-Dependabot opens PRs against `develop` (per Gitflow) when new vulnerabilities are disclosed.
+The report is rendered by `.github/scripts/dependency_report.php`. Nothing is updated automatically: pick what to take, then update it by hand in a `chore/update-dependencies` branch and run `make audit` and `make test`.
 
 ## Composer Audit Blocking
 
 The `composer.json` config includes `"block-insecure": true`, which causes `composer install` and `composer update` to fail if any installed package has a known vulnerability. This acts as a hard gate beyond just CI — developers cannot install dependencies locally without resolving advisories first.
 
-## Held-Back Composer Packages
+## Held-Back Packages
 
-Occasionally an upstream release is broken for us and must be held back. Express it in **two** places so neither a manual `composer update` nor Dependabot can reintroduce it:
+Occasionally an upstream release is broken for us, or a major needs a coordinated migration, and must be held back:
 
-1. A `conflict` entry in `composer.json` — the hard gate.
-2. An `ignore` entry in `.github/dependabot.yml`, with a comment stating **why** and **the condition to lift it**.
+1. For Composer, a `conflict` entry in `composer.json` is the hard gate, so a manual `composer update` cannot reintroduce it.
+2. Every hold, Composer or npm, gets an entry in `.github/dependency-holds.json` (package name or glob → why, and the condition to lift it). The dependency report marks those packages with ⏸ and the reason.
 
 | Package | Held at | Reason | Lift when |
 |---------|---------|--------|-----------|
 | `doctrine/orm` | `< 3.6.8` | 3.6.8 calls `Schema::edit()`, which only exists in `doctrine/dbal ^4.5`. DBAL 4.5 is unreleased (4.4.4 is latest stable), so every functional test dies in `SchemaTool` with a `BadMethodCallException`. | DBAL 4.5.0 ships — check `composer show doctrine/dbal --all` |
+| Encore, Babel, webpack-cli, sass-loader, typescript, eslint majors | current majors | Coordinated build-toolchain migration, see #767 | #767 is done |
 
-Removing a hold means dropping both entries and running the full suite.
+Removing a hold means dropping its entries and running the full suite.
 
 ## npm Overrides
 

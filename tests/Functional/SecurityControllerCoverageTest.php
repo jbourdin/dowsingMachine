@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -120,15 +120,15 @@ class SecurityControllerCoverageTest extends AbstractFunctionalTest
      */
     public function testLoginPageRedirectsToHomeWhenLoggedInOnChannelWithoutDecks(): void
     {
-        $this->client->request('GET', 'https://expandedtalks.wip/login');
+        $this->client->request('GET', 'https://dowsingmachine.wip/login');
         $this->client->submitForm('Login', [
             '_email' => 'admin@example.com',
             '_password' => 'password',
         ]);
-        self::assertResponseRedirects('https://expandedtalks.wip/');
+        self::assertResponseRedirects('https://dowsingmachine.wip/');
 
-        $this->client->request('GET', 'https://expandedtalks.wip/login');
+        $this->client->request('GET', 'https://dowsingmachine.wip/login');
 
-        self::assertResponseRedirects('https://expandedtalks.wip/');
+        self::assertResponseRedirects('https://dowsingmachine.wip/');
     }
 }

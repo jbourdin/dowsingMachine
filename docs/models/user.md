@@ -12,7 +12,7 @@
 |--------------------|-------------------|----------|-------------|
 | `id`               | `int` (auto)      | No       | Primary key |
 | `email`            | `string(180)`     | No       | Unique. Used for login. |
-| `screenName`       | `string(50)`      | No       | Unique. Public display name visible to other users (shown to authenticated users). |
+| `screenName`       | `string(50)`      | No       | Unique. Public display name visible to other users (shown to authenticated users). Also accepted as login identifier (F1.9). |
 | `firstName`        | `string(50)`      | No       | User's first name. Used for the anonymous public display format "FirstName L." in tournament results (F3.17). |
 | `lastName`         | `string(50)`      | No       | User's last name. Only the first letter is shown publicly ("FirstName L.") in tournament results. Full last name visible only to the user themselves and admins. |
 | `playerId`         | `string(30)`      | Yes      | Pokemon TCG player ID (e.g. tournament ID). Optional at registration, can be added later. |
@@ -56,7 +56,7 @@ ROLE_TRANSLATION_EDITOR > ROLE_USER
 ### Constraints
 
 - `email`: unique, valid email format
-- `screenName`: unique, 3–50 characters, alphanumeric + underscores
+- `screenName`: unique, 2–50 characters, no `@`: it doubles as a login identifier (F1.9), so it must never look like an email
 - `firstName`: required, 1–50 characters
 - `lastName`: required, 1–50 characters
 - `playerId`: optional, unique when provided

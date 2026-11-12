@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -59,7 +59,7 @@ final class RobotsTxtControllerTest extends TestCase
     {
         $channel = (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableArchetypes(true)
             ->setEnableDecks(false)
             ->setEnableEvents(false)
@@ -75,14 +75,14 @@ final class RobotsTxtControllerTest extends TestCase
         self::assertStringNotContainsString('Allow: /deck/', $body);
         self::assertStringNotContainsString('Allow: /event', $body);
         self::assertStringContainsString('Disallow: /admin/', $body);
-        self::assertStringContainsString('Sitemap: https://expandedtalks.wip/sitemap.xml', $body);
+        self::assertStringContainsString('Sitemap: https://dowsingmachine.wip/sitemap.xml', $body);
     }
 
     public function testContentChannelWithSingleLocaleOmitsFrenchPaths(): void
     {
         $channel = (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableArchetypes(true)
             ->setEnableDecks(false)
             ->setEnableEvents(false)
@@ -150,7 +150,7 @@ final class RobotsTxtControllerTest extends TestCase
 
         $contentChannel = (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableArchetypes(true);
 
         $appBody = (string) $this->invokeController($appChannel)->getContent();

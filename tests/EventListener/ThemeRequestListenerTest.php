@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,7 +31,7 @@ final class ThemeRequestListenerTest extends TestCase
         $projectDir = \dirname(__DIR__, 2);
         $loader = new FilesystemLoader($projectDir.'/templates');
 
-        $channel = (new Channel())->setCode('content')->setDomain('expandedtalks.wip')->setThemeName('expandedtalks');
+        $channel = (new Channel())->setCode('content')->setDomain('dowsingmachine.wip')->setThemeName('expandedtalks');
 
         $listener = new ThemeRequestListener($loader, $projectDir);
         $listener($this->createEvent($channel));
@@ -74,7 +74,7 @@ final class ThemeRequestListenerTest extends TestCase
         $loader = new FilesystemLoader($projectDir.'/templates');
         $originalPaths = $loader->getPaths();
 
-        $channel = (new Channel())->setCode('content')->setDomain('expandedtalks.wip')->setThemeName('expandedtalks');
+        $channel = (new Channel())->setCode('content')->setDomain('dowsingmachine.wip')->setThemeName('expandedtalks');
 
         $listener = new ThemeRequestListener($loader, $projectDir);
         $listener($this->createEvent($channel, HttpKernelInterface::SUB_REQUEST));

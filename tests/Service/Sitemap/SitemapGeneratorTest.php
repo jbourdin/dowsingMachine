@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -45,7 +45,7 @@ final class SitemapGeneratorTest extends TestCase
 
         $this->contentChannel = (new Channel())
             ->setCode('content')
-            ->setDomain('expandedtalks.wip')
+            ->setDomain('dowsingmachine.wip')
             ->setEnableDecks(false)
             ->setEnableRegister(false)
             ->setEnableEvents(false)
@@ -85,10 +85,10 @@ final class SitemapGeneratorTest extends TestCase
 
         self::assertStringContainsString('<?xml version="1.0" encoding="UTF-8"?>', $xml);
         self::assertStringContainsString('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/en/', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/fr/', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/en/pages/about', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/fr/pages/about', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/fr/', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/pages/about', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/fr/pages/about', $xml);
         self::assertStringContainsString('<lastmod>2026-04-01</lastmod>', $xml);
         self::assertStringContainsString('<priority>1.0</priority>', $xml);
         self::assertStringContainsString('<priority>0.6</priority>', $xml);
@@ -105,8 +105,8 @@ final class SitemapGeneratorTest extends TestCase
 
         $xml = $generator->generateCombined($this->contentChannel);
 
-        self::assertStringContainsString('https://expandedtalks.wip/en/archetypes/lugia-vstar', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/fr/archetypes/lugia-vstar', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/archetypes/lugia-vstar', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/fr/archetypes/lugia-vstar', $xml);
         self::assertStringContainsString('<lastmod>2026-03-15</lastmod>', $xml);
         self::assertStringContainsString('<changefreq>weekly</changefreq>', $xml);
         self::assertStringContainsString('<priority>0.8</priority>', $xml);
@@ -255,9 +255,9 @@ final class SitemapGeneratorTest extends TestCase
 
         $xml = $generator->generateCombined($this->contentChannel);
 
-        self::assertStringContainsString('https://expandedtalks.wip/en/', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/en/pages/about', $xml);
-        self::assertStringContainsString('https://expandedtalks.wip/en/archetypes/lugia-vstar', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/pages/about', $xml);
+        self::assertStringContainsString('https://dowsingmachine.wip/en/archetypes/lugia-vstar', $xml);
         self::assertStringNotContainsString('/fr/', $xml);
 
         $document = new \DOMDocument();

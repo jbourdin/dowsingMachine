@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -191,32 +191,32 @@ class PageRepositoryTest extends AbstractFunctionalTest
         $repository = $this->getRepository();
         $entityManager = $this->getEntityManager();
 
-        // Get the rules category
+        // Get the Getting started category
         /** @var MenuCategoryRepository $categoryRepository */
         $categoryRepository = static::getContainer()->get(MenuCategoryRepository::class);
         $categories = $categoryRepository->findAllOrdered();
 
         // Find a category with known pages
-        $rulesCategory = null;
+        $gettingStartedCategory = null;
         foreach ($categories as $category) {
-            if ('Rules & Info' === $category->getName('en')) {
-                $rulesCategory = $category;
+            if ('Getting started' === $category->getName('en')) {
+                $gettingStartedCategory = $category;
                 break;
             }
         }
-        self::assertNotNull($rulesCategory, 'Rules & Info category should exist in fixtures.');
+        self::assertNotNull($gettingStartedCategory, 'Getting started category should exist in fixtures.');
 
-        $countBefore = $repository->countPublishedByCategory($rulesCategory);
+        $countBefore = $repository->countPublishedByCategory($gettingStartedCategory);
 
         // Create an unpublished page in this category
         $unpublishedPage = new Page();
-        $unpublishedPage->setSlug('unpublished-rules-page');
-        $unpublishedPage->setMenuCategory($rulesCategory);
+        $unpublishedPage->setSlug('unpublished-getting-started-page');
+        $unpublishedPage->setMenuCategory($gettingStartedCategory);
         $unpublishedPage->setIsPublished(false);
         $entityManager->persist($unpublishedPage);
         $entityManager->flush();
 
-        $countAfter = $repository->countPublishedByCategory($rulesCategory);
+        $countAfter = $repository->countPublishedByCategory($gettingStartedCategory);
 
         // Count should not change
         self::assertSame($countBefore, $countAfter);
@@ -234,7 +234,7 @@ class PageRepositoryTest extends AbstractFunctionalTest
         /** @var list<Page> $pages */
         $pages = $queryBuilder->getQuery()->getResult();
 
-        // Fixtures have multiple pages (welcome, news, rules, draft)
+        // Fixtures have multiple pages (welcome, news, getting started, draft)
         self::assertGreaterThanOrEqual(10, \count($pages));
     }
 

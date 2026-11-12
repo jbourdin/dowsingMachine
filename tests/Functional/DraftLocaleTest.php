@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -25,7 +25,7 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class DraftLocaleTest extends AbstractFunctionalTest
 {
-    private const array CONTENT_HOST = ['HTTP_HOST' => 'expandedtalks.wip'];
+    private const array CONTENT_HOST = ['HTTP_HOST' => 'dowsingmachine.wip'];
 
     private function loginByEmail(string $email): User
     {

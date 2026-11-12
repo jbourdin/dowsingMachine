@@ -38,7 +38,7 @@ jobs:
       - name: Warm up cache
         run: php bin/console cache:warmup --env=dev
         env:
-          DATABASE_URL: "mysql://localhost/expanded_decks_test?serverVersion=8.0&charset=utf8mb4"
+          DATABASE_URL: "mysql://localhost/dowsing_machine_test?serverVersion=8.0&charset=utf8mb4"
 
       - name: PHP-CS-Fixer (dry-run)
         run: php vendor/bin/php-cs-fixer fix --dry-run --diff
@@ -49,12 +49,12 @@ jobs:
       - name: PHPStan
         run: php vendor/bin/phpstan analyse --memory-limit=512M
         env:
-          DATABASE_URL: "mysql://localhost/expanded_decks_test?serverVersion=8.0&charset=utf8mb4"
+          DATABASE_URL: "mysql://localhost/dowsing_machine_test?serverVersion=8.0&charset=utf8mb4"
 
       - name: PHPUnit (unit)
         run: php bin/phpunit --testsuite unit
         env:
-          DATABASE_URL: "mysql://localhost/expanded_decks_test?serverVersion=8.0&charset=utf8mb4"
+          DATABASE_URL: "mysql://localhost/dowsing_machine_test?serverVersion=8.0&charset=utf8mb4"
 
   php-functional:
     name: PHP Functional Tests
@@ -65,9 +65,9 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: expanded_decks_test
-          MYSQL_USER: expanded_decks
-          MYSQL_PASSWORD: expanded_decks
+          MYSQL_DATABASE: dowsing_machine_test
+          MYSQL_USER: dowsing_machine
+          MYSQL_PASSWORD: dowsing_machine
         ports:
           - 3306:3306
         # tmpfs datadir: the test database is dropped and recreated per job and
@@ -109,7 +109,7 @@ jobs:
       - name: PHPUnit (functional)
         run: php bin/phpunit --testsuite functional
         env:
-          DATABASE_URL: "mysql://expanded_decks:expanded_decks@127.0.0.1:3306/expanded_decks?serverVersion=8.0&charset=utf8mb4"
+          DATABASE_URL: "mysql://dowsing_machine:dowsing_machine@127.0.0.1:3306/dowsing_machine?serverVersion=8.0&charset=utf8mb4"
 
   php-coverage:
     name: PHP Coverage
@@ -119,9 +119,9 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: expanded_decks_test
-          MYSQL_USER: expanded_decks
-          MYSQL_PASSWORD: expanded_decks
+          MYSQL_DATABASE: dowsing_machine_test
+          MYSQL_USER: dowsing_machine
+          MYSQL_PASSWORD: dowsing_machine
         ports:
           - 3306:3306
         # tmpfs datadir: the test database is dropped and recreated per job and
@@ -163,7 +163,7 @@ jobs:
       - name: PHPUnit with coverage
         run: php -d pcov.enabled=1 -d memory_limit=1536M bin/phpunit --coverage-clover var/coverage/clover.xml --coverage-text
         env:
-          DATABASE_URL: "mysql://expanded_decks:expanded_decks@127.0.0.1:3306/expanded_decks?serverVersion=8.0&charset=utf8mb4"
+          DATABASE_URL: "mysql://dowsing_machine:dowsing_machine@127.0.0.1:3306/dowsing_machine?serverVersion=8.0&charset=utf8mb4"
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5

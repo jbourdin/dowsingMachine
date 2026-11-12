@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -12,7 +12,7 @@
     ? 'app.event.tag.meta_description'|trans({'%name%': activeTag.name})
     : 'app.event.list.meta_description'|trans %}
 
-{% block title %}{% if activeTag %}{{ 'app.event.tag.page_title'|trans({'%name%': activeTag.name}) }}{% else %}{{ 'app.event.list_title'|trans }}{% endif %} — {{ channel_param('brand_name', 'Expanded Decks') }}{% endblock %}
+{% block title %}{% if activeTag %}{{ 'app.event.tag.page_title'|trans({'%name%': activeTag.name}) }}{% else %}{{ 'app.event.list_title'|trans }}{% endif %} — {{ channel_param('brand_name', 'Dowsing Machine') }}{% endblock %}
 
 {% block canonical %}
     {% if activeTag %}
@@ -24,10 +24,10 @@
 
 {% block opengraph %}
     {% if activeTag %}
-        {% set og_title = 'app.event.tag.page_title'|trans({'%name%': activeTag.name}) ~ ' — ' ~ channel_param('brand_name', 'Expanded Decks') %}
+        {% set og_title = 'app.event.tag.page_title'|trans({'%name%': activeTag.name}) ~ ' — ' ~ channel_param('brand_name', 'Dowsing Machine') %}
         {% set og_url = canonical_url('events', 'app_event_tag', {slug: activeTag.slug}) %}
     {% else %}
-        {% set og_title = 'app.event.list_title'|trans ~ ' — ' ~ channel_param('brand_name', 'Expanded Decks') %}
+        {% set og_title = 'app.event.list_title'|trans ~ ' — ' ~ channel_param('brand_name', 'Dowsing Machine') %}
         {% set og_url = canonical_url('events', 'app_event_list') %}
     {% endif %}
     {{ include('_partials/opengraph.html.twig') }}

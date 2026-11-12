@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -28,7 +28,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Render a list of Expanded Decks events as an iCalendar (RFC 5545) feed.
+ * Render a list of Dowsing Machine events as an iCalendar (RFC 5545) feed.
  *
  * @see docs/features.md F3.16 — Public iCal feed
  */
@@ -52,7 +52,7 @@ final class EventIcalBuilder
         }
 
         $calendar = new Calendar($icalEvents);
-        $calendar->setProductIdentifier('-//Expanded Decks//Event Calendar//EN');
+        $calendar->setProductIdentifier('-//Dowsing Machine//Event Calendar//EN');
 
         $output = (string) (new CalendarFactory())->createCalendar($calendar);
 

@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -13,7 +13,7 @@
 {% block title %}{{ category.getName(app.request.locale) }} — {{ parent() }}{% endblock %}
 
 {% block alternate_feeds %}
-    <link rel="alternate" type="application/rss+xml" title="{{ 'app.cms.feed.title_for_category'|trans({'%category%': category.getName(app.request.locale), '%brand%': channel_param('brand_name', 'Expanded Decks')}) }}" href="{{ url('app_page_category_feed', {id: category.id}) }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ 'app.cms.feed.title_for_category'|trans({'%category%': category.getName(app.request.locale), '%brand%': channel_param('brand_name', 'Dowsing Machine')}) }}" href="{{ url('app_page_category_feed', {id: category.id}) }}">
 {% endblock %}
 
 {% block body %}

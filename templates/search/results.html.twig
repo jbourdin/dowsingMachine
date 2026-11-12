@@ -1,7 +1,7 @@
 {#
- # This file is part of the Expanded Decks project.
+ # This file is part of the Dowsing Machine project.
  #
- # (c) Expanded Decks contributors
+ # (c) Dowsing Machine contributors
  #
  # For the full copyright and license information, please view the LICENSE
  # file that was distributed with this source code.
@@ -11,7 +11,7 @@
 {# Search results are not indexable; suppress the central meta description (F19.7). #}
 {% set noIndex = true %}
 
-{% block title %}{% if query %}{{ 'app.search.results_title'|trans({'%query%': query}) }}{% else %}{{ 'app.search.title'|trans }}{% endif %} — {{ channel_param('brand_name', 'Expanded Decks') }}{% endblock %}
+{% block title %}{% if query %}{{ 'app.search.results_title'|trans({'%query%': query}) }}{% else %}{{ 'app.search.title'|trans }}{% endif %} — {{ channel_param('brand_name', 'Dowsing Machine') }}{% endblock %}
 
 {% block meta %}
     <meta name="robots" content="noindex">

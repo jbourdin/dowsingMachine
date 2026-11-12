@@ -1,5 +1,5 @@
 {
-    "name": "expanded-decks/expanded-decks",
+    "name": "dowsing-machine/dowsing-machine",
     "type": "project",
     "license": "Apache-2.0",
     "description": "Shared library of physical Pokemon TCG decks — borrowing, events, label printing",

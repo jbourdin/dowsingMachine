@@ -3,15 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
 namespace App\Service\DeckList;
+
+use App\Service\CardImageHost;
 
 /**
  * Lightweight DTO for displaying a minified card in the deck table view.
@@ -67,7 +69,7 @@ readonly class MinifiedCardView
 
     public function getImageUrl(): ?string
     {
-        return $this->imageUrl;
+        return CardImageHost::toPublic($this->imageUrl);
     }
 
     public function getAbilityNames(): string
@@ -97,7 +99,7 @@ readonly class MinifiedCardView
                 'c' => $card->cardNumber,
                 't' => $card->cardType,
                 'ts' => $card->trainerSubtype,
-                'i' => $card->imageUrl,
+                'i' => CardImageHost::toCanonical($card->imageUrl),
                 'ab' => $card->abilityNames,
                 'at' => $card->attackNames,
             ], $cards);

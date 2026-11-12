@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Expanded Decks project.
+ * This file is part of the Dowsing Machine project.
  *
- * (c) Expanded Decks contributors
+ * (c) Dowsing Machine contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,7 +14,11 @@ declare(strict_types=1);
 /*
  * TCGdex set ID → PTCG code mappings.
  *
- * Extracted from a production build of the TCGdex API (2026-03-23).
+ * Extracted from a production build of the TCGdex API (2026-03-23), then
+ * completed from production on 2026-11-05 with the gallery subsets TCGdex now
+ * ships as separate sets (swsh4.5sv, swsh10tg, …), which the banned list needs.
+ * svp/swshp keep their PR-SV/PR-SW codes: they are what deck lists and the
+ * banned list use.
  * Used by DevFixtures to seed the tcgdex_set_mapping table so that
  * deck views work without triggering the async BuildSetMappingsHandler.
  *
@@ -30,6 +34,11 @@ return [
     '2018sm' => 'MCD18',
     '2019sm' => 'MCD19',
     '2021swsh' => 'MCD21',
+    '2022swsh' => 'MCD22',
+    '2023sv' => 'MCD23',
+    '2024sv' => 'MCD24',
+    '30th' => '30C',
+    '30th-c' => '30C',
     'base1' => 'BS',
     'base2' => 'JU',
     'base3' => 'FO',
@@ -49,6 +58,7 @@ return [
     'bw9' => 'PLF',
     'bwp' => 'PR-BLW',
     'cel25' => 'CEL',
+    'cel25cc' => 'CEL',
     'col1' => 'CL',
     'dc1' => 'DCR',
     'det1' => 'DET',
@@ -93,7 +103,12 @@ return [
     'me01' => 'MEG',
     'me02' => 'PFL',
     'me02.5' => 'ASC',
+    'me03' => 'POR',
+    'me04' => 'CRI',
+    'me05' => 'PBL',
+    'mee' => 'MEE',
     'mep' => 'MEP',
+    'mfb' => 'MFB',
     'neo1' => 'N1',
     'neo2' => 'N2',
     'neo3' => 'N3',
@@ -146,23 +161,30 @@ return [
     'sv10' => 'DRI',
     'sv10.5b' => 'BLK',
     'sv10.5w' => 'WHT',
+    'sve' => 'SVE',
     'svp' => 'PR-SV',
     'swsh1' => 'SSH',
     'swsh10' => 'ASR',
     'swsh10.5' => 'PGO',
+    'swsh10tg' => 'ASR',
     'swsh11' => 'LOR',
+    'swsh11tg' => 'LOR',
     'swsh12' => 'SIT',
     'swsh12.5' => 'CRZ',
+    'swsh12.5gg' => 'CRZ',
+    'swsh12tg' => 'SIT',
     'swsh2' => 'RCL',
     'swsh3' => 'DAA',
     'swsh3.5' => 'CPA',
     'swsh4' => 'VIV',
     'swsh4.5' => 'SHF',
+    'swsh4.5sv' => 'SHF',
     'swsh5' => 'BST',
     'swsh6' => 'CRE',
     'swsh7' => 'EVS',
     'swsh8' => 'FST',
     'swsh9' => 'BRS',
+    'swsh9tg' => 'BRS',
     'swshp' => 'PR-SW',
     'tk-bw-e' => 'TK5E',
     'tk-bw-z' => 'TK5Z',

@@ -32,7 +32,7 @@ use App\Repository\TcgdexSetRepository;
  */
 final readonly class StapleCardImageResolver
 {
-    private const string TCGDEX_CDN_BASE = 'https://assets.tcgdex.net';
+    private const string TCGDEX_CDN_BASE = CardImageHost::TCGDEX_BASE;
     private const string POKEMONTCG_IO_BASE = 'https://images.pokemontcg.io';
 
     public function __construct(
@@ -41,6 +41,11 @@ final readonly class StapleCardImageResolver
     }
 
     public function resolveForStaple(StapleCard $card): ?string
+    {
+        return CardImageHost::toPublic($this->resolveCanonical($card));
+    }
+
+    private function resolveCanonical(StapleCard $card): ?string
     {
         $representative = $card->getRepresentativePrinting();
         if (null !== $representative) {
@@ -81,7 +86,7 @@ final readonly class StapleCardImageResolver
     {
         $direct = $printing->getImageUrl();
         if (null !== $direct && '' !== $direct) {
-            return $this->normalizeTcgdexCdnUrl($direct);
+            return $this->normalizeTcgdexCdnUrl(CardImageHost::toCanonical($direct));
         }
 
         $cdn = $this->buildTcgdexCdnFromPrinting($printing);

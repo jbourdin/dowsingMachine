@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\TcgdexCardRepository;
+use App\Service\CardImageHost;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -288,17 +289,18 @@ class TcgdexCard
     public function getImageUrl(string $resolution = 'high', string $format = 'webp'): string
     {
         if (null !== $this->imageBaseUrl) {
-            return \sprintf('%s/%s.%s', $this->imageBaseUrl, $resolution, $format);
+            return CardImageHost::toPublic(\sprintf('%s/%s.%s', $this->imageBaseUrl, $resolution, $format));
         }
 
-        return \sprintf(
-            'https://assets.tcgdex.net/en/%s/%s/%s/%s.%s',
+        return CardImageHost::toPublic(\sprintf(
+            '%s/en/%s/%s/%s/%s.%s',
+            CardImageHost::TCGDEX_BASE,
             $this->set->getSerie()->getId(),
             $this->set->getId(),
             $this->localId,
             $resolution,
             $format,
-        );
+        ));
     }
 
     public function getImageBaseUrl(): ?string

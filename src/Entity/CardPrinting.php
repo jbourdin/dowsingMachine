@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\CardPrintingRepository;
+use App\Service\CardImageHost;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -171,12 +172,12 @@ class CardPrinting
 
     public function getImageUrl(): ?string
     {
-        return $this->imageUrl;
+        return CardImageHost::toPublic($this->imageUrl);
     }
 
     public function setImageUrl(?string $imageUrl): static
     {
-        $this->imageUrl = $imageUrl;
+        $this->imageUrl = CardImageHost::toCanonical($imageUrl);
 
         return $this;
     }

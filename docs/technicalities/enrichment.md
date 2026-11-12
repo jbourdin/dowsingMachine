@@ -200,6 +200,14 @@ Returns `null` if no pricing data is available.
 
 ---
 
+## Card Image Host
+
+Card image URLs are stored with the TCGdex CDN host (`https://assets.tcgdex.net/...`) in `card_printing.image_url`, `tcgdex_card.image_base_url` and the `deck_version.minified_card_views` cache. When `CARD_IMAGE_DOMAIN` is set, `App\Service\CardImageHost` swaps that host on read: `CardPrinting::getImageUrl()`, `TcgdexCard::getImageUrl()`, `MinifiedCardView::getImageUrl()`, the staple and banned card image resolvers and the card image URL endpoint return `https://<CARD_IMAGE_DOMAIN>/...`. Setters and the minified cache serializer convert back to the TCGdex host, so the database never stores the public host and unsetting the variable reverts every URL.
+
+In production the host is `card.dowsingmachine.com`, a Bunny pull zone in front of `assets.tcgdex.net` (infra repo, `cdn_cards.tf`). When TCGdex has no scan yet for a card (new sets such as `me06` / DLR), its middleware script serves the Limitless scan instead and caches it for a day, so the TCGdex scan takes over once it is published. Server-side downloads (mosaics) go through the same host and get the same fallback.
+
+`CardImageHost` is static because entities have no dependency injection; `Kernel::boot()` configures it from the `app.card_image_domain` parameter.
+
 ## Card Identity Model
 
 The enrichment pipeline builds a normalized card model that separates the concept of a "functional card" from its individual set printings.

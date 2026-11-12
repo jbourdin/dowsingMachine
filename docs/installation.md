@@ -103,6 +103,12 @@ Generated deck mosaic images are stored via Flysystem. Two adapters are availabl
 | `SCALEWAY_S3_ACCESS_KEY` | If `s3` | — | S3 access key ID. |
 | `SCALEWAY_S3_SECRET_KEY` | If `s3` | — | S3 secret access key. |
 
+### Card Images
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `CARD_IMAGE_DOMAIN` | No | — | Host that serves card scans in place of `assets.tcgdex.net` (e.g. `card.dowsingmachine.com`, a Bunny pull zone proxying TCGdex with a Limitless fallback for sets TCGdex has not published yet). The database keeps the TCGdex URLs; the host is swapped on read, so leaving it empty links TCGdex directly. See [enrichment.md](technicalities/enrichment.md#card-image-host). |
+
 ---
 
 ## Workers

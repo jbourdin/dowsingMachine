@@ -15,6 +15,7 @@ parameters:
     app.mosaic_storage_adapter: '%env(MOSAIC_STORAGE_ADAPTER)%'
     app.mosaic_storage_local_dir: '%env(MOSAIC_STORAGE_LOCAL_DIR)%'
     app.mosaic_public_url: '%env(MOSAIC_PUBLIC_URL)%'
+    app.card_image_domain: '%env(CARD_IMAGE_DOMAIN)%'
     app.scaleway_s3_bucket: '%env(SCALEWAY_S3_BUCKET)%'
     app.scaleway_s3_region: '%env(SCALEWAY_S3_REGION)%'
     app.scaleway_s3_endpoint: '%env(SCALEWAY_S3_ENDPOINT)%'

@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace App\Service\DeckList;
 
+use App\Service\CardImageHost;
+
 /**
  * Lightweight DTO for displaying a minified card in the deck table view.
  *
@@ -67,7 +69,7 @@ readonly class MinifiedCardView
 
     public function getImageUrl(): ?string
     {
-        return $this->imageUrl;
+        return CardImageHost::toPublic($this->imageUrl);
     }
 
     public function getAbilityNames(): string
@@ -97,7 +99,7 @@ readonly class MinifiedCardView
                 'c' => $card->cardNumber,
                 't' => $card->cardType,
                 'ts' => $card->trainerSubtype,
-                'i' => $card->imageUrl,
+                'i' => CardImageHost::toCanonical($card->imageUrl),
                 'ab' => $card->abilityNames,
                 'at' => $card->attackNames,
             ], $cards);

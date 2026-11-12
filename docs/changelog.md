@@ -16,6 +16,27 @@ Items marked *(partial)* have scaffolding or basic functionality but are not yet
 
 ---
 
+## [1.15.3] — 2026-11-12
+
+Patch release: card images for sets TCGdex has not published yet (Delta Reign), a login fix for screen names, the rename to Dowsing Machine and a weekly dependency report replacing Dependabot.
+
+### Features
+
+- **Card image host with fallback (F6.2)** — New optional `CARD_IMAGE_DOMAIN` env var. When set (`card.dowsingmachine.com` in production), card image URLs point to that host instead of `assets.tcgdex.net`. It is a Bunny pull zone that proxies TCGdex and serves the Limitless scan when TCGdex has none yet, so Delta Reign (me06 / DLR) cards show their image again. The database keeps the TCGdex URLs and `CardImageHost` swaps the host on read, so emptying the variable reverts everything. ([#835](https://github.com/jbourdin/dowsingMachine/pull/835))
+
+### Bug Fixes
+
+- **Screen names can no longer contain "@" (F1.9)** — The login form looks users up by email or screen name, so a screen name equal to another user's email made the lookup match two accounts and locked that user out. Screen names now reject "@", and constraint messages using `app.*` keys get a `validators` catalog (they showed raw keys). ([#830](https://github.com/jbourdin/dowsingMachine/pull/830))
+- **Banned-card sync left duplicate cards** — A printing that failed to resolve on one run kept its own placeholder card. Existing printings are now regrouped by card identity too. ([#821](https://github.com/jbourdin/dowsingMachine/pull/821))
+
+### Infrastructure
+
+- **Rename to Dowsing Machine** — Repository links, license headers, brand fallbacks, package, Docker and database names, mail sender and iCal PRODID (the iCal UID domain is kept so subscribers don't get duplicated events). Historical mentions stay as they are. ([#821](https://github.com/jbourdin/dowsingMachine/pull/821))
+- **Reproducible dev environment** — `make reset` wipes the volumes and reloads fixtures, `make test` creates the PHPUnit database, and the dev fixtures follow the production content site. ([#821](https://github.com/jbourdin/dowsingMachine/pull/821))
+- **Weekly dependency report** — Dependabot is removed; a weekly workflow rewrites one pinned "Dependency report" issue with security advisories first, then patch/minor and major updates. ([#831](https://github.com/jbourdin/dowsingMachine/pull/831))
+
+---
+
 ## [1.15.2] — 2026-11-04
 
 Patch release: click-to-zoom on large images in rich text content, plus a security dependency sweep covering the Symfony advisories published on 2026-11-04.

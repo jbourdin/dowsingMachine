@@ -16,6 +16,7 @@ namespace App\Form;
 use App\Entity\Deck;
 use App\Entity\TcgdexSet;
 use App\Repository\TcgdexSetRepository;
+use App\Service\DeckListParser;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -24,6 +25,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Form for creating/editing archetype variant decks.
@@ -35,6 +38,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class ArchetypeVariantFormType extends AbstractType
 {
+    public function __construct(
+        private readonly DeckListParser $deckListParser,
+    ) {
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -55,6 +63,9 @@ class ArchetypeVariantFormType extends AbstractType
                 'attr' => [
                     'rows' => 10,
                     'placeholder' => 'app.archetype.variant.raw_list_placeholder',
+                ],
+                'constraints' => [
+                    new Callback($this->validateRawList(...)),
                 ],
             ])
             ->add('latestSet', EntityType::class, [
@@ -92,6 +103,21 @@ class ArchetypeVariantFormType extends AbstractType
                 'required' => false,
                 'attr' => ['rows' => 3],
             ]);
+    }
+
+    /**
+     * Rejects a list with unparseable lines, which would otherwise be dropped silently.
+     */
+    public function validateRawList(mixed $rawList, ExecutionContextInterface $context): void
+    {
+        if (!\is_string($rawList) || '' === trim($rawList)) {
+            return;
+        }
+
+        foreach ($this->deckListParser->parse($rawList)->errors as $error) {
+            // Parser errors are already translated.
+            $context->buildViolation($error)->disableTranslation()->addViolation();
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void

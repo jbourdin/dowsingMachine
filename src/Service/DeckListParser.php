@@ -33,7 +33,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class DeckListParser
 {
     private const string SECTION_HEADER_PATTERN = '/^(Pok[eé]mon|Trainer|Energy)\s*:\s*(\d+)$/iu';
-    private const string CARD_LINE_PATTERN = '/^(\d+)\s+(.+?)\s+([A-Z][A-Za-z0-9-]{1,5})\s+(\S+)$/';
+    // Set codes may start with a digit (30C, 30th Celebration) but need at least one letter.
+    private const string CARD_LINE_PATTERN = '/^(\d+)\s+(.+?)\s+((?=[A-Za-z0-9-]*[A-Za-z])[A-Z0-9][A-Za-z0-9-]{1,5})\s+(\S+)$/';
     private const string TOTAL_LINE_PATTERN = '/^Total\s+Cards\s*:/i';
     public const string UNKNOWN_CARD_TYPE = 'unknown';
 

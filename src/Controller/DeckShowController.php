@@ -363,6 +363,11 @@ class DeckShowController extends AbstractAppController
         // Re-parse from raw list
         $result = $parser->parse($rawList);
 
+        // Unparseable lines are skipped: tell the editor instead of dropping them silently.
+        foreach ($result->errors as $error) {
+            $this->addFlash('warning', $error);
+        }
+
         foreach ($result->cards as $parsedCard) {
             $card = new DeckCard();
             $card->setCardName($parsedCard->cardName);

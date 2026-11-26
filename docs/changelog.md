@@ -16,6 +16,20 @@ Items marked *(partial)* have scaffolding or basic functionality but are not yet
 
 ---
 
+## [1.15.4] — 2026-11-26
+
+Patch release: 30th Celebration cards were dropped from deck lists, and a Symfony / Twig security update.
+
+### Bug Fixes
+
+- **30th Celebration (30C) cards missing from deck lists (F6.1)** — The deck-list parser required set codes to start with a letter, so every `30C` line was skipped. The archetype variant form and the re-parse actions ignored parse errors, so lists were saved short without a message (a Jellicent list showed 57 cards, Cyrus OTK lost its Mew ex). Set codes may now start with a digit as long as they contain a letter. The variant form refuses a list with unreadable lines, and re-enrich / duplicate variant / deck re-enrich flash each line they skip. ([#838](https://github.com/jbourdin/dowsingMachine/pull/838))
+
+### Security
+
+- **Symfony 8.1.12 and Twig 3.31.1** — Patch update for the 2026-11 Symfony security release (28 advisories across http-client, security-http, framework-bundle, routing, mailer, serializer and others) and twig/twig. Brings doctrine/dbal 4.6 and monolog 3.13 along. ([#839](https://github.com/jbourdin/dowsingMachine/pull/839))
+
+---
+
 ## [1.15.3] — 2026-11-12
 
 Patch release: card images for sets TCGdex has not published yet (Delta Reign), a login fix for screen names, the rename to Dowsing Machine and a weekly dependency report replacing Dependabot.

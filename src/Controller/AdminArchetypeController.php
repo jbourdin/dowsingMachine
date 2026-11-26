@@ -446,6 +446,11 @@ class AdminArchetypeController extends AbstractAppController
 
         $result = $parser->parse($version->getRawList());
 
+        // Unparseable lines are skipped: tell the editor instead of dropping them silently.
+        foreach ($result->errors as $error) {
+            $this->addFlash('warning', $error);
+        }
+
         foreach ($result->cards as $parsedCard) {
             $card = new DeckCard();
             $card->setCardName($parsedCard->cardName);
@@ -517,6 +522,11 @@ class AdminArchetypeController extends AbstractAppController
         if (null !== $rawList && '' !== trim($rawList)) {
             $nextVersion = $versionRepository->findMaxVersionNumber($copy) + 1;
             $result = $parser->parse($rawList);
+
+            // Unparseable lines are skipped: tell the editor instead of dropping them silently.
+            foreach ($result->errors as $error) {
+                $this->addFlash('warning', $error);
+            }
 
             $version = new DeckVersion();
             $version->setDeck($copy);

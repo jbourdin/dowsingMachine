@@ -102,7 +102,7 @@ RUN rm -rf tests/ .env .env.test .env.dev docker-compose.yml node_modules/ asset
     'APP_ENV=prod' \
     'APP_SECRET=change-me-at-runtime' \
     'DEFAULT_URI=https://localhost' \
-    'DATABASE_URL=mysql://localhost/placeholder?serverVersion=8.0' \
+    'DATABASE_URL=mysql://localhost/placeholder?serverVersion=8.4.0' \
     'MAILER_DSN=null://null' \
     'MESSENGER_WEBHOOK_SECRET=' \
     'MESSENGER_TRANSPORT_TRANSACTIONAL_EMAIL_DSN=doctrine://default' \

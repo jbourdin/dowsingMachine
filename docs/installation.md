@@ -35,7 +35,7 @@ All configuration is injected via environment variables. No `.env` files are rea
 
 | Variable | Required | Example | Description |
 |----------|----------|---------|-------------|
-| `DATABASE_URL` | **Yes** | `mysql://user:pass@host:3306/db?serverVersion=8.0&charset=utf8mb4` | Doctrine DBAL connection string. Also used for session storage (PDO adapter). |
+| `DATABASE_URL` | **Yes** | `mysql://user:pass@host:3306/db?serverVersion=8.4.0&charset=utf8mb4` | Doctrine DBAL connection string. Also used for session storage (PDO adapter). |
 
 ### Email
 
@@ -178,7 +178,7 @@ docker run -d \
   -e APP_SECRET="$(openssl rand -hex 32)" \
   -e DEFAULT_URI="https://dowsing-machine.com" \
   -e SYMFONY_TRUSTED_PROXIES="REMOTE_ADDR" \
-  -e DATABASE_URL="mysql://user:pass@db:3306/dowsing_machine?serverVersion=8.0&charset=utf8mb4" \
+  -e DATABASE_URL="mysql://user:pass@db:3306/dowsing_machine?serverVersion=8.4.0&charset=utf8mb4" \
   -e MAILER_DSN="ses+smtp://KEY:SECRET@default?region=eu-west-1" \
   -e MAIL_SENDER="noreply@dowsing-machine.com" \
   -e ADMIN_EMAIL="admin@dowsing-machine.com" \

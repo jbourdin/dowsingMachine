@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: mysql:8.0
+        image: mysql:8.4
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: dowsing_machine_test
@@ -63,7 +63,7 @@ jobs:
       - name: PHPUnit with coverage
         run: php -d pcov.enabled=1 -d memory_limit=1G bin/phpunit --coverage-clover var/coverage/clover.xml --coverage-text 2>&1 | tee var/coverage/coverage-text.txt
         env:
-          DATABASE_URL: "mysql://dowsing_machine:dowsing_machine@127.0.0.1:3306/dowsing_machine?serverVersion=8.0&charset=utf8mb4"
+          DATABASE_URL: "mysql://dowsing_machine:dowsing_machine@127.0.0.1:3306/dowsing_machine?serverVersion=8.4.0&charset=utf8mb4"
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5

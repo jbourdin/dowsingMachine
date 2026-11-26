@@ -370,6 +370,25 @@ class AdminArchetypeControllerTest extends AbstractFunctionalTest
     /**
      * @see docs/features.md F18.15 — Admin archetype variant management
      */
+    public function testCreateVariantRejectsUnparseableRawList(): void
+    {
+        $this->loginAs('admin@example.com');
+
+        $archetype = $this->getArchetype('Regidrago');
+        $crawler = $this->client->request('GET', '/admin/archetypes/'.$archetype->getId().'/variants/new');
+
+        $form = $crawler->selectButton('Save')->form();
+        $form['archetype_variant_form[name]'] = 'Broken List Variant';
+        $form['archetype_variant_form[rawList]'] = "Pokémon: 1\n1 Mew ex 30C 66\nnot a card line";
+        $this->client->submit($form);
+
+        self::assertResponseStatusCodeSame(422);
+        self::assertSelectorTextContains('form[name="archetype_variant_form"]', 'not a card line');
+    }
+
+    /**
+     * @see docs/features.md F18.15 — Admin archetype variant management
+     */
     public function testEditVariantFormAccessible(): void
     {
         $this->loginAs('admin@example.com');

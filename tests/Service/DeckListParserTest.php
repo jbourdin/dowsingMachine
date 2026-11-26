@@ -206,6 +206,36 @@ class DeckListParserTest extends TestCase
         self::assertSame('PR-SW', $result->cards[1]->setCode);
     }
 
+    public function testParseSetCodeStartingWithDigit(): void
+    {
+        $rawList = <<<'PTCG'
+            Pokémon: 1
+            1 Mew ex 30C 66
+
+            Trainer: 1
+            3 Ultra Ball 30C 128
+            PTCG;
+
+        $result = $this->parser->parse($rawList);
+
+        self::assertTrue($result->isValid());
+        self::assertCount(2, $result->cards);
+        self::assertSame('Mew ex', $result->cards[0]->cardName);
+        self::assertSame('30C', $result->cards[0]->setCode);
+        self::assertSame('66', $result->cards[0]->cardNumber);
+        self::assertSame(3, $result->cards[1]->quantity);
+        self::assertSame('30C', $result->cards[1]->setCode);
+    }
+
+    public function testParseAllDigitSetCodeIsRejected(): void
+    {
+        $result = $this->parser->parse('1 Pikachu 151 25');
+
+        self::assertFalse($result->isValid());
+        self::assertCount(0, $result->cards);
+        self::assertCount(1, $result->errors);
+    }
+
     public function testParseCardBeforeSectionHeaderUsesUnknownType(): void
     {
         $rawList = <<<'PTCG'
